@@ -1,0 +1,40 @@
+{
+  "add_target_extension": {
+    "dynamic": "dll", 
+    "static": "lib"
+  }, 
+  "cm_dependencies": {
+    "target_processor": [], 
+    "classes": [
+      "72f81bd39f84ed89", 
+      "974b24d4ca79bf6e"
+    ], 
+    "host_os": [], 
+    "target_os": []
+  }, 
+  "build_scripts_uoa": [
+    "9738ca3d2555f6eb"
+  ], 
+  "main_language": "c", 
+  "clean_scripts_names": {
+    "clean": "Universal cleaning"
+  }, 
+  "cm_classes_uoa": [
+    "914178a17c102fb5", 
+    "741ddb394cd917fb", 
+    "af75744deab6d24c"
+  ], 
+  "target_file": "libcm-1104f95ad3f57032", 
+  "source_files": [
+    "openme.c"
+  ], 
+  "build_scripts_names": {
+    "dynamic": {
+      "build_dynamic_lib_c": "Dynamic library"
+    }, 
+    "static": {
+      "cross_build_static_lib_c": "Cross static library", 
+      "build_static_lib_c": "Static library"
+    }
+  }
+}

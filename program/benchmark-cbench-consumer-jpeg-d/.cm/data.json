@@ -1,0 +1,172 @@
+{
+  "add_target_extension": {
+    "dynamic": "exe", 
+    "static": "exe"
+  }, 
+  "build_scripts_names": {
+    "dynamic": {
+      "build_dynamic_bin_c": "Build dynamic binary directly", 
+      "build_dynamic_bin_c_through_asm": "Build dynamic binary from C sources through assembler", 
+      "build_dynamic_bin_c_through_bc": "Build dynamic binary from C sources through LLVM BC", 
+      "build_dynamic_bin_c_through_link": "Build dynamic binary from C sources through object files and linking"
+    }, 
+    "static": {
+      "build_static_bin_c": "Build static binary directly", 
+      "build_static_bin_c_through_asm": "Build static binary from C sources through assembler", 
+      "build_static_bin_c_through_bc": "Build static binary from C sources through LLVM BC", 
+      "build_static_bin_c_through_link": "Build static binary from C sources through object files and linking"
+    }
+  }, 
+  "build_scripts_uoa": [
+    "9738ca3d2555f6eb"
+  ], 
+  "clean_scripts_names": {
+    "clean": "Universal cleaning"
+  }, 
+  "cm_access_control": {
+    "comments_groups": "admin", 
+    "read_groups": "all", 
+    "write_groups": "owner"
+  }, 
+  "cm_build_dependencies": [], 
+  "cm_classes_uoa": [
+    "28ecc0c2a0215b5b", 
+    "99ebfa96846f4bc8", 
+    "1a8b0e537d8566d6", 
+    "dc6b904ae894e1cb", 
+    "4c92c9db21a28cca"
+  ], 
+  "cm_description": "cBench benchmark collection: http://cTuning.org/cbench", 
+  "cm_display_as_alias": "cbench: consumer jpeg d", 
+  "cm_updated": [
+    {
+      "cm_iso_datetime": "2012-04-18T19:38:11.007000", 
+      "cm_module_uid": "45741e3fbcf4024b", 
+      "cm_note": "", 
+      "cm_user_uoa": "0728a400aa1c86fe"
+    }
+  ], 
+  "main_language": "c", 
+  "powered_by": {
+    "name": "Collective Mind Engine", 
+    "version": "1.0.1977.beta"
+  }, 
+  "run_cmds": {
+    "decode": {
+      "dataset_classes_uoa": [
+        "92fca4c64fa7a275"
+      ], 
+      "hot_functions": [
+        {
+          "name": "jpeg_idct_islow", 
+          "percent": "41"
+        }, 
+        {
+          "name": "ycc_rgb_convert", 
+          "percent": "19"
+        }, 
+        {
+          "name": "h2v2_fancy_upsample", 
+          "percent": "14"
+        }, 
+        {
+          "name": "decode_mcu", 
+          "percent": "10"
+        }
+      ], 
+      "run_time": {
+        "run_cmd_main": "-dct int -ppm -outfile tmp-output.tmp $#dataset_path#$$#os_dir_separator#$$#dataset_filename#$", 
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_out2": "tmp-output2.tmp", 
+        "run_correctness_output_files": [
+          "tmp-output.tmp", 
+          "tmp-output2.tmp"
+        ], 
+        "run_output_files": [
+          "tmp-output.tmp"
+        ]
+      }
+    }
+  }, 
+  "run_vars": {
+    "CT_REPEAT_MAIN": "1"
+  }, 
+  "run_vars_desc": {
+    "##CT_REPEAT_MAIN": {
+      "default_value": "1", 
+      "desc_text": "Main function/kernel repetition", 
+      "explorable": "yes", 
+      "explore_level": "1", 
+      "explore_start": "0", 
+      "explore_step": "10", 
+      "explore_stop": "1000000", 
+      "field_size": "7", 
+      "forbid_disable_at_random": "yes", 
+      "property": "yes", 
+      "skip_form_refresh": "yes", 
+      "sort_index": "1", 
+      "type": "integer"
+    }
+  }, 
+  "source_files": [
+    "cdjpeg.c", 
+    "ctuning-rtl.c", 
+    "djpeg.c", 
+    "jcapimin.c", 
+    "jcapistd.c", 
+    "jccoefct.c", 
+    "jccolor.c", 
+    "jcdctmgr.c", 
+    "jchuff.c", 
+    "jcinit.c", 
+    "jcmainct.c", 
+    "jcmarker.c", 
+    "jcmaster.c", 
+    "jcomapi.c", 
+    "jcparam.c", 
+    "jcphuff.c", 
+    "jcprepct.c", 
+    "jcsample.c", 
+    "jctrans.c", 
+    "jdapimin.c", 
+    "jdapistd.c", 
+    "jdatadst.c", 
+    "jdatasrc.c", 
+    "jdcoefct.c", 
+    "jdcolor.c", 
+    "jddctmgr.c", 
+    "jdhuff.c", 
+    "jdinput.c", 
+    "jdmainct.c", 
+    "jdmarker.c", 
+    "jdmaster.c", 
+    "jdmerge.c", 
+    "jdphuff.c", 
+    "jdpostct.c", 
+    "jdsample.c", 
+    "jdtrans.c", 
+    "jerror.c", 
+    "jfdctflt.c", 
+    "jfdctfst.c", 
+    "jfdctint.c", 
+    "jidctflt.c", 
+    "jidctfst.c", 
+    "jidctint.c", 
+    "jidctred.c", 
+    "jmemansi.c", 
+    "jmemmgr.c", 
+    "jquant1.c", 
+    "jquant2.c", 
+    "jutils.c", 
+    "rdcolmap.c", 
+    "wrbmp.c", 
+    "wrgif.c", 
+    "wrppm.c", 
+    "wrrle.c", 
+    "wrtarga.c"
+  ], 
+  "source_files_templates": [
+    "ctuning-rtl.c"
+  ], 
+  "target_file": "a"
+}

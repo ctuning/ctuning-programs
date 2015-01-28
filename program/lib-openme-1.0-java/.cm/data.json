@@ -1,0 +1,59 @@
+{
+  "add_target_extension": {
+    "dynamic": "java_lib", 
+    "static": "java_lib"
+  }, 
+  "build_scripts_names": {
+    "dynamic": {
+      "build_java_lib": "Java library (jar)"
+    }, 
+    "static": {
+      "build_java_lib": "Java library (jar)"
+    }
+  }, 
+  "build_scripts_uoa": [
+    "9738ca3d2555f6eb"
+  ], 
+  "clean_scripts_names": {
+    "clean": "Universal cleaning"
+  }, 
+  "cm_access_control": {
+    "read_groups": "all", 
+    "write_groups": "owner"
+  }, 
+  "cm_classes_uoa": [
+    "914178a17c102fb5", 
+    "dcfcb146887040db", 
+    "b11239567749b494"
+  ], 
+  "cm_dependencies": {
+    "classes": [
+      "72f81bd39f84ed89", 
+      "b41aeaf20eb0a474", 
+      "11d28b2d49b68f90"
+    ], 
+    "host_os": [], 
+    "target_os": [], 
+    "target_processor": []
+  }, 
+  "cm_description": "", 
+  "cm_display_as_alias": "OpenME library 1.0 (Java)", 
+  "cm_note": "When compiling for Android, use JDK 1.6 or lower - JDK 1.7 is currently not working properly.", 
+  "cm_updated": [
+    {
+      "cm_iso_datetime": "2012-07-12T13:10:15.957000", 
+      "cm_module_uid": "0247b19de472d7d0", 
+      "cm_note": "", 
+      "cm_user_uoa": "74c2480dcec9e85d"
+    }
+  ], 
+  "main_language": "java", 
+  "powered_by": {
+    "name": "Collective Mind Engine", 
+    "version": "1.0.1977.beta"
+  }, 
+  "source_files": [
+    "org/openme/openme.java"
+  ], 
+  "target_file": "openme"
+}

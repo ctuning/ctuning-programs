@@ -1,0 +1,84 @@
+/*
+ Collective Mind
+
+ See cM LICENSE.txt for licensing details.
+ See cM Copyright.txt for copyright details.
+
+ Developer(s): Grigori Fursin, started on 2011.09
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#include <openme.h>
+
+#ifndef WINDOWS
+#include <dlfcn.h>
+#endif
+
+static void clock_start(void);
+static void clock_end(void);
+static void program_start(void);
+static void program_end(void);
+
+#ifdef WINDOWS
+  static clock_t start=0.0, stop=0.0;
+#else 
+  static double start=0.0, stop=0.0;
+  static struct timeval  before, after;
+#endif
+  static double secs;
+
+extern
+#ifdef WINDOWS
+__declspec(dllexport) 
+#endif
+int openme_plugin_init(struct openme_info *ome_info)
+{
+  openme_register_callback(ome_info, "KERNEL_START", clock_start);
+  openme_register_callback(ome_info, "KERNEL_END", clock_end);
+  openme_register_callback(ome_info, "PROGRAM_START", program_start);
+  openme_register_callback(ome_info, "PROGRAM_END", program_end);
+
+  return 0;
+}
+
+extern void clock_start(void)
+{
+#ifdef WINDOWS
+  start = clock();
+#else
+  #ifdef __INTEL_COMPILERX
+    start = (double)_rdtsc();
+  #else
+    gettimeofday(&before, NULL);
+  #endif
+#endif
+}
+
+extern void clock_end(void)
+{
+#ifdef WINDOWS
+  stop = clock();
+  secs = ((double)(stop - start)) / CLOCKS_PER_SEC;
+#else
+  #ifdef __INTEL_COMPILERX
+  stop = (double)_rdtsc();
+  secs = ((double)(stop - start)) / (double) getCPUFreq();
+  #else
+  gettimeofday(&after, NULL);
+  secs = (after.tv_sec - before.tv_sec) + (after.tv_usec - before.tv_usec)/1000000.0;
+  #endif
+#endif
+}
+
+extern void program_start(void)
+{
+  printf("Event: start program\n");
+}
+
+extern void program_end(void)
+{
+  printf("Calculation time (secs.)=%f\n", secs);
+}

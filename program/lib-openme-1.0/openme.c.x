@@ -1,0 +1,330 @@
+/*
+
+ cM - Collective Mind infrastructure to discover, collect,
+      share and reuse knowledge
+
+ OpenME - Event-driven, plugin-based framework
+          to "open up" various software and connect it
+          to Collective Mind infrastructure
+
+ See cM LICENSE.txt for licensing details.
+ See cM Copyright.txt for copyright details.
+
+ Developer(s): (C) Grigori Fursin, started on 2011.09
+
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "openme.h"
+
+#ifdef WINDOWS
+#include <windows.h>
+static HINSTANCE dll=NULL; 
+#else
+#include <dlfcn.h>
+static void *dll;
+#endif
+
+/* set 'use' to 1 to process callbacks */
+static int openme_use=0;
+static int openme_initialized=0;
+
+static struct openme_info openme_info;
+
+static char bufx[1024];
+
+static void *(*openme_malloc)(size_t sz) = malloc;
+static void (*openme_free)(void *ptr) = free;
+
+extern int openme_init (char *plugin_names)
+{
+  char *env=NULL;
+  char *p;
+  char *buf, *buf1, *buf2;
+  int i=0;
+
+  void (*func) (void*);
+
+  fflush(stdout); 
+  printf ("Initialize OpenME\n");
+
+  /* Init malloc and free hooks to initialize memory in user space */
+  openme_info.openme_malloc=malloc;
+  openme_info.openme_free=free;
+
+  openme_info.event_list=NULL;
+
+  openme_initialized=1;
+
+  if ((env = getenv(OPENME_USE)) != NULL)
+  {
+    if (atoi(env)==1)
+    {
+      if ((plugin_names!=NULL) && (strlen(plugin_names)!=0))
+        env=plugin_names;
+      else if ((env=getenv(OPENME_PLUGINS))==NULL)
+        return 1;
+
+      buf=malloc(sizeof(char)*(strlen(env)+1));
+      buf1=env;
+
+      while (*buf1!=0)
+      {
+        buf2=buf;
+        while ((*buf1!=0) && (*buf1!=';'))
+          *buf2++=*buf1++;
+        *buf2=0;
+        if (*buf1!=0) buf1++;
+
+#ifdef WINDOWS
+        dll = LoadLibrary(TEXT(buf));
+        if (dll == NULL)
+            printf("Error: Failed to load plugin (error=%u)!\n", GetLastError());
+#else
+
+
+
+
+
+        dll=dlopen("./ld-linux.so.3", RTLD_LAZY);
+        if (dll == NULL)
+            printf("Error1: Failed to load plugin (%s)!\n", dlerror());
+
+        dll=dlopen("./libgcc_s.so.1", RTLD_LAZY);
+        if (dll == NULL)
+            printf("Error2: Failed to load plugin (%s)!\n", dlerror());
+
+        dll=dlopen("./libc.so.6", RTLD_LAZY);
+        if (dll == NULL)
+            printf("Error3: Failed to load plugin (%s)!\n", dlerror());
+
+
+
+        dll=dlopen(env, RTLD_LAZY);
+        if (dll == NULL)
+            printf("Error4: Failed to load plugin (%s)!\n", dlerror());
+#endif
+        if (dll == NULL)
+        {
+            free(buf);
+            return 1;
+        }
+
+#ifdef WINDOWS
+        func = (void (__cdecl *)(void *)) GetProcAddress(dll, OPENME_PLUGIN_INIT_FUNC);
+#else
+        func = dlsym (dll, OPENME_PLUGIN_INIT_FUNC);
+#endif
+        if (func == NULL)
+        {
+            printf("Error: Can't find openme_plugin_init function in the plugin!\n");
+            free(buf);
+            return 1;
+        }
+
+        (*func) (&openme_info);
+
+        openme_use=1;
+      }
+
+//      free(buf);
+    }
+  }
+
+  return 0;
+}
+
+extern void openme_callback (char *event_name, void *params)
+{
+  struct openme_event *es;
+
+  if (openme_use==0 && openme_initialized==0)
+     openme_init("");
+
+  if (openme_use==1)
+  {
+    fflush(stdout); 
+    printf ("Searching event=%s\n", event_name);
+    es=openme_info.event_list;
+    while (es!=NULL)
+    {
+      if (strcmp(es->name, event_name)==0)
+      {
+        (*(es->func)) (params);
+        /* Don't stop here to allow the same events 
+           called from other plugins - may be useful */
+      }
+      es=es->next;
+    }
+  }
+}
+
+extern void openme_register_callback (struct openme_info *info, char *event_name, void *func)
+{
+  struct openme_event *e, *es;
+  char *en;
+
+//  if (openme_use==0 && openme_initialized==0)
+//     openme_init("");
+
+  fflush(stdout); 
+  printf("Register callback %s\n", event_name);
+
+  en=(char *) info->openme_malloc(sizeof(char)*(strlen(event_name)+1));
+  strcpy(en, event_name);
+
+  e=(struct openme_event *) info->openme_malloc(sizeof(struct openme_event));
+  e->name=en;
+  e->func=func;
+  e->next=NULL;
+
+  if (info->event_list==NULL)
+    info->event_list=e;
+  else
+  {
+    es=info->event_list;
+    while ((es->next)!=NULL)
+      es=es->next;
+
+    es->next=e;
+  }
+}
+
+extern cJSON *openme_create_obj (char *str)
+{
+  char str1[1024];
+  char str2[1024];
+  int i=0;
+  int j=0;
+  int il;
+  int k, kl;
+
+  cJSON *obj, *obj1, *obj2;
+
+  obj=cJSON_CreateObject();
+
+  il=strlen(str);
+  while (i<il)
+  {
+    if (str[i]=='@')
+    {
+      /* Process file */
+      i++;
+
+      while (str[i]!=' ' && i<il)
+        str1[j++]=str[i++];
+      str1[j]=0;
+
+      obj1=openme_load_json_file(str1);
+      if (obj1==NULL)
+         return NULL;
+
+      kl=cJSON_GetArraySize(obj1);
+      for (k=0; k<kl; k++)
+      {
+        if (cJSON_GetObjectItem(obj, cJSON_GetArrayItemName(obj1,k))!=NULL)
+          cJSON_DeleteItemFromObject(obj, cJSON_GetArrayItemName(obj1,k));
+        cJSON_AddItemReferenceToObject(obj, cJSON_GetArrayItemName(obj1,k), cJSON_GetArrayItem(obj1,k));
+      }
+    }
+    else
+    {
+      j=0;
+      while (str[i]!='=' && i<il)
+        str1[j++]=str[i++];
+      str1[j]=0;
+
+      i++;
+      if (i>=il) break;
+  
+      j=0;
+      while (str[i]!=' ' && i<il)
+        str2[j++]=str[i++];
+      str2[j]=0;
+      i++;
+
+      cJSON_AddStringToObject(obj, str1, str2);
+    }
+  }
+
+  return obj;
+}
+
+extern void openme_print_obj (cJSON *obj)
+{
+  printf("%s\n", cJSON_Print(obj));
+}
+
+extern cJSON *openme_load_json_file(char *file_name)
+{
+  cJSON *obj;
+  FILE *fp;
+  long len;
+  char *data;
+
+  fp = fopen(file_name, "r");
+  if(!fp)
+  {
+    openme_set_error("OpenME error: can't find json file %s\n", file_name);
+    return NULL;
+  }
+
+  fseek(fp,0,SEEK_END);
+  len=ftell(fp);
+  fseek(fp,0,SEEK_SET);
+  data=openme_info.openme_malloc(len+1);
+  fread(data,1,len,fp);
+  fclose(fp);
+
+  obj=cJSON_Parse(data);
+  openme_info.openme_free(data);
+
+  return obj;
+}
+
+extern void openme_store_json_file(cJSON *json, char *file_name)
+{
+  char *out;
+  FILE *fp = fopen(file_name, "w");
+  
+  out = cJSON_Print(json);
+  fprintf(fp, "%s", out);
+  openme_info.openme_free(out);
+}
+  
+extern void openme_set_error(char *format, char *text)
+{
+  sprintf(openme_info.error, format, text);
+}
+
+extern void openme_print_error(void)
+{
+  printf(openme_info.error);
+}
+
+extern cJSON *cm_action (cJSON *inp)
+{
+  openme_print_obj(inp);
+
+  return inp;
+}
+
+/* Fortran interface */
+
+extern int openme_init_f_ (char *plugin_names) {return openme_init(plugin_names);}
+extern int OPENME_INIT_F (char *plugin_names) {return openme_init(plugin_names);}
+
+extern void openme_callback_f_ (char *event_name, void *params) {openme_callback(event_name, params);}
+extern void OPENME_CALLBACK_F (char *event_name, void *params) {openme_callback(event_name, params);}
+
+extern cJSON *openme_create_obj_f_ (char *str) {return openme_create_obj(str);}
+extern cJSON *OPENME_CREATE_OBJ_F (char *str) {return openme_create_obj(str);}
+
+extern void openme_print_obj_f_ (cJSON **obj) {openme_print_obj(*obj);}
+extern void OPENME_PRINT_OBJ_F (cJSON **obj) {openme_print_obj(*obj);}
+
+extern cJSON *cm_action_f_ (cJSON **obj) {cm_action(*obj);}
+extern cJSON *CM_ACTION_F (cJSON **obj) {cm_action(*obj);}

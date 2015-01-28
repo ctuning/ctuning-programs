@@ -1,0 +1,67 @@
+{
+  "add_target_extension": {
+    "dynamic": "dll", 
+    "static": "dll"
+  }, 
+  "build_scripts_names": {
+    "dynamic": {
+      "build_dynamic_lib_c": "Dynamic library"
+    }, 
+    "static": {
+      "build_dynamic_lib_c": "Dynamic library"
+    }
+  }, 
+  "build_scripts_uoa": [
+    "9738ca3d2555f6eb"
+  ], 
+  "clean_scripts_names": {
+    "clean": "Universal cleaning"
+  }, 
+  "cm_access_control": {
+    "comments_groups": "admin", 
+    "read_groups": "all", 
+    "write_groups": "owner"
+  }, 
+  "cm_classes_uoa": [
+    "914178a17c102fb5", 
+    "167ca2dc6e48bbbd", 
+    "d540bda9f2919585", 
+    "3cc2b4d67a4da7cf"
+  ], 
+  "cm_dependencies": {
+    "classes": [
+      "72f81bd39f84ed89", 
+      "974b24d4ca79bf6e", 
+      "741ddb394cd917fb", 
+      "06922fb5dbed7297"
+    ], 
+    "host_os": [
+      "5c84a209d714c0d9", 
+      "4f9ab17ad8416295"
+    ], 
+    "target_os": [
+      "5c84a209d714c0d9", 
+      "7a3490daa7063380"
+    ], 
+    "target_processor": []
+  }, 
+  "cm_description": "", 
+  "cm_display_as_alias": "OpenME plugin for Likwid 1.0", 
+  "cm_updated": [
+    {
+      "cm_iso_datetime": "2012-07-12T13:10:15.957000", 
+      "cm_module_uid": "0247b19de472d7d0", 
+      "cm_note": "", 
+      "cm_user_uoa": "74c2480dcec9e85d"
+    }
+  ], 
+  "main_language": "c", 
+  "powered_by": {
+    "name": "Collective Mind Engine", 
+    "version": "1.0.1977.beta"
+  }, 
+  "source_files": [
+    "ctuning.c"
+  ], 
+  "target_file": "libcm-7a22b0a024ec1b6b"
+}

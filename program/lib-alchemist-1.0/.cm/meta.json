@@ -1,0 +1,47 @@
+{
+  "add_target_extension": {
+    "dynamic": "dll", 
+    "static": "dll"
+  }, 
+  "cm_dependencies": {
+    "target_processor": [], 
+    "classes": [
+      "72f81bd39f84ed89", 
+      "974b24d4ca79bf6e", 
+      "741ddb394cd917fb"
+    ], 
+    "host_os": [
+      "5c84a209d714c0d9", 
+      "4f9ab17ad8416295"
+    ], 
+    "target_os": [
+      "5c84a209d714c0d9", 
+      "7a3490daa7063380"
+    ]
+  }, 
+  "build_scripts_uoa": [
+    "9738ca3d2555f6eb"
+  ], 
+  "main_language": "c", 
+  "clean_scripts_names": {
+    "clean": "Universal cleaning"
+  }, 
+  "cm_classes_uoa": [
+    "914178a17c102fb5", 
+    "7834e958464669af", 
+    "123b266f13143a33", 
+    "55b42a7918b8e2ab"
+  ], 
+  "target_file": "libcm-4d2386345d7444ca", 
+  "source_files": [
+    "alchemist.c"
+  ], 
+  "build_scripts_names": {
+    "dynamic": {
+      "build_gcc_plugin_c": "Dynamic plugin"
+    }, 
+    "static": {
+      "build_gcc_plugin_c": "Dynamic plugin"
+    }
+  }
+}

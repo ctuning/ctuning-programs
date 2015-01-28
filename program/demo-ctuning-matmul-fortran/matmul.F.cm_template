@@ -1,0 +1,113 @@
+PROGRAM MATMULPROG
+
+#ifndef N
+#define N 32
+#e
+
+/* CM_TEMPLATE_KERNEL_START */
+
+n
+
+/* CM_TEMPLATE_PROGRAM_START */
+
+dif
+
+C
+C     Copyright (C) 2000-2013 by Grigori G.Fursin
+C
+C     http://cTuning.org/lab/people/gfursin
+C
+
+      IMPLICIT REAL (A-F,X)
+      INTEGER*8 I_REPEAT
+
+      COMMON A(N,N), B(N,N), C(N,N)
+
+      CHARACTER(len=128) :: S_REPEAT_MAIN
+
+#ifdef OPENME
+      INTEGER*8 OBJ, OPENME_CREATE_OBJ_F
+
+      CALL OPENME_INIT_F(""//CHAR(0), ""//CHAR(0), ""//CHAR(0), 0)
+      CALL OPENME_CALLBACK_F("PROGRAM_START"//CHAR(0))
+
+C      OBJ=OPENME_CREATE_OBJ_F(""//CHAR(0))
+C      CALL OPENME_PRINT_OBJ_F(OBJ)
+#endif
+
+      S_REPEAT_MAIN=''
+      CALL GETENV("CT_REPEAT_MAIN", S_REPEAT_MAIN)
+      READ (S_REPEAT_MAIN,'(i10)') I_REPEAT
+      IF (I_REPEAT.EQ.0) I_REPEAT=1
+
+      WRITE (*,*) 'XYZ=', I_REPEAT
+
+      WRITE (*,*) 'MATMUL'
+      WRITE (*,*) ' '
+
+      WRITE (*,*) 'Preparing ...'
+      CALL PREP
+
+      WRITE (*,*) 'Calculating ...'
+#ifdef OPENME
+      CALL OPENME_CALLBACK_F("KERNEL_START"//CHAR(0));
+#endif
+      DO I=1, I_REPEAT
+       CALL MATMUL
+      END DO
+#ifdef OPENME
+      CALL OPENME_CALLBACK_F("KERNEL_END"//CHAR(0));
+#endif
+
+      WRITE (*,*) ' '
+      WRITE (*,*) 'X=', A(1,1)
+
+      WRITE (*,*) ' '
+      WRITE (*,*) 'End'
+
+#ifdef OPENME
+      CALL OPENME_CALLBACK_F("PROGRAM_END"//CHAR(0))
+#endif
+      END
+
+      SUBROUTINE PREP
+
+      IMPLICIT REAL (A-F,X)
+
+      COMMON A(N,N), B(N,N), C(N,N)
+
+      DO J=1, N
+       DO I=1, N
+        D=I+J
+        A(I,J)=SIN(D+1)
+        B(I,J)=SIN(D+2)
+        C(I,J)=SIN(D+3)
+       END DO
+      END DO
+
+      END
+
+      SUBROUTINE MATMUL
+
+      IMPLICIT REAL (A-F,X)
+
+      COMMON A(N,N), B(N,N), C(N,N)
+
+      DO I=1, N
+C      A(I,J)=0
+       DO J=1, N
+        DO K=1, N
+         A(I,J)=A(I,J)+B(I,K)*C(K,J)
+        END DO
+       END DO
+      END DO
+
+      END
+
+/* CM_TEMPLATE_INCLUDE */
+
+/* CM_TEMPLATE_PROGRAM_END */
+
+/* CM_TEMPLATE_KERNEL_END */
+
+

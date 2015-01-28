@@ -1,0 +1,122 @@
+{
+  "add_target_extension": {
+    "dynamic": "exe", 
+    "static": "exe"
+  }, 
+  "build_scripts_names": {
+    "dynamic": {
+      "build_makefile": "Build using Makefile"
+    }, 
+    "static": {
+      "build_makefile": "Build using Makefile"
+    }
+  }, 
+  "build_scripts_uoa": [
+    "9738ca3d2555f6eb"
+  ], 
+  "clean_scripts_names": {
+    "clean": "Universal cleaning"
+  }, 
+  "cm_access_control": {
+    "comments_groups": "admin", 
+    "read_groups": "all", 
+    "write_groups": "owner"
+  }, 
+  "cm_build_dependencies": [], 
+  "cm_classes_uoa": [
+    "28ecc0c2a0215b5b", 
+    "99ebfa96846f4bc8", 
+    "1a8b0e537d8566d6"
+  ], 
+  "cm_description": "some demo benchmarks from PhD/cTuning/MILEPOST prepared by Grigori Fursin", 
+  "cm_display_as_alias": "ctuning-demo: bzip2 1.0.6 with Makefile", 
+  "cm_updated": [
+    {
+      "cm_iso_datetime": "2013-01-21T11:53:04.592000", 
+      "cm_module_uid": "45741e3fbcf4024b", 
+      "cm_person_uoa": "0728a400aa1c86fe", 
+      "cm_user_uoa": "0728a400aa1c86fe"
+    }
+  ], 
+  "main_language": "c", 
+  "powered_by": {
+    "name": "Collective Mind Engine", 
+    "version": "1.0.2015.beta"
+  }, 
+  "run_cmds": {
+    "decode": {
+      "dataset_classes_uoa": [
+        "2c74940afb0c866f"
+      ], 
+      "hot_functions": [
+        {
+          "name": "BZ2_decompress", 
+          "percent": "55"
+        }, 
+        {
+          "name": "BZ2_bzDecompress", 
+          "percent": "44"
+        }
+      ], 
+      "run_time": {
+        "run_cmd_main": "-d -k -f $#dataset_path#$$#os_dir_separator#$$#dataset_filename#$", 
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_out2": "tmp-output2.tmp", 
+        "run_correctness_output_files": [
+          "bzip2.tmp", 
+          "tmp-output2.tmp"
+        ], 
+        "run_output_files": [
+          "bzip2.tmp"
+        ]
+      }
+    }, 
+    "encode": {
+      "dataset_classes_uoa": [
+        "62a455f8c8042f90"
+      ], 
+      "hot_functions": [
+        {
+          "name": "mainSort", 
+          "percent": "58"
+        }, 
+        {
+          "name": "BZ2_compressBlock", 
+          "percent": "28"
+        }, 
+        {
+          "name": "BZ2_hbMakeCodeLengths", 
+          "percent": "6"
+        }
+      ], 
+      "run_time": {
+        "run_cmd_main": "-z -k -f $#dataset_path#$$#os_dir_separator#$$#dataset_filename#$", 
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_out2": "tmp-output2.tmp", 
+        "run_correctness_output_files": [
+          "bzip2.tmp", 
+          "tmp-output2.tmp"
+        ], 
+        "run_output_files": [
+          "bzip2.tmp"
+        ]
+      }
+    }
+  }, 
+  "source_files": [
+    "blocksort.c", 
+    "bzip2.c", 
+    "bzip2recover.c", 
+    "bzlib.c", 
+    "compress.c", 
+    "crctable.c", 
+    "decompress.c", 
+    "dlltest.c", 
+    "huffman.c", 
+    "mk251.c", 
+    "randtable.c", 
+    "spewG.c", 
+    "unzcrash.c"
+  ], 
+  "target_file": "a"
+}

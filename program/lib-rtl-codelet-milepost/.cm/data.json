@@ -1,0 +1,59 @@
+{
+  "add_target_extension": {
+    "dynamic": "dll", 
+    "static": "lib"
+  }, 
+  "build_scripts_names": {
+    "dynamic": {
+      "build_dynamic_lib_c": "Dynamic library"
+    }, 
+    "static": {
+      "build_static_lib_c": "Static library", 
+      "cross_build_static_lib_c": "Cross static library"
+    }
+  }, 
+  "build_scripts_uoa": [
+    "9738ca3d2555f6eb"
+  ], 
+  "clean_scripts_names": {
+    "clean": "Universal cleaning"
+  }, 
+  "cm_access_control": {
+    "comments_groups": "admin", 
+    "read_groups": "all", 
+    "write_groups": "owner"
+  }, 
+  "cm_classes_uoa": [
+    "914178a17c102fb5", 
+    "56afd08d1f7b2fd8", 
+    "13a4979ac2cb4a03"
+  ], 
+  "cm_dependencies": {
+    "classes": [
+      "72f81bd39f84ed89", 
+      "741ddb394cd917fb"
+    ], 
+    "host_os": [], 
+    "target_os": [], 
+    "target_processor": []
+  }, 
+  "cm_description": "", 
+  "cm_display_as_alias": "Run Time Library for codelets from MILEPOST project", 
+  "cm_updated": [
+    {
+      "cm_iso_datetime": "2012-07-20T13:00:11.131000", 
+      "cm_module_uid": "45741e3fbcf4024b", 
+      "cm_note": "", 
+      "cm_user_uoa": "74c2480dcec9e85d"
+    }
+  ], 
+  "main_language": "c", 
+  "powered_by": {
+    "name": "Collective Mind Engine", 
+    "version": "1.0.1977.beta"
+  }, 
+  "source_files": [
+    "ctuning_milepost_codelet_lib.c"
+  ], 
+  "target_file": "libcm-1d564d4d34f51a8a"
+}

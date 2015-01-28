@@ -1,2 +1,4 @@
-# ctuning-programs
-CK repository with benchmarks
+cm-ctuning-code-source
+======================
+
+Collective Mind Repository (cTuning; Benchmarks) 
