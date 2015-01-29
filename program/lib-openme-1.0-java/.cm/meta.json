@@ -30,6 +30,11 @@
     "org/openme/openme.java"
   ], 
   "cm_note": "When compiling for Android, use JDK 1.6 or lower - JDK 1.7 is currently not working properly.", 
+  "tags": [
+    "library", 
+    "openme", 
+    "java"
+  ], 
   "build_scripts_names": {
     "dynamic": {
       "build_java_lib": "Java library (jar)"

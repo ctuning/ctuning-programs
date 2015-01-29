@@ -38,6 +38,10 @@
     "alchemist_record_function_names.c", 
     "alchemist_substitute_passes.c"
   ], 
+  "tags": [
+    "library", 
+    "alchemist"
+  ], 
   "build_scripts_names": {
     "dynamic": {
       "build_gcc_plugin_c": "Dynamic plugin"

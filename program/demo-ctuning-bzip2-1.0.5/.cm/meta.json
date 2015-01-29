@@ -92,6 +92,10 @@
     "spewG.c", 
     "unzcrash.c"
   ], 
+  "tags": [
+    "program", 
+    "demo"
+  ], 
   "build_scripts_names": {
     "dynamic": {
       "build_makefile": "Build using Makefile"

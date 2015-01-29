@@ -28,6 +28,11 @@
   "source_files": [
     "openme.c"
   ], 
+  "tags": [
+    "library", 
+    "openme", 
+    "c"
+  ], 
   "build_scripts_names": {
     "dynamic": {
       "build_dynamic_lib_c": "Dynamic library"

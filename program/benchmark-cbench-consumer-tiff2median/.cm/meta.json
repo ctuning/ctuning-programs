@@ -51,12 +51,12 @@
       "explore_stop": "1000000", 
       "forbid_disable_at_random": "yes", 
       "desc_text": "Main function/kernel repetition", 
-      "sort_index": "1", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "0", 
       "explore_step": "10", 
-      "explore_level": "1", 
+      "sort_index": "1", 
       "type": "integer"
     }
   }, 
@@ -106,6 +106,10 @@
   "cm_file_upload_name": "", 
   "source_files_templates": [
     "ctuning-rtl.c"
+  ], 
+  "tags": [
+    "program", 
+    "cbench"
   ], 
   "build_scripts_names": {
     "dynamic": {

@@ -46,12 +46,12 @@
       "explore_stop": "1000000", 
       "forbid_disable_at_random": "yes", 
       "desc_text": "Main function/kernel repetition", 
-      "sort_index": "1", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "0", 
       "explore_step": "10", 
-      "explore_level": "1", 
+      "sort_index": "1", 
       "type": "integer"
     }
   }, 
@@ -88,6 +88,11 @@
   "source_files_templates": [
     "gesummv.c"
   ], 
+  "tags": [
+    "program", 
+    "polybench", 
+    "cpu"
+  ], 
   "build_compiler_vars_desc": {
     "##POLYBENCH_PADDING_FACTOR": {
       "field_size": "7", 
@@ -95,12 +100,12 @@
       "explore_stop": "128", 
       "forbid_disable_at_random": "yes", 
       "desc_text": "Transformation: Padding factor", 
-      "sort_index": "20", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "0", 
       "explore_step": "1", 
-      "explore_level": "1", 
+      "sort_index": "20", 
       "type": "integer"
     }, 
     "##DATA_TYPE": {
@@ -128,12 +133,12 @@
       "forbid_disable_at_random": "yes", 
       "dataset_size": "yes", 
       "desc_text": "Dataset: Matrix size N", 
-      "sort_index": "1", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "2", 
       "explore_step": "1", 
-      "explore_level": "1", 
+      "sort_index": "1", 
       "type": "integer"
     }, 
     "##POLYBENCH_DUMP_ARRAYS": {

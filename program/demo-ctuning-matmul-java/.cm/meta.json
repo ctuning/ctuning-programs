@@ -48,12 +48,12 @@
       "explore_stop": "1000000", 
       "forbid_disable_at_random": "yes", 
       "desc_text": "Square matrix dimension", 
-      "sort_index": "1", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "0", 
       "explore_step": "10", 
-      "explore_level": "1", 
+      "sort_index": "1", 
       "type": "integer"
     }, 
     "##CT_REPEAT_MAIN": {
@@ -63,12 +63,12 @@
       "explore_stop": "1000000", 
       "forbid_disable_at_random": "yes", 
       "desc_text": "Main function/kernel repetition", 
-      "sort_index": "1", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "0", 
       "explore_step": "10", 
-      "explore_level": "1", 
+      "sort_index": "1", 
       "type": "integer"
     }
   }, 
@@ -80,6 +80,10 @@
   "cm_build_dependencies": [], 
   "source_files": [
     "matmul.java"
+  ], 
+  "tags": [
+    "program", 
+    "demo"
   ], 
   "build_scripts_names": {
     "dynamic": {

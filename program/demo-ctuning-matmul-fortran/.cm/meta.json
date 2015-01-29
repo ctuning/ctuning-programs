@@ -24,11 +24,11 @@
           "tmp-output.tmp", 
           "tmp-output2.tmp"
         ], 
-        "run_output_files": [
-          "tmp-output.tmp"
-        ], 
         "run_input_files": [
           "data"
+        ], 
+        "run_output_files": [
+          "tmp-output.tmp"
         ]
       }
     }
@@ -50,12 +50,12 @@
       "explore_stop": "1000000", 
       "forbid_disable_at_random": "yes", 
       "desc_text": "Main function/kernel repetition", 
-      "sort_index": "1", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "0", 
       "explore_step": "10", 
-      "explore_level": "1", 
+      "sort_index": "1", 
       "type": "integer"
     }
   }, 
@@ -79,6 +79,10 @@
       "build_static_bin_f": "Build static binary directly"
     }
   }, 
+  "tags": [
+    "program", 
+    "demo"
+  ], 
   "build_compiler_vars_desc": {
     "##N": {
       "default_value": "256", 
@@ -88,12 +92,12 @@
       "forbid_disable_at_random": "yes", 
       "dataset_size": "yes", 
       "desc_text": "Dataset: Matrix size N", 
-      "sort_index": "2", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "2", 
       "explore_step": "1", 
-      "explore_level": "1", 
+      "sort_index": "2", 
       "type": "integer"
     }
   }

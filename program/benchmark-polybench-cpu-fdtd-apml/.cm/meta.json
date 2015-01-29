@@ -46,12 +46,12 @@
       "explore_stop": "1000000", 
       "forbid_disable_at_random": "yes", 
       "desc_text": "Main function/kernel repetition", 
-      "sort_index": "1", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "0", 
       "explore_step": "10", 
-      "explore_level": "1", 
+      "sort_index": "1", 
       "type": "integer"
     }
   }, 
@@ -90,6 +90,11 @@
   "source_files_templates": [
     "fdtd-apml.c"
   ], 
+  "tags": [
+    "program", 
+    "polybench", 
+    "cpu"
+  ], 
   "build_compiler_vars_desc": {
     "##CYM": {
       "field_size": "7", 
@@ -98,12 +103,12 @@
       "forbid_disable_at_random": "yes", 
       "dataset_size": "yes", 
       "desc_text": "Dataset: Matrix size CYM", 
-      "sort_index": "2", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "2", 
       "explore_step": "1", 
-      "explore_level": "1", 
+      "sort_index": "2", 
       "type": "integer"
     }, 
     "##POLYBENCH_DUMP_ARRAYS": {
@@ -125,12 +130,12 @@
       "forbid_disable_at_random": "yes", 
       "dataset_size": "yes", 
       "desc_text": "Dataset: Matrix size CXM", 
-      "sort_index": "3", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "2", 
       "explore_step": "1", 
-      "explore_level": "1", 
+      "sort_index": "3", 
       "type": "integer"
     }, 
     "##CZ": {
@@ -140,12 +145,12 @@
       "forbid_disable_at_random": "yes", 
       "dataset_size": "yes", 
       "desc_text": "Dataset: Matrix size CZ", 
-      "sort_index": "1", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "2", 
       "explore_step": "1", 
-      "explore_level": "1", 
+      "sort_index": "1", 
       "type": "integer"
     }, 
     "##DATA_TYPE": {
@@ -172,12 +177,12 @@
       "explore_stop": "128", 
       "forbid_disable_at_random": "yes", 
       "desc_text": "Transformation: Padding factor", 
-      "sort_index": "20", 
+      "explore_level": "1", 
       "property": "yes", 
       "explorable": "yes", 
       "explore_start": "0", 
       "explore_step": "1", 
-      "explore_level": "1", 
+      "sort_index": "20", 
       "type": "integer"
     }
   }

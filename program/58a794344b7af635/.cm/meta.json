@@ -1,7 +1,7 @@
 {
   "add_target_extension": {
-    "static": "exe", 
-    "dynamic": "exe"
+    "dynamic": "exe", 
+    "static": "exe"
   }, 
   "build_scripts_uoa": [
     "9738ca3d2555f6eb"
@@ -48,13 +48,13 @@
       "skip_form_refresh": "yes", 
       "explore_stop": "1000000", 
       "forbid_disable_at_random": "yes", 
-      "explore_level": "1", 
-      "explorable": "yes", 
-      "sort_index": "1", 
       "desc_text": "Main function/kernel repetition", 
+      "explore_level": "1", 
+      "property": "yes", 
+      "explorable": "yes", 
       "explore_start": "0", 
       "explore_step": "10", 
-      "property": "yes", 
+      "sort_index": "1", 
       "type": "integer"
     }
   }, 
@@ -72,18 +72,23 @@
   "source_files_templates": [
     "tiffmedian.codelet__6.wrapper.c"
   ], 
+  "tags": [
+    "program", 
+    "milepost", 
+    "codelet"
+  ], 
   "build_scripts_names": {
-    "static": {
-      "build_static_bin_c_through_link": "Build static binary from C sources through object files and linking", 
-      "build_static_bin_c_through_asm": "Build static binary from C sources through assembler", 
-      "build_static_bin_c_through_bc": "Build static binary from C sources through LLVM BC", 
-      "build_static_bin_c": "Build static binary directly"
-    }, 
     "dynamic": {
       "build_dynamic_bin_c_through_asm": "Build dynamic binary from C sources through assembler", 
       "build_dynamic_bin_c_through_bc": "Build dynamic binary from C sources through LLVM BC", 
       "build_dynamic_bin_c": "Build dynamic binary directly", 
       "build_dynamic_bin_c_through_link": "Build dynamic binary from C sources through object files and linking"
+    }, 
+    "static": {
+      "build_static_bin_c_through_link": "Build static binary from C sources through object files and linking", 
+      "build_static_bin_c_through_asm": "Build static binary from C sources through assembler", 
+      "build_static_bin_c_through_bc": "Build static binary from C sources through LLVM BC", 
+      "build_static_bin_c": "Build static binary directly"
     }
   }
 }

@@ -48,9 +48,9 @@
       "skip_form_refresh": "yes", 
       "explore_stop": "1000000", 
       "forbid_disable_at_random": "yes", 
-      "explore_level": "1", 
-      "explorable": "yes", 
       "sort_index": "1", 
+      "explorable": "yes", 
+      "explore_level": "1", 
       "desc_text": "Main function/kernel repetition", 
       "explore_start": "0", 
       "explore_step": "10", 
@@ -71,6 +71,11 @@
   ], 
   "source_files_templates": [
     "adpcm.codelet__1.wrapper.c"
+  ], 
+  "tags": [
+    "program", 
+    "milepost", 
+    "codelet"
   ], 
   "build_scripts_names": {
     "static": {

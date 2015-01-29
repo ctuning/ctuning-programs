@@ -1,0 +1,157 @@
+{
+  "add_target_extension": {
+    "static": "exe", 
+    "dynamic": "exe"
+  }, 
+  "build_scripts_uoa": [
+    "9738ca3d2555f6eb"
+  ], 
+  "run_cmds": {
+    "default": {
+      "dataset_classes_uoa": [
+        "f295b730b423bb53"
+      ], 
+      "hot_functions": [
+        {
+          "percent": "99", 
+          "name": "kernel_ludcmp"
+        }
+      ], 
+      "run_time": {
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_main": "", 
+        "run_cmd_out2": "tmp-output2.tmp", 
+        "run_output_files": [], 
+        "run_correctness_output_files": [
+          "tmp-output2.tmp"
+        ]
+      }
+    }
+  }, 
+  "main_language": "c", 
+  "clean_scripts_names": {
+    "clean": "Universal cleaning"
+  }, 
+  "cm_classes_uoa": [
+    "28ecc0c2a0215b5b", 
+    "607592f8cd400583", 
+    "dc6b904ae894e1cb", 
+    "1a972e86f4b72b84", 
+    "4c92c9db21a28cca"
+  ], 
+  "run_vars_desc": {
+    "##CT_REPEAT_MAIN": {
+      "default_value": "1", 
+      "field_size": "7", 
+      "skip_form_refresh": "yes", 
+      "explore_stop": "1000000", 
+      "forbid_disable_at_random": "yes", 
+      "explore_level": "1", 
+      "explorable": "yes", 
+      "sort_index": "1", 
+      "desc_text": "Main function/kernel repetition", 
+      "explore_start": "0", 
+      "explore_step": "10", 
+      "property": "yes", 
+      "type": "integer"
+    }
+  }, 
+  "run_vars": {
+    "CT_REPEAT_MAIN": "1"
+  }, 
+  "target_file": "a", 
+  "cm_build_dependencies": [], 
+  "source_files": [
+    "ludcmp.c", 
+    "polybench.c"
+  ], 
+  "build_compiler_vars": {
+    "POLYBENCH_PADDING_FACTOR": "0", 
+    "POLYBENCH_DUMP_ARRAYS": "YES", 
+    "DATA_TYPE": "double", 
+    "N": "16"
+  }, 
+  "build_compiler_vars_desc": {
+    "##POLYBENCH_PADDING_FACTOR": {
+      "field_size": "7", 
+      "skip_form_refresh": "yes", 
+      "explore_stop": "128", 
+      "forbid_disable_at_random": "yes", 
+      "explore_level": "1", 
+      "explorable": "yes", 
+      "sort_index": "2", 
+      "desc_text": "Transformation: Padding factor", 
+      "explore_start": "0", 
+      "explore_step": "1", 
+      "property": "yes", 
+      "type": "integer"
+    }, 
+    "##DATA_TYPE": {
+      "field_size": "7", 
+      "skip_form_refresh": "yes", 
+      "forbid_disable_at_random": "yes", 
+      "explore_level": "1", 
+      "explorable": "yes", 
+      "sort_index": "3", 
+      "property": "yes", 
+      "desc_text": "Program property: Variable precision", 
+      "has_choice": "yes", 
+      "choice": [
+        "double", 
+        "float", 
+        "long", 
+        "int"
+      ], 
+      "type": "text"
+    }, 
+    "##N": {
+      "default_value": "256", 
+      "field_size": "7", 
+      "skip_form_refresh": "yes", 
+      "explore_stop": "4100", 
+      "forbid_disable_at_random": "yes", 
+      "explore_level": "1", 
+      "dataset_size": "yes", 
+      "explorable": "yes", 
+      "sort_index": "1", 
+      "desc_text": "Dataset: Matrix size N", 
+      "explore_start": "2", 
+      "explore_step": "4", 
+      "property": "yes", 
+      "type": "integer"
+    }, 
+    "##POLYBENCH_DUMP_ARRAYS": {
+      "forbid_disable_at_random": "yes", 
+      "choice": [
+        "YES", 
+        "NO"
+      ], 
+      "sort_index": "4", 
+      "desc_text": "Output: dump array to avoid dead code elimination", 
+      "has_choice": "yes", 
+      "property": "yes", 
+      "type": "text"
+    }
+  }, 
+  "source_files_templates": [
+    "ludcmp.c"
+  ], 
+  "tags": [
+    "program", 
+    "demo"
+  ], 
+  "build_scripts_names": {
+    "static": {
+      "build_static_bin_c_through_link": "Build static binary from C sources through object files and linking", 
+      "build_static_bin_c_through_asm": "Build static binary from C sources through assembler", 
+      "build_static_bin_c_through_bc": "Build static binary from C sources through LLVM BC", 
+      "build_static_bin_c": "Build static binary directly"
+    }, 
+    "dynamic": {
+      "build_dynamic_bin_c_through_asm": "Build dynamic binary from C sources through assembler", 
+      "build_dynamic_bin_c_through_bc": "Build dynamic binary from C sources through LLVM BC", 
+      "build_dynamic_bin_c": "Build dynamic binary directly", 
+      "build_dynamic_bin_c_through_link": "Build dynamic binary from C sources through object files and linking"
+    }
+  }
+}
