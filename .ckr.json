@@ -1,6 +1,6 @@
 {
   "data_uid": "1db88c44a4086634", 
-  "data_name": "ctuning-programs", 
+  "data_name": "cTuning benchmarks", 
   "dict": {
     "url": "https://github.com/ctuning/ctuning-programs.git", 
     "shared": "git", 
