@@ -1,13 +1,26 @@
 {
-  "add_target_extension": {
-    "static": "exe", 
-    "dynamic": "exe"
-  }, 
-  "build_scripts_uoa": [
-    "9738ca3d2555f6eb"
+  "source_files": [
+    "ctuning-rtl.c", 
+    "susan.c"
   ], 
+
+  "obj_extension":{"win":".obj", "linux":".o"},
+
+  "bin_file":{"win":"a.exe", "linux":"a.out"},
+
+  "compile_individual_files_cmd":{
+    "all":"$#COMPILER#$ $#COMPILER_FLAGS_BEFORE#$$#SOURCE_FILE#$ $#COMPILER_OBJ_FLAG#$$#OBJ_FILE#$$#OBJ_EXT#$ $#COMPILER_FLAGS_AFTER#$"
+   },
+
+  "link_individual_files_cmd":{
+    "all":"$#LINKER#$ $#LINKER_FLAGS_BEFORE#$ $#OBJ_FILES#$ $#LINKER_FLAGS_AFTER#$"
+   },
+
   "run_cmds": {
     "corners": {
+      "dataset_tags":["dataset", "image", "pgm"],
+      "ignore_return_code":"yes",
+
       "dataset_classes_uoa": [
         "4075b327e77c929f"
       ], 
@@ -19,7 +32,7 @@
       ], 
       "run_time": {
         "run_cmd_out1": "tmp-output1.tmp", 
-        "run_cmd_main": "$#dataset_path#$$#os_dir_separator#$$#dataset_filename#$ tmp-output.tmp -c", 
+        "run_cmd_main": "$#BIN_FILE#$ $#dataset_path#$$#os_dir_separator#$$#dataset_filename#$ tmp-output.tmp -c", 
         "run_cmd_out2": "tmp-output2.tmp", 
         "run_output_files": [
           "tmp-output.tmp"
@@ -31,6 +44,8 @@
       }
     }, 
     "edges": {
+      "dataset_tags":["dataset", "image", "pgm"],
+      "ignore_return_code":"yes",
       "dataset_classes_uoa": [
         "4075b327e77c929f"
       ], 
@@ -46,7 +61,7 @@
       ], 
       "run_time": {
         "run_cmd_out1": "tmp-output1.tmp", 
-        "run_cmd_main": "$#dataset_path#$$#os_dir_separator#$$#dataset_filename#$ tmp-output.tmp -e", 
+        "run_cmd_main": "$#BIN_FILE#$ $#dataset_path#$$#os_dir_separator#$$#dataset_filename#$ tmp-output.tmp -e", 
         "run_cmd_out2": "tmp-output2.tmp", 
         "run_output_files": [
           "tmp-output.tmp"
@@ -58,6 +73,9 @@
       }
     }, 
     "smoothing": {
+      "dataset_tags":["dataset", "image", "pgm"],
+      "ignore_return_code":"yes",
+
       "dataset_classes_uoa": [
         "4075b327e77c929f"
       ], 
@@ -69,7 +87,7 @@
       ], 
       "run_time": {
         "run_cmd_out1": "tmp-output1.tmp", 
-        "run_cmd_main": "$#dataset_path#$$#os_dir_separator#$$#dataset_filename#$ tmp-output.tmp -s", 
+        "run_cmd_main": "$#BIN_FILE#$ $#dataset_path#$$#os_dir_separator#$$#dataset_filename#$ tmp-output.tmp -s", 
         "run_cmd_out2": "tmp-output2.tmp", 
         "run_output_files": [
           "tmp-output.tmp"
@@ -81,6 +99,26 @@
       }
     }
   }, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "add_target_extension": {
+    "static": "exe", 
+    "dynamic": "exe"
+  }, 
+  "build_scripts_uoa": [
+    "9738ca3d2555f6eb"
+  ], 
   "main_language": "c", 
   "clean_scripts_names": {
     "clean": "Universal cleaning"
@@ -115,10 +153,8 @@
   }, 
   "target_file": "a", 
   "cm_build_dependencies": [], 
-  "source_files": [
-    "ctuning-rtl.c", 
-    "susan.c"
-  ], 
+
+
   "source_files_templates": [
     "susan.c"
   ], 
