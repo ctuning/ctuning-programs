@@ -1940,7 +1940,7 @@ corner_list[n].info=7;
 /* }}} */
 /* {{{ main(argc, argv) */
 
-void main1(int argc, char* argv[])
+int main1(int argc, char* argv[])
 {
 /* {{{ vars */
 
@@ -2133,6 +2133,8 @@ CORNER_LIST corner_list;
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);
 #endif
+
+  return 0;
 }
 
 /* }}} */
