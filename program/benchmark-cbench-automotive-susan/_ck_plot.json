@@ -1,10 +1,10 @@
 {
   "experiment_module_uoa":"experiment",
-  "experiment_data_uoa":"c55424663bec027e",
+  "experiment_data_uoa":"test1",
 
   "flat_keys_list":[
-    "##characteristics#binary_size#min",
-    "##characteristics#execution_time#min"
+    "##characteristics#compile#obj_size#min",
+    "##characteristics#run#execution_time#min"
   ],
 
   "plot_type":"mpl_2d_scatter",

@@ -1,6 +1,7 @@
 {
- "information_flow":{},
+ "target_os":"mingw-64",
  "compiler_desc_uoa":"gcc-47x",
  "cmd_key":"edges",
- "number_of_iterations":100 
+ "repeat":"100",
+ "number_of_iterations":10 
 }
