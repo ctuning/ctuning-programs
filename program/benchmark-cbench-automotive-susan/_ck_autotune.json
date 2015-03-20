@@ -1,7 +1,11 @@
 {
+ "experiment_repo_uoa":"ck-experiments",
  "target_os":"mingw-64",
  "compiler_desc_uoa":"gcc-47x",
  "cmd_key":"edges",
- "repeat":"100",
- "number_of_iterations":10 
+ "repeat":"20",
+ "default_flag":"-O3",
+ "experiment_uoa":"test2",
+ "number_of_iterations":100,
+ "stat_repetitions":4
 }
