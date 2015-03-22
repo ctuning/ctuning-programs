@@ -1,0 +1,17 @@
+{
+  "compile_deps": {
+    "compiler": {
+      "local": "yes", 
+      "tags": "compiler,lang-c"
+    }
+  }, 
+  "compile_individual_files_cmd": {
+    "all": "$#COMPILER#$ $#COMPILER_FLAGS_BEFORE#$$#SOURCE_FILE#$ $#COMPILER_OBJ_FLAG#$$#OBJ_FILE#$$#OBJ_EXT#$ $#COMPILER_FLAGS_AFTER#$"
+  }, 
+  "compiler_env": "CK_CC", 
+  "link_individual_files_cmd": {
+    "all": "$#LINKER#$ $#LINKER_FLAGS_BEFORE#$ $#OBJ_FILES#$ $#LINKER_FLAGS_AFTER#$"
+  }, 
+  "main_language": "c", 
+  "process_in_tmp": "yes"
+}

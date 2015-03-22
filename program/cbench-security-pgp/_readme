@@ -1,0 +1,5 @@
+instead of -ofast we use -o3 otherwise crashing
+delete old pubring & secring
+add new key with ID test but without pass!!!
+that's it
+

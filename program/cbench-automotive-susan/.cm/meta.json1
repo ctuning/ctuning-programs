@@ -1,0 +1,247 @@
+{
+  "tags": [
+    "program", 
+    "benchmark",
+    "cbench",
+    "lang-c",
+    "small"
+  ], 
+
+
+  "compile_deps": {
+    "script_ck": {
+      "local": "yes", 
+      "tags": "script,ck"
+    },
+    "compiler": {
+      "local": "yes", 
+      "tags": "compiler,lang-c"
+    }
+  }, 
+
+
+  "compile_types": {
+    
+   "dynamic":{
+     "name":"dynamic binary",
+     "ck_script":"yes",
+     "script_name":"build_dynamic_bin_c",
+     "sort":100},
+
+   "static":{
+     "name":"static binary",
+     "ck_script":"yes",
+     "script_name":"build_static_bin_c",
+     "sort":110},
+
+   "dynamic_via_linking":{
+     "name":"dynamic binary via object files and linking",
+     "ck_script":"yes",
+     "script_name":"build_dynamic_bin_c_through_link",
+     "sort":120},
+
+   "dynamic_via_asm":{
+     "name":"dynamic binary via assembler",
+     "ck_script":"yes",
+     "script_name":"build_dynamic_bin_c_through_asm",
+     "sort":130},
+
+   "dynamic_via_bc":{
+     "name":"dynamic binary via BC (LLVM)",
+     "ck_script":"yes",
+     "script_name":"build_dynamic_bin_c_through_bc",
+     "sort":140},
+
+   "static_via_linking":{
+     "name":"static binary via object files and linking",
+     "ck_script":"yes",
+     "script_name":"build_static_bin_c_through_link",
+     "sort":150},
+
+   "static_via_asm":{
+     "name":"static binary via assembler",
+     "ck_script":"yes",
+     "script_name":"build_static_bin_c_through_asm",
+     "sort":160},
+
+   "static_via_bc":{
+     "name":"static binary via BC (LLVM)",
+     "ck_script":"yes",
+     "script_name":"build_static_bin_c_through_bc",
+     "sort":170}
+  },
+
+  "source_files": [
+    "ctuning-rtl.c", 
+    "susan.c"
+  ], 
+
+  "obj_extension":{"win":".obj", "linux":".o"},
+
+  "bin_file":{"win":"a.exe", "linux":"a.out"},
+
+  "compile_individual_files_cmd":{
+    "all":"$#COMPILER#$ $#COMPILER_FLAGS_BEFORE#$$#SOURCE_FILE#$ $#COMPILER_OBJ_FLAG#$$#OBJ_FILE#$$#OBJ_EXT#$ $#COMPILER_FLAGS_AFTER#$"
+   },
+
+  "link_individual_files_cmd":{
+    "all":"$#LINKER#$ $#LINKER_FLAGS_BEFORE#$ $#OBJ_FILES#$ $#LINKER_FLAGS_AFTER#$"
+   },
+
+  "run_cmds": {
+    "corners": {
+      "dataset_tags":["dataset", "image", "pgm"],
+      "ignore_return_code":"yes",
+
+      "dataset_classes_uoa": [
+        "4075b327e77c929f"
+      ], 
+      "hot_functions": [
+        {
+          "percent": "95", 
+          "name": "susan_corners"
+        }
+      ], 
+      "run_time": {
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_main": "$#BIN_FILE#$ $#dataset_path#$$#os_dir_separator#$$#dataset_filename#$ tmp-output.tmp -c", 
+        "run_cmd_out2": "tmp-output2.tmp", 
+        "run_output_files": [
+          "tmp-output.tmp"
+        ], 
+        "run_correctness_output_files": [
+          "tmp-output.tmp", 
+          "tmp-output2.tmp"
+        ]
+      }
+    }, 
+    "edges": {
+      "dataset_tags":["dataset", "image", "pgm"],
+      "ignore_return_code":"yes",
+      "dataset_classes_uoa": [
+        "4075b327e77c929f"
+      ], 
+      "hot_functions": [
+        {
+          "percent": "70", 
+          "name": "susan_edges"
+        }, 
+        {
+          "percent": "18", 
+          "name": "susan_thin"
+        }
+      ], 
+      "run_time": {
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_main": "$#BIN_FILE#$ $#dataset_path#$$#os_dir_separator#$$#dataset_filename#$ tmp-output.tmp -e", 
+        "run_cmd_out2": "tmp-output2.tmp", 
+        "run_output_files": [
+          "tmp-output.tmp"
+        ], 
+        "run_correctness_output_files": [
+          "tmp-output.tmp", 
+          "tmp-output2.tmp"
+        ]
+      }
+    }, 
+    "smoothing": {
+      "dataset_tags":["dataset", "image", "pgm"],
+      "ignore_return_code":"yes",
+
+      "dataset_classes_uoa": [
+        "4075b327e77c929f"
+      ], 
+      "hot_functions": [
+        {
+          "percent": "98", 
+          "name": "susan_smoothing"
+        }
+      ], 
+      "run_time": {
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_main": "$#BIN_FILE#$ $#dataset_path#$$#os_dir_separator#$$#dataset_filename#$ tmp-output.tmp -s", 
+        "run_cmd_out2": "tmp-output2.tmp", 
+        "run_output_files": [
+          "tmp-output.tmp"
+        ], 
+        "run_correctness_output_files": [
+          "tmp-output.tmp", 
+          "tmp-output2.tmp"
+        ]
+      }
+    }
+  }, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  "add_target_extension": {
+    "static": "exe", 
+    "dynamic": "exe"
+  }, 
+  "build_scripts_uoa": [
+    "9738ca3d2555f6eb"
+  ], 
+  "main_language": "c", 
+  "clean_scripts_names": {
+    "clean": "Universal cleaning"
+  }, 
+  "cm_classes_uoa": [
+    "28ecc0c2a0215b5b", 
+    "99ebfa96846f4bc8", 
+    "1a8b0e537d8566d6", 
+    "dc6b904ae894e1cb", 
+    "1a972e86f4b72b84", 
+    "4c92c9db21a28cca"
+  ], 
+  "run_vars_desc": {
+    "##CT_REPEAT_MAIN": {
+      "default_value": "1", 
+      "field_size": "7", 
+      "skip_form_refresh": "yes", 
+      "explore_stop": "1000000", 
+      "forbid_disable_at_random": "yes", 
+      "sort_index": "1", 
+      "explorable": "yes", 
+      "explore_level": "1", 
+      "desc_text": "Main function/kernel repetition", 
+      "explore_start": "0", 
+      "explore_step": "10", 
+      "property": "yes", 
+      "type": "integer"
+    }
+  }, 
+  "run_vars": {
+    "CT_REPEAT_MAIN": "1"
+  }, 
+  "target_file": "a", 
+
+  "cm_build_dependencies": [], 
+
+  "source_files_templates": [
+    "susan.c"
+  ], 
+  "build_scripts_names": {
+    "static": {
+      "build_static_bin_c_through_link": "Build static binary from C sources through object files and linking", 
+      "build_static_bin_c_through_asm": "Build static binary from C sources through assembler", 
+      "build_static_bin_c_through_bc": "Build static binary from C sources through LLVM BC", 
+      "build_static_bin_c": "Build static binary directly"
+    }, 
+    "dynamic": {
+      "build_dynamic_bin_c_through_asm": "Build dynamic binary from C sources through assembler", 
+      "build_dynamic_bin_c_through_bc": "Build dynamic binary from C sources through LLVM BC", 
+      "build_dynamic_bin_c": "Build dynamic binary directly", 
+      "build_dynamic_bin_c_through_link": "Build dynamic binary from C sources through object files and linking"
+    }
+  }
+}

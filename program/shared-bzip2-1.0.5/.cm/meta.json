@@ -1,0 +1,94 @@
+{
+  "compile_deps": {
+    "compiler": {
+      "local": "yes", 
+      "tags": "compiler,lang-c"
+    }
+  }, 
+  "compiler_env": "CK_CC", 
+  "main_language": "c", 
+  "process_in_tmp": "yes", 
+  "run_cmds": {
+    "decode": {
+      "dataset_classes_uoa": [
+        "2c74940afb0c866f"
+      ], 
+      "hot_functions": [
+        {
+          "name": "BZ2_decompress", 
+          "percent": "55"
+        }, 
+        {
+          "name": "BZ2_bzDecompress", 
+          "percent": "44"
+        }
+      ], 
+      "ignore_return_code": "no", 
+      "run_time": {
+        "run_cmd_main": "$#BIN_FILE#$ -d -k -f $#dataset_path#$$#os_dir_separator#$$#dataset_filename#$", 
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_out2": "tmp-output2.tmp", 
+        "run_correctness_output_files": [
+          "bzip2.tmp", 
+          "tmp-output2.tmp"
+        ], 
+        "run_output_files": [
+          "bzip2.tmp"
+        ]
+      }
+    }, 
+    "encode": {
+      "dataset_classes_uoa": [
+        "62a455f8c8042f90"
+      ], 
+      "hot_functions": [
+        {
+          "name": "mainSort", 
+          "percent": "58"
+        }, 
+        {
+          "name": "BZ2_compressBlock", 
+          "percent": "28"
+        }, 
+        {
+          "name": "BZ2_hbMakeCodeLengths", 
+          "percent": "6"
+        }
+      ], 
+      "ignore_return_code": "no", 
+      "run_time": {
+        "run_cmd_main": "$#BIN_FILE#$ -z -k -f $#dataset_path#$$#os_dir_separator#$$#dataset_filename#$", 
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_out2": "tmp-output2.tmp", 
+        "run_correctness_output_files": [
+          "bzip2.tmp", 
+          "tmp-output2.tmp"
+        ], 
+        "run_output_files": [
+          "bzip2.tmp"
+        ]
+      }
+    }
+  }, 
+  "source_files": [
+    "blocksort.c", 
+    "bzip2.c", 
+    "bzip2recover.c", 
+    "bzlib.c", 
+    "compress.c", 
+    "crctable.c", 
+    "decompress.c", 
+    "dlltest.c", 
+    "huffman.c", 
+    "mk251.c", 
+    "randtable.c", 
+    "spewG.c", 
+    "unzcrash.c"
+  ], 
+  "tags": [
+    "demo", 
+    "program", 
+    "lang-c"
+  ], 
+  "target_file": "a"
+}
