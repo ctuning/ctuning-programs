@@ -10,8 +10,10 @@
   "process_in_tmp": "yes", 
   "run_cmds": {
     "decode": {
-      "dataset_classes_uoa": [
-        "2c74940afb0c866f"
+      "dataset_tags": [
+        "bzip2", 
+        "archiver", 
+        "dataset"
       ], 
       "hot_functions": [
         {
@@ -38,8 +40,8 @@
       }
     }, 
     "encode": {
-      "dataset_classes_uoa": [
-        "62a455f8c8042f90"
+      "dataset_tags": [
+        "dataset"
       ], 
       "hot_functions": [
         {
@@ -73,17 +75,12 @@
   "source_files": [
     "blocksort.c", 
     "bzip2.c", 
-    "bzip2recover.c", 
     "bzlib.c", 
     "compress.c", 
     "crctable.c", 
     "decompress.c", 
-    "dlltest.c", 
     "huffman.c", 
-    "mk251.c", 
-    "randtable.c", 
-    "spewG.c", 
-    "unzcrash.c"
+    "randtable.c" 
   ], 
   "tags": [
     "demo", 

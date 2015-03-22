@@ -20,11 +20,11 @@ AR=ar
 RANLIB=ranlib
 LDFLAGS=
 
-CM_FLAGS=-O2
-CM_TARGET_FILE=bzip2
+CK_FLAGS=-O2
+CK_TARGET_FILE=bzip2
 
 BIGFILES=-D_FILE_OFFSET_BITS=64
-CFLAGS=-Wall -Winline $(CM_FLAGS) -g $(BIGFILES)
+CFLAGS=-Wall -Winline $(CK_FLAGS) -g $(BIGFILES)
 
 # Where you want it installed when you do 'make install'
 PREFIX=/usr/local
@@ -41,7 +41,7 @@ OBJS= blocksort.o  \
 all: libbz2.a bzip2 bzip2recover
 
 bzip2: libbz2.a bzip2.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(CM_TARGET_FILE) bzip2.o -L. -lbz2
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(CK_TARGET_FILE) bzip2.o -L. -lbz2
 
 bzip2recover: bzip2recover.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o bzip2recover bzip2recover.o
