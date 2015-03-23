@@ -1,6 +1,6 @@
 {
   "experiment_module_uoa":"experiment",
-  "data_uoa_list":["test2o3", "test2"],
+  "data_uoa_list":["test3o3", "test3"],
 
   "flat_keys_list":[
     "##characteristics#compile#obj_size#min",

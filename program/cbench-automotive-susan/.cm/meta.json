@@ -128,5 +128,6 @@
     "small", 
     "crowd-tuning"
   ], 
-  "target_file": "a"
+  "target_file": "a",
+  "extra_ld_vars":"$<<CK_EXTRA_LIB_M>>$"
 }
