@@ -1,6 +1,6 @@
 import ck.kernel as ck
 
-r=ck.access('list # out=none')
+r=ck.access('list #* out=none')
 if r['return']>0: 
    print 'Error: '+r['error']
    exit(1)
@@ -33,8 +33,12 @@ for q in lst:
     dm=r['info']
     dn=r['data_name']
 
-    if 'compile_individual_files_cmd' in dd: del(dd['compile_individual_files_cmd'])
-    if 'link_individual_files_cmd' in dd: del(dd['link_individual_files_cmd'])
+    if 'lang-c' in dd.get('tags',[]):
+       dd['extra_ld_vars']='$<<CK_EXTRA_LIB_M>>$'
+
+
+#    if 'compile_individual_files_cmd' in dd: del(dd['compile_individual_files_cmd'])
+#    if 'link_individual_files_cmd' in dd: del(dd['link_individual_files_cmd'])
 
     r=ck.access({'action':'update',
                  'module_uoa':m,

@@ -1,11 +1,17 @@
 {
  "experiment_repo_uoa":"ck-experiments",
- "target_os":"mingw-64",
+ "experiment_uoa":"test5",
+
+ "target_os":"android-32",
+
  "compiler_desc_uoa":"gcc-47x",
- "cmd_key":"edges",
- "repeat":"20",
  "default_flag":"-O3",
- "experiment_uoa":"test2",
- "number_of_iterations":100,
- "stat_repetitions":4
+ "compile_type":"static",
+
+ "cmd_key":"edges",
+ "repeat":"50",
+
+ "stat_repetitions":4,
+
+ "number_of_iterations":100
 }

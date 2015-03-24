@@ -80,7 +80,7 @@
   "tags": [
     "demo", 
     "program", 
-    "lang-c"
+    "lang-java"
   ], 
   "target_file": "matmul"
 }
