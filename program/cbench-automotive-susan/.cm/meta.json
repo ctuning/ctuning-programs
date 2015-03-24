@@ -2,7 +2,8 @@
   "compile_deps": {
     "compiler": {
       "local": "yes", 
-      "tags": "compiler,lang-c"
+      "tags": "compiler,lang-c",
+      "sort":10
     }
   }, 
   "compiler_env": "CK_CC", 

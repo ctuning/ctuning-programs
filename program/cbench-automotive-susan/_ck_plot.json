@@ -1,6 +1,7 @@
 {
+  "experiment_repo_uoa":"ck-experiments",
   "experiment_module_uoa":"experiment",
-  "experiment_data_uoa":"test2",
+  "data_uoa_list":["test3", "test3o3"],
 
   "flat_keys_list":[
     "##characteristics#compile#obj_size#min",
