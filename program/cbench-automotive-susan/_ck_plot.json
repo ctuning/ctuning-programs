@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "experiment_repo_uoa":"ck-experiments",
   "experiment_module_uoa":"experiment",
@@ -24,29 +23,3 @@
   "mpl_image_size_y":"6",
   "mpl_image_dpi":"100"
 }
-=======
-{
-  "experiment_module_uoa":"experiment",
-  "experiment_data_uoa":"test2",
-
-  "flat_keys_list":[
-    "##characteristics#compile#obj_size#min",
-    "##characteristics#run#execution_time#min"
-  ],
-
-  "plot_type":"mpl_2d_scatter",
-  "display_x_error_bar":"no",
-  "display_y_error_bar":"no",
-
-  "title":"Powered by Collective Knowledge",
-
-  "axis_x_desc":"Binary size",
-  "axis_y_desc":"Execution time",
-
-  "plot_grid":"yes",
-
-  "mpl_image_size_x":"12",
-  "mpl_image_size_y":"6",
-  "mpl_image_dpi":"100"
-}
->>>>>>> ef962acb8bf7a4e97b5eb2431ae2df62e5c878a3
