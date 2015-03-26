@@ -117,7 +117,7 @@
   "compile_deps": {
     "compiler": {
       "local": "yes", 
-      "tags": "compiler,lang-c"
+      "tags": "compiler,lang-c-cuda"
     }, 
     "rtl_polybench": {
       "local": "yes", 
@@ -125,7 +125,6 @@
     }
   }, 
   "compiler_env": "CK_CC", 
-  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
   "main_language": "c", 
   "process_in_tmp": "yes", 
   "run_cmds": {
@@ -180,7 +179,7 @@
   "tags": [
     "program", 
     "polybench", 
-    "lang-c", 
+    "lang-c-cuda", 
     "cuda"
   ], 
   "target_file": "a"
