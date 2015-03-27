@@ -34,20 +34,36 @@
 #define MAX_SOURCE_SIZE (0x100000)
 
 /* Problem size */
+#ifndef M
 #define M 256 //2048
+#endif
+#ifndef N
 #define N 256 //2048
+#endif
 
 /* Thread block dimensions for kernel 1*/
+#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_1_X
 #define DIM_LOCAL_WORK_GROUP_KERNEL_1_X 256
+#endif
+#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_1_Y
 #define DIM_LOCAL_WORK_GROUP_KERNEL_1_Y 1
+#endif
 
 /* Thread block dimensions for kernel 2*/
+#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_2_X
 #define DIM_LOCAL_WORK_GROUP_KERNEL_2_X 32
+#endif
+#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_2_Y
 #define DIM_LOCAL_WORK_GROUP_KERNEL_2_Y 8
+#endif
 
 /* Thread block dimensions for kernel 3*/
+#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_3_X
 #define DIM_LOCAL_WORK_GROUP_KERNEL_3_X 256
+#endif
+#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_3_Y
 #define DIM_LOCAL_WORK_GROUP_KERNEL_3_Y 1
+#endif
 
 #define sqrt_of_array_cell(x,j) sqrt(x[j])
 

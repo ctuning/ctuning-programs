@@ -35,13 +35,23 @@
 #define GPU_DEVICE 0
 
 /* Problem size */
+#ifndef tmax
 #define tmax 500
+#endif
+#ifndef NX
 #define NX 512 // 2048
+#endif
+#ifndef NY
 #define NY 512 // 2048
+#endif
 
 /* Thread block dimensions */
+#ifndef DIM_THREAD_BLOCK_X
 #define DIM_THREAD_BLOCK_X 32
+#endif
+#ifndef DIM_THREAD_BLOCK_Y
 #define DIM_THREAD_BLOCK_Y 8
+#endif
 
 /* Can switch DATA_TYPE between float and double */
 # ifndef DATA_TYPE

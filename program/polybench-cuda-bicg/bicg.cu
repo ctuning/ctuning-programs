@@ -35,12 +35,20 @@
 #define GPU_DEVICE 0
 
 /* Problem size. */
+#ifndef NX
 #define NX 512 // 4096
+#endif
+#ifndef NY
 #define NY 512 // 4096
+#endif
 
 /* Thread block dimensions */
+#ifndef DIM_THREAD_BLOCK_X
 #define DIM_THREAD_BLOCK_X 256
+#endif
+#ifndef DIM_THREAD_BLOCK_Y
 #define DIM_THREAD_BLOCK_Y 1
+#endif
 
 #ifndef M_PI
 #define M_PI 3.14159

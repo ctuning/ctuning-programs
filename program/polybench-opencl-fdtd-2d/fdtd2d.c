@@ -32,13 +32,23 @@
 #define PERCENT_DIFF_ERROR_THRESHOLD 1.05
 
 /* Problem size */
+#ifndef TMAX
 #define TMAX 500
+#endif
+#ifndef NX
 #define NX 512 // 2048
+#endif
+#ifndef NY
 #define NY 512 // 2048
+#endif
 
 /* Thread block dimensions */
+#ifndef DIM_LOCAL_WORK_GROUP_X
 #define DIM_LOCAL_WORK_GROUP_X 32
+#endif
+#ifndef DIM_LOCAL_WORK_GROUP_Y
 #define DIM_LOCAL_WORK_GROUP_Y 8
+#endif
 
 #define MAX_SOURCE_SIZE (0x100000)
 

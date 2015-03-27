@@ -34,13 +34,23 @@
 #define MAX_SOURCE_SIZE (0x100000)
 
 /* Problem size */
+#ifndef NI
 #define NI 64 //256
+#endif
+#ifndef NJ
 #define NJ 64 //256
+#endif
+#ifndef NK
 #define NK 64 //256
+#endif
 
 /* Thread block dimensions */
-#define DIM_LOCAL_WORK_GROUP_X 8 // 32
+#ifndef DIM_LOCAL_WORK_GROUP_X
+#define DIM_LOCAL_WORK_GROUP_X 8
+#endif
+#ifndef DIM_LOCAL_WORK_GROUP_Y
 #define DIM_LOCAL_WORK_GROUP_Y 8
+#endif
 
 #if defined(cl_khr_fp64)  // Khronos extension available?
 #pragma OPENCL EXTENSION cl_khr_fp64 : enable

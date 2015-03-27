@@ -35,11 +35,17 @@
 #define GPU_DEVICE 0
 
 /* Problem size */
-#define N 256 //4096
+#ifndef NJ
+#define NJ 256 //4096
+#endif
 
 /* Thread block dimensions */
+#ifndef DIM_THREAD_BLOCK_X
 #define DIM_THREAD_BLOCK_X 256
+#endif
+#ifndef DIM_THREAD_BLOCK_Y
 #define DIM_THREAD_BLOCK_Y 1
+#endif
 
 /* Declared constant values for ALPHA and BETA (same as values in PolyBench 2.0) */
 #define ALPHA 43532.0f
@@ -54,14 +60,14 @@ void gesummv(DATA_TYPE *A, DATA_TYPE *B, DATA_TYPE *x, DATA_TYPE *y, DATA_TYPE *
 {
 	int i, j;
 	
-	for (i = 0; i < N; i++)
+	for (i = 0; i < NJ; i++)
 	{
 		tmp[i] = 0;
 		y[i] = 0;
-		for (j = 0; j < N; j++)
+		for (j = 0; j < NJ; j++)
 		{
-			tmp[i] = A[i*N + j] * x[j] + tmp[i];
-			y[i] = B[i*N + j] * x[j] + y[i];
+			tmp[i] = A[i*NJ + j] * x[j] + tmp[i];
+			y[i] = B[i*NJ + j] * x[j] + y[i];
 		}
 		
 		y[i] = ALPHA * tmp[i] + BETA * y[i];
@@ -73,13 +79,13 @@ void init(DATA_TYPE* A, DATA_TYPE* x)
 {
   	int i, j;
 
- 	for (i = 0; i < N; i++)
+ 	for (i = 0; i < NJ; i++)
     {
-    	x[i] = ((DATA_TYPE) i) / N;
+    	x[i] = ((DATA_TYPE) i) / NJ;
       	
-		for (j = 0; j < N; j++) 
+		for (j = 0; j < NJ; j++) 
 		{
-			A[i*N + j] = ((DATA_TYPE) i*j) / N;
+			A[i*NJ + j] = ((DATA_TYPE) i*j) / NJ;
 		}
     }
 }
@@ -90,7 +96,7 @@ void compareResults(DATA_TYPE* y, DATA_TYPE* y_outputFromGpu)
 	int i, fail;
 	fail = 0;
 	
-	for (i=0; i<(N); i++) 
+	for (i=0; i<(NJ); i++) 
 	{
 		if (percentDiff(y[i], y_outputFromGpu[i]) > PERCENT_DIFF_ERROR_THRESHOLD) 
 		{
@@ -131,14 +137,14 @@ __global__ void gesummv_kernel(DATA_TYPE *a, DATA_TYPE *b, DATA_TYPE *x, DATA_TY
 {
 	int i = blockIdx.x * blockDim.x + threadIdx.x;
 
-	if (i < N)
+	if (i < NJ)
 	{
 		int j;
 		y[i]=0;
-		for(j = 0; j < N; j++)
+		for(j = 0; j < NJ; j++)
 		{	
-			tmp[i] += a[i * N + j] * x[j];
-			y[i] += b[i * N + j] * x[j];
+			tmp[i] += a[i * NJ + j] * x[j];
+			y[i] += b[i * NJ + j] * x[j];
 		}
 		y[i] = ALPHA * tmp[i] + BETA * y[i];
 	}
@@ -155,70 +161,70 @@ void gesummvCuda(DATA_TYPE* A, DATA_TYPE* B, DATA_TYPE* x, DATA_TYPE* y, DATA_TY
 	DATA_TYPE *y_gpu;
 	DATA_TYPE *tmp_gpu;
 
-	error=cudaMalloc((void **)&A_gpu, sizeof(DATA_TYPE) * N * N);
+	error=cudaMalloc((void **)&A_gpu, sizeof(DATA_TYPE) * NJ * NJ);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMalloc((void **)&B_gpu, sizeof(DATA_TYPE) * N * N);
+	error=cudaMalloc((void **)&B_gpu, sizeof(DATA_TYPE) * NJ * NJ);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMalloc((void **)&x_gpu, sizeof(DATA_TYPE) * N);
+	error=cudaMalloc((void **)&x_gpu, sizeof(DATA_TYPE) * NJ);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMalloc((void **)&y_gpu, sizeof(DATA_TYPE) * N);
+	error=cudaMalloc((void **)&y_gpu, sizeof(DATA_TYPE) * NJ);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMalloc((void **)&tmp_gpu, sizeof(DATA_TYPE) * N);
+	error=cudaMalloc((void **)&tmp_gpu, sizeof(DATA_TYPE) * NJ);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 	
-	error=cudaMemcpy(A_gpu, A, sizeof(DATA_TYPE) * N * N, cudaMemcpyHostToDevice);
+	error=cudaMemcpy(A_gpu, A, sizeof(DATA_TYPE) * NJ * NJ, cudaMemcpyHostToDevice);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMemcpy(B_gpu, B, sizeof(DATA_TYPE) * N * N, cudaMemcpyHostToDevice);
+	error=cudaMemcpy(B_gpu, B, sizeof(DATA_TYPE) * NJ * NJ, cudaMemcpyHostToDevice);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMemcpy(x_gpu, x, sizeof(DATA_TYPE) * N, cudaMemcpyHostToDevice);
+	error=cudaMemcpy(x_gpu, x, sizeof(DATA_TYPE) * NJ, cudaMemcpyHostToDevice);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMemcpy(y_gpu, y, sizeof(DATA_TYPE) * N, cudaMemcpyHostToDevice);
+	error=cudaMemcpy(y_gpu, y, sizeof(DATA_TYPE) * NJ, cudaMemcpyHostToDevice);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMemcpy(tmp_gpu, tmp, sizeof(DATA_TYPE) * N, cudaMemcpyHostToDevice);
+	error=cudaMemcpy(tmp_gpu, tmp, sizeof(DATA_TYPE) * NJ, cudaMemcpyHostToDevice);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
@@ -226,14 +232,14 @@ void gesummvCuda(DATA_TYPE* A, DATA_TYPE* B, DATA_TYPE* x, DATA_TYPE* y, DATA_TY
         }
 
 	dim3 block(DIM_THREAD_BLOCK_X, DIM_THREAD_BLOCK_Y);
-	dim3 grid((unsigned int)ceil( ((float)N) / ((float)block.x) ), 1);
+	dim3 grid((unsigned int)ceil( ((float)NJ) / ((float)block.x) ), 1);
 
 
 //	t_start = rtclock();
 	gesummv_kernel<<< grid, block>>>(A_gpu,B_gpu,x_gpu, y_gpu, tmp_gpu);
 	cudaThreadSynchronize();
 //	t_end = rtclock();
-	error=cudaMemcpy(y_outputFromGpu, y_gpu, sizeof(DATA_TYPE) * N, cudaMemcpyDeviceToHost);
+	error=cudaMemcpy(y_outputFromGpu, y_gpu, sizeof(DATA_TYPE) * NJ, cudaMemcpyDeviceToHost);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
@@ -267,12 +273,12 @@ int main(int argc, char *argv[])
   /* Run kernel. */
   if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
 
-  A = (DATA_TYPE*)malloc(N*N*sizeof(DATA_TYPE));
-  B = (DATA_TYPE*)malloc(N*N*sizeof(DATA_TYPE));
-  x = (DATA_TYPE*)malloc(N*sizeof(DATA_TYPE)); 
-  y = (DATA_TYPE*)malloc(N*sizeof(DATA_TYPE));
-  y_outputFromGpu = (DATA_TYPE*)malloc(N*sizeof(DATA_TYPE));
-  tmp = (DATA_TYPE*)malloc(N*sizeof(DATA_TYPE));
+  A = (DATA_TYPE*)malloc(NJ*NJ*sizeof(DATA_TYPE));
+  B = (DATA_TYPE*)malloc(NJ*NJ*sizeof(DATA_TYPE));
+  x = (DATA_TYPE*)malloc(NJ*sizeof(DATA_TYPE)); 
+  y = (DATA_TYPE*)malloc(NJ*sizeof(DATA_TYPE));
+  y_outputFromGpu = (DATA_TYPE*)malloc(NJ*sizeof(DATA_TYPE));
+  tmp = (DATA_TYPE*)malloc(NJ*sizeof(DATA_TYPE));
 
   srand(1);
   init(A, x);

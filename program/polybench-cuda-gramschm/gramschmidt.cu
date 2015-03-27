@@ -35,12 +35,20 @@
 #define GPU_DEVICE 0
 
 /* Problem size */
-#define M 128 // 2048
-#define N 128 // 2048
+#ifndef NI
+#define NI 128 // 2048
+#endif
+#ifndef NJ
+#define NJ 128 // 2048
+#endif
 
 /* Thread block dimensions */
+#ifndef DIM_THREAD_BLOCK_X
 #define DIM_THREAD_BLOCK_X 128 // 256
+#endif
+#ifndef DIM_THREAD_BLOCK_Y
 #define DIM_THREAD_BLOCK_Y 1
+#endif
 
 /* Can switch DATA_TYPE between float and double */
 # ifndef DATA_TYPE
@@ -51,30 +59,30 @@ void gramschmidt(DATA_TYPE* A, DATA_TYPE* R, DATA_TYPE* Q)
 {
 	int i,j,k;
 	DATA_TYPE nrm;
-	for (k = 0; k < N; k++)
+	for (k = 0; k < NJ; k++)
 	{
 		nrm = 0;
-		for (i = 0; i < M; i++)
+		for (i = 0; i < NI; i++)
 		{
-			nrm += A[i*N + k] * A[i*N + k];
+			nrm += A[i*NJ + k] * A[i*NJ + k];
 		}
 		
-		R[k*N + k] = sqrt(nrm);
-		for (i = 0; i < M; i++)
+		R[k*NJ + k] = sqrt(nrm);
+		for (i = 0; i < NI; i++)
 		{
-			Q[i*N + k] = A[i*N + k] / R[k*N + k];
+			Q[i*NJ + k] = A[i*NJ + k] / R[k*NJ + k];
 		}
 		
-		for (j = k + 1; j < N; j++)
+		for (j = k + 1; j < NJ; j++)
 		{
-			R[k*N + j] = 0;
-			for (i = 0; i < M; i++)
+			R[k*NJ + j] = 0;
+			for (i = 0; i < NI; i++)
 			{
-				R[k*N + j] += Q[i*N + k] * A[i*N + j];
+				R[k*NJ + j] += Q[i*NJ + k] * A[i*NJ + j];
 			}
-			for (i = 0; i < M; i++)
+			for (i = 0; i < NI; i++)
 			{
-				A[i*N + j] = A[i*N + j] - Q[i*N + k] * R[k*N + j];
+				A[i*NJ + j] = A[i*NJ + j] - Q[i*NJ + k] * R[k*NJ + j];
 			}
 		}
 	}
@@ -85,11 +93,11 @@ void init_array(DATA_TYPE* A)
 {
 	int i, j;
 
-	for (i = 0; i < M; i++)
+	for (i = 0; i < NI; i++)
 	{
-		for (j = 0; j < N; j++)
+		for (j = 0; j < NJ; j++)
 		{
-			A[i*N + j] = ((DATA_TYPE) (i+1)*(j+1)) / (M+1);
+			A[i*NJ + j] = ((DATA_TYPE) (i+1)*(j+1)) / (NI+1);
 		}
 	}
 }
@@ -100,14 +108,14 @@ void compareResults(DATA_TYPE* A, DATA_TYPE* A_outputFromGpu)
 	int i, j, fail;
 	fail = 0;
 
-	for (i=0; i < M; i++) 
+	for (i=0; i < NI; i++) 
 	{
-		for (j=0; j < N; j++) 
+		for (j=0; j < NJ; j++) 
 		{
-			if (percentDiff(A[i*N + j], A_outputFromGpu[i*N + j]) > PERCENT_DIFF_ERROR_THRESHOLD) 
+			if (percentDiff(A[i*NJ + j], A_outputFromGpu[i*NJ + j]) > PERCENT_DIFF_ERROR_THRESHOLD) 
 			{				
 				fail++;
-				printf("i: %d j: %d \n1: %f\n 2: %f\n", i, j, A[i*N + j], A_outputFromGpu[i*N + j]);
+				printf("i: %d j: %d \n1: %f\n 2: %f\n", i, j, A[i*NJ + j], A_outputFromGpu[i*NJ + j]);
 			}
 		}
 	}
@@ -149,11 +157,11 @@ __global__ void gramschmidt_kernel1(DATA_TYPE *a, DATA_TYPE *r, DATA_TYPE *q, in
 	{
 		DATA_TYPE nrm = 0.0;
 		int i;
-		for (i = 0; i < M; i++)
+		for (i = 0; i < NI; i++)
 		{
-			nrm += a[i * N + k] * a[i * N + k];
+			nrm += a[i * NJ + k] * a[i * NJ + k];
 		}
-      		r[k * N + k] = sqrt(nrm);
+      		r[k * NJ + k] = sqrt(nrm);
 	}
 }
 
@@ -162,9 +170,9 @@ __global__ void gramschmidt_kernel2(DATA_TYPE *a, DATA_TYPE *r, DATA_TYPE *q, in
 {
 	int i = blockIdx.x * blockDim.x + threadIdx.x;
 	
-	if (i < M)
+	if (i < NI)
 	{	
-		q[i * N + k] = a[i * N + k] / r[k * N + k];
+		q[i * NJ + k] = a[i * NJ + k] / r[k * NJ + k];
 	}
 }
 
@@ -173,19 +181,19 @@ __global__ void gramschmidt_kernel3(DATA_TYPE *a, DATA_TYPE *r, DATA_TYPE *q, in
 {
 	int j = blockIdx.x * blockDim.x + threadIdx.x;
 
-	if ((j > k) && (j < N))
+	if ((j > k) && (j < NJ))
 	{
-		r[k*N + j] = 0.0;
+		r[k*NJ + j] = 0.0;
 
 		int i;
-		for (i = 0; i < M; i++)
+		for (i = 0; i < NI; i++)
 		{
-			r[k*N + j] += q[i*N + k] * a[i*N + j];
+			r[k*NJ + j] += q[i*NJ + k] * a[i*NJ + j];
 		}
 		
-		for (i = 0; i < M; i++)
+		for (i = 0; i < NI; i++)
 		{
-			a[i*N + j] -= q[i*N + k] * r[k*N + j];
+			a[i*NJ + j] -= q[i*NJ + k] * r[k*NJ + j];
 		}
 	}
 }
@@ -198,35 +206,35 @@ void gramschmidtCuda(DATA_TYPE* A, DATA_TYPE* R, DATA_TYPE* Q, DATA_TYPE* A_outp
 
 	dim3 block(DIM_THREAD_BLOCK_X, DIM_THREAD_BLOCK_Y);
 	dim3 gridKernel1(1, 1);
-	dim3 gridKernel2((size_t)ceil(((float)N) / ((float)DIM_THREAD_BLOCK_X)), 1);
-	dim3 gridKernel3((size_t)ceil(((float)N) / ((float)DIM_THREAD_BLOCK_X)), 1);
+	dim3 gridKernel2((size_t)ceil(((float)NJ) / ((float)DIM_THREAD_BLOCK_X)), 1);
+	dim3 gridKernel3((size_t)ceil(((float)NJ) / ((float)DIM_THREAD_BLOCK_X)), 1);
 	
 	DATA_TYPE *A_gpu;
 	DATA_TYPE *R_gpu;
 	DATA_TYPE *Q_gpu;
 
-	error=cudaMalloc((void **)&A_gpu, sizeof(DATA_TYPE) * M * N);
+	error=cudaMalloc((void **)&A_gpu, sizeof(DATA_TYPE) * NI * NJ);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMalloc((void **)&R_gpu, sizeof(DATA_TYPE) * M * N);
+	error=cudaMalloc((void **)&R_gpu, sizeof(DATA_TYPE) * NI * NJ);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMalloc((void **)&Q_gpu, sizeof(DATA_TYPE) * M * N);
+	error=cudaMalloc((void **)&Q_gpu, sizeof(DATA_TYPE) * NI * NJ);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMemcpy(A_gpu, A, sizeof(DATA_TYPE) * M * N, cudaMemcpyHostToDevice);
+	error=cudaMemcpy(A_gpu, A, sizeof(DATA_TYPE) * NI * NJ, cudaMemcpyHostToDevice);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
@@ -235,7 +243,7 @@ void gramschmidtCuda(DATA_TYPE* A, DATA_TYPE* R, DATA_TYPE* Q, DATA_TYPE* A_outp
 	
 //	t_start = rtclock();
 	int k;
-	for (k = 0; k < N; k++)
+	for (k = 0; k < NJ; k++)
 	{
 		gramschmidt_kernel1<<<gridKernel1,block>>>(A_gpu, R_gpu, Q_gpu, k);
 		cudaThreadSynchronize();
@@ -247,7 +255,7 @@ void gramschmidtCuda(DATA_TYPE* A, DATA_TYPE* R, DATA_TYPE* Q, DATA_TYPE* A_outp
 //	t_end = rtclock();
 //	fprintf(stdout, "GPU Runtime: %0.6lfs\n", t_end - t_start);
 	
-	error=cudaMemcpy(A_outputFromGpu, A_gpu, sizeof(DATA_TYPE) * M * N, cudaMemcpyDeviceToHost);    
+	error=cudaMemcpy(A_outputFromGpu, A_gpu, sizeof(DATA_TYPE) * NI * NJ, cudaMemcpyDeviceToHost);    
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
@@ -281,10 +289,10 @@ int main(int argc, char *argv[])
   /* Run kernel. */
   if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
 
-  A = (DATA_TYPE*)malloc(M*N*sizeof(DATA_TYPE));
-  A_outputFromGpu = (DATA_TYPE*)malloc(M*N*sizeof(DATA_TYPE));
-  R = (DATA_TYPE*)malloc(M*N*sizeof(DATA_TYPE));  
-  Q = (DATA_TYPE*)malloc(M*N*sizeof(DATA_TYPE));  
+  A = (DATA_TYPE*)malloc(NI*NJ*sizeof(DATA_TYPE));
+  A_outputFromGpu = (DATA_TYPE*)malloc(NI*NJ*sizeof(DATA_TYPE));
+  R = (DATA_TYPE*)malloc(NI*NJ*sizeof(DATA_TYPE));  
+  Q = (DATA_TYPE*)malloc(NI*NJ*sizeof(DATA_TYPE));  
 
   srand(1);
   init_array(A);

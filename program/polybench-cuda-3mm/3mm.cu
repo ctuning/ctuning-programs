@@ -35,15 +35,29 @@
 #define PERCENT_DIFF_ERROR_THRESHOLD 0.05
 
 /* Problem size. */
+#ifndef NI
 # define NI 256 //512
+#endif
+#ifndef NJ
 # define NJ 256 //512
+#endif
+#ifndef NK
 # define NK 256 //512
+#endif
+#ifndef NL
 # define NL 256 //512
+#endif
+#ifndef NM
 # define NM 256 //512
+#endif
 
 /* Thread block dimensions */
+#ifndef DIM_THREAD_BLOCK_X
 #define DIM_THREAD_BLOCK_X 8 //32
+#endif
+#ifndef DIM_THREAD_BLOCK_Y
 #define DIM_THREAD_BLOCK_Y 8
+#endif
 
 /* Can switch DATA_TYPE between float and double */
 # ifndef DATA_TYPE

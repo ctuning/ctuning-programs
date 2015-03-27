@@ -35,13 +35,23 @@
 #define GPU_DEVICE 0
 
 /* Problem size */
+#ifndef NI
 #define NI 64 //256
+#endif
+#ifndef NJ
 #define NJ 64 //256
+#endif
+#ifndef NK
 #define NK 64 //256
+#endif
 
 /* Thread block dimensions */
+#ifndef DIM_THREAD_BLOCK_X
 #define DIM_THREAD_BLOCK_X 8 //32
+#endif
+#ifndef DIM_THREAD_BLOCK_Y
 #define DIM_THREAD_BLOCK_Y 8
+#endif
 
 /* Can switch DATA_TYPE between float and double */
 # ifndef DATA_TYPE

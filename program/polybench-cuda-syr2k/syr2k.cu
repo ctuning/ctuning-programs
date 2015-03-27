@@ -35,12 +35,20 @@
 #define GPU_DEVICE 0
 
 /* Problem size */
-#define N 256 // 2048
-#define M 256 // 2048
+#ifndef NI
+#define NI 256 // 2048
+#endif
+#ifndef NJ
+#define NJ 256 // 2048
+#endif
 
 /* Thread block dimensions */
+#ifndef DIM_THREAD_BLOCK_X
 #define DIM_THREAD_BLOCK_X 32
+#endif
+#ifndef DIM_THREAD_BLOCK_Y
 #define DIM_THREAD_BLOCK_Y 8
+#endif
 
 /* Declared constant values for ALPHA and BETA (same as values in PolyBench 2.0) */
 #define ALPHA 12435
@@ -55,17 +63,17 @@ void init_arrays(DATA_TYPE *A, DATA_TYPE *B, DATA_TYPE *C)
 {
 	int i, j;
   
-	for (i = 0; i < N; i++)
+	for (i = 0; i < NJ; i++)
     	{
-    		for (j = 0; j < N; j++)
+    		for (j = 0; j < NJ; j++)
 		{
-			C[i*N + j] = ((DATA_TYPE) i*j + 2) / N;
+			C[i*NJ + j] = ((DATA_TYPE) i*j + 2) / NJ;
 		}
       	
-		for (j = 0; j < M; j++)
+		for (j = 0; j < NI; j++)
 		{
-	  		A[i*N + j] = ((DATA_TYPE) i*j) / N;
-	  		B[i*N + j] = ((DATA_TYPE) i*j + 1) / N;
+	  		A[i*NJ + j] = ((DATA_TYPE) i*j) / NJ;
+	  		B[i*NJ + j] = ((DATA_TYPE) i*j + 1) / NJ;
 		}
     	}
 }
@@ -75,22 +83,22 @@ void syr2k(DATA_TYPE *A, DATA_TYPE *B, DATA_TYPE *C)
 {
 	int i, j, k;
 		
-  	for (i = 0; i < N; i++)
+  	for (i = 0; i < NJ; i++)
 	{
-   		for (j = 0; j < N; j++)
+   		for (j = 0; j < NJ; j++)
 		{
-     			C[i*N + j] *= BETA;
+     			C[i*NJ + j] *= BETA;
 		}
 	}
 
-  	for (i = 0; i < N; i++)
+  	for (i = 0; i < NJ; i++)
 	{
-   		for (j = 0; j < N; j++)
+   		for (j = 0; j < NJ; j++)
 		{
-      			for (k = 0; k < M; k++)
+      			for (k = 0; k < NI; k++)
 			{
-	  			C[i*N + j] += ALPHA * A[i*M + k] * B[j*M + k];
-	 		 	C[i*N + j] += ALPHA * B[i*M + k] * A[j*M + k];
+	  			C[i*NJ + j] += ALPHA * A[i*NI + k] * B[j*NI + k];
+	 		 	C[i*NJ + j] += ALPHA * B[i*NI + k] * A[j*NI + k];
 			}
 		}
 	}
@@ -103,11 +111,11 @@ void compareResults(DATA_TYPE *C, DATA_TYPE *C_outputFromGpu)
 	fail = 0;
 
 	// Compare C with D
-	for (i=0; i<N; i++)
+	for (i=0; i<NJ; i++)
 	{
-		for (j=0; j<N; j++)
+		for (j=0; j<NJ; j++)
 		{
-			if (percentDiff(C[i*N + j], C_outputFromGpu[i*N + j]) > PERCENT_DIFF_ERROR_THRESHOLD)
+			if (percentDiff(C[i*NJ + j], C_outputFromGpu[i*NJ + j]) > PERCENT_DIFF_ERROR_THRESHOLD)
 			{ 
 				fail++;
 			}
@@ -148,14 +156,14 @@ __global__ void syr2k_kernel(DATA_TYPE *a, DATA_TYPE *b, DATA_TYPE *c)
 	int j = blockIdx.x * blockDim.x + threadIdx.x;
 	int i = blockIdx.y * blockDim.y + threadIdx.y;
 
-	if ((i < N) && (j < N))
+	if ((i < NJ) && (j < NJ))
 	{
-		c[i * N + j] *= BETA;
+		c[i * NJ + j] *= BETA;
 		
 		int k;
-		for(k = 0; k < M; k++)
+		for(k = 0; k < NI; k++)
 		{
-			c[i * N + j] += ALPHA * a[i * M + k] * b[j * M + k] + ALPHA * b[i * M + k] * a[j * M + k];
+			c[i * NJ + j] += ALPHA * a[i * NI + k] * b[j * NI + k] + ALPHA * b[i * NI + k] * a[j * NI + k];
 		}
 	}
 }
@@ -170,42 +178,42 @@ void syr2kCuda(DATA_TYPE* A, DATA_TYPE* B, DATA_TYPE* C, DATA_TYPE* C_outputFrom
 	DATA_TYPE *B_gpu;
 	DATA_TYPE *C_gpu;
 
-	error=cudaMalloc((void **)&A_gpu, sizeof(DATA_TYPE) * N * M);
+	error=cudaMalloc((void **)&A_gpu, sizeof(DATA_TYPE) * NJ * NI);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMalloc((void **)&B_gpu, sizeof(DATA_TYPE) * N * M);
+	error=cudaMalloc((void **)&B_gpu, sizeof(DATA_TYPE) * NJ * NI);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMalloc((void **)&C_gpu, sizeof(DATA_TYPE) * N * N);
+	error=cudaMalloc((void **)&C_gpu, sizeof(DATA_TYPE) * NJ * NJ);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMemcpy(A_gpu, A, sizeof(DATA_TYPE) * N * M, cudaMemcpyHostToDevice);
+	error=cudaMemcpy(A_gpu, A, sizeof(DATA_TYPE) * NJ * NI, cudaMemcpyHostToDevice);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMemcpy(B_gpu, B, sizeof(DATA_TYPE) * N * M, cudaMemcpyHostToDevice);
+	error=cudaMemcpy(B_gpu, B, sizeof(DATA_TYPE) * NJ * NI, cudaMemcpyHostToDevice);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
             exit(EXIT_FAILURE);
         }
 
-	error=cudaMemcpy(C_gpu, C, sizeof(DATA_TYPE) * N * N, cudaMemcpyHostToDevice);
+	error=cudaMemcpy(C_gpu, C, sizeof(DATA_TYPE) * NJ * NJ, cudaMemcpyHostToDevice);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
@@ -213,7 +221,7 @@ void syr2kCuda(DATA_TYPE* A, DATA_TYPE* B, DATA_TYPE* C, DATA_TYPE* C_outputFrom
         }
 	
 	dim3 block(DIM_THREAD_BLOCK_X, DIM_THREAD_BLOCK_Y);
-	dim3 grid((size_t)ceil( ((float)N) / ((float)DIM_THREAD_BLOCK_X) ), (size_t)(ceil( ((float)N) / ((float)DIM_THREAD_BLOCK_Y) )));
+	dim3 grid((size_t)ceil( ((float)NJ) / ((float)DIM_THREAD_BLOCK_X) ), (size_t)(ceil( ((float)NJ) / ((float)DIM_THREAD_BLOCK_Y) )));
 	
 //	t_start = rtclock();
 	syr2k_kernel<<<grid,block>>>(A_gpu,B_gpu,C_gpu);
@@ -221,7 +229,7 @@ void syr2kCuda(DATA_TYPE* A, DATA_TYPE* B, DATA_TYPE* C, DATA_TYPE* C_outputFrom
 //	t_end = rtclock();
 //	fprintf(stdout, "GPU Runtime: %0.6lfs\n", t_end - t_start);
 	
-	error=cudaMemcpy(C_outputFromGpu, C_gpu, sizeof(DATA_TYPE) * N * N, cudaMemcpyDeviceToHost);
+	error=cudaMemcpy(C_outputFromGpu, C_gpu, sizeof(DATA_TYPE) * NJ * NJ, cudaMemcpyDeviceToHost);
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
@@ -255,10 +263,10 @@ int main()
   /* Run kernel. */
   if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
 
-  A = (DATA_TYPE*)malloc(N*M*sizeof(DATA_TYPE));
-  B = (DATA_TYPE*)malloc(N*M*sizeof(DATA_TYPE));
-  C = (DATA_TYPE*)malloc(N*M*sizeof(DATA_TYPE));
-  C_outputFromGpu = (DATA_TYPE*)malloc(N*M*sizeof(DATA_TYPE));
+  A = (DATA_TYPE*)malloc(NJ*NI*sizeof(DATA_TYPE));
+  B = (DATA_TYPE*)malloc(NJ*NI*sizeof(DATA_TYPE));
+  C = (DATA_TYPE*)malloc(NJ*NI*sizeof(DATA_TYPE));
+  C_outputFromGpu = (DATA_TYPE*)malloc(NJ*NI*sizeof(DATA_TYPE));
 
   srand(1);
   init_arrays(A, B, C);
