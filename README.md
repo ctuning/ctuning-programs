@@ -7,8 +7,8 @@ please, do not use it until official announcement.
 
 Dependencies on other repositories
 ==================================
-ck-auto-tuning
-
+* ck-auto-tuning
+* ck-env
 
 Publications
 ============
