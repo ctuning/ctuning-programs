@@ -82,5 +82,6 @@
     "program", 
     "lang-java"
   ], 
-  "target_file": "matmul"
+  "target_file": "matmul",
+  "skip_add_prefix_for_target_file":"yes"
 }
