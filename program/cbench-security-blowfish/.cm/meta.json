@@ -1,111 +1,111 @@
 {
   "compile_deps": {
     "compiler": {
-      "local": "yes",
+      "local": "yes", 
       "tags": "compiler,lang-c"
     }
-  },
-  "compiler_env": "CK_CC",
-  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
-  "main_language": "c",
-  "process_in_tmp": "yes",
+  }, 
+  "compiler_env": "CK_CC", 
+  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
+  "main_language": "c", 
+  "process_in_tmp": "yes", 
   "run_cmds": {
     "decode": {
       "dataset_tags": [
-        "benc",
-        "crypto",
+        "benc", 
+        "crypto", 
         "dataset"
-      ],
+      ], 
       "hot_functions": [
         {
-          "name": "BF_encrypt",
+          "name": "BF_encrypt", 
           "percent": "69"
-        },
+        }, 
         {
-          "name": "BF_cfb64_encrypt",
+          "name": "BF_cfb64_encrypt", 
           "percent": "30"
         }
-      ],
-      "ignore_return_code": "no",
+      ], 
+      "ignore_return_code": "no", 
       "run_time": {
-        "run_cmd_main": "$#BIN_FILE#$ d $#dataset_path#$$#dataset_filename#$ tmp-output.tmp 1234567890abcdeffedcba0987654321",
-        "run_cmd_out1": "tmp-output1.tmp",
-        "run_cmd_out2": "tmp-output2.tmp",
+        "run_cmd_main": "$#BIN_FILE#$ d $#dataset_path#$$#dataset_filename#$ tmp-output.tmp 1234567890abcdeffedcba0987654321", 
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_out2": "tmp-output2.tmp", 
         "run_correctness_output_files": [
-          "tmp-output.tmp",
+          "tmp-output.tmp", 
           "tmp-output2.tmp"
-        ],
+        ], 
         "run_output_files": [
           "tmp-output.tmp"
         ]
       }
-    },
+    }, 
     "encode": {
       "dataset_tags": [
-        "enc",
-        "crypto",
+        "enc", 
+        "crypto", 
         "dataset"
-      ],
+      ], 
       "hot_functions": [
         {
-          "name": "BF_encrypt",
+          "name": "BF_encrypt", 
           "percent": "69"
-        },
+        }, 
         {
-          "name": "BF_cfb64_encrypt",
+          "name": "BF_cfb64_encrypt", 
           "percent": "30"
         }
-      ],
-      "ignore_return_code": "no",
+      ], 
+      "ignore_return_code": "no", 
       "run_time": {
-        "run_cmd_main": "$#BIN_FILE#$ e $#dataset_path#$$#dataset_filename#$ tmp-output.tmp 1234567890abcdeffedcba0987654321",
-        "run_cmd_out1": "tmp-output1.tmp",
-        "run_cmd_out2": "tmp-output2.tmp",
+        "run_cmd_main": "$#BIN_FILE#$ e $#dataset_path#$$#dataset_filename#$ tmp-output.tmp 1234567890abcdeffedcba0987654321", 
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_out2": "tmp-output2.tmp", 
         "run_correctness_output_files": [
-          "tmp-output.tmp",
+          "tmp-output.tmp", 
           "tmp-output2.tmp"
-        ],
+        ], 
         "run_output_files": [
           "tmp-output.tmp"
         ]
       }
     }
-  },
+  }, 
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  },
+  }, 
   "run_vars_desc": {
     "##CT_REPEAT_MAIN": {
-      "default_value": "1",
-      "desc_text": "Main function/kernel repetition",
-      "explorable": "yes",
-      "explore_level": "1",
-      "explore_start": "0",
-      "explore_step": "10",
-      "explore_stop": "1000000",
-      "field_size": "7",
-      "forbid_disable_at_random": "yes",
-      "property": "yes",
-      "skip_form_refresh": "yes",
-      "sort_index": "1",
+      "default_value": "1", 
+      "desc_text": "Main function/kernel repetition", 
+      "explorable": "yes", 
+      "explore_level": "1", 
+      "explore_start": "0", 
+      "explore_step": "10", 
+      "explore_stop": "1000000", 
+      "field_size": "7", 
+      "forbid_disable_at_random": "yes", 
+      "property": "yes", 
+      "skip_form_refresh": "yes", 
+      "sort_index": "1", 
       "type": "integer"
     }
-  },
+  }, 
   "source_files": [
-    "bf.c",
-    "bf_cbc.c",
-    "bf_cfb64.c",
-    "bf_ecb.c",
-    "bf_enc.c",
-    "bf_ofb64.c",
+    "bf.c", 
+    "bf_cbc.c", 
+    "bf_cfb64.c", 
+    "bf_ecb.c", 
+    "bf_enc.c", 
+    "bf_ofb64.c", 
     "bf_skey.c"
-  ],
+  ], 
   "tags": [
-    "small",
-    "cbench",
-    "program",
-    "lang-c",
+    "small", 
+    "cbench", 
+    "program", 
+    "lang-c", 
     "crowd-tuning"
-  ],
+  ], 
   "target_file": "a"
 }
