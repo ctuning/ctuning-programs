@@ -2,10 +2,12 @@
   "compile_deps": {
     "compiler": {
       "local": "yes", 
+      "sort": 10, 
       "tags": "compiler,lang-c"
     }, 
     "rtl_milepost_codelet": {
       "local": "yes", 
+      "sort": 20, 
       "tags": "lib,rtl,milepost,codelet"
     }
   }, 
@@ -23,6 +25,7 @@
       ], 
       "ignore_return_code": "no", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "run_cmd_main": "$#BIN_FILE#$ \"$#src_path#$codelet.data\"", 
         "run_cmd_out1": "tmp-output1.tmp", 
         "run_cmd_out2": "tmp-output2.tmp", 
@@ -32,7 +35,9 @@
         "run_input_files": [
           "codelet.data"
         ], 
-        "run_output_files": []
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
       }
     }
   }, 
