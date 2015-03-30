@@ -11,7 +11,7 @@
     "lib_openme": {
       "local": "yes", 
       "sort": 30, 
-      "tags": "lib,plugins,openme"
+      "tags": "lib,plugins,openme,lang-c"
     }, 
     "rtl_milepost_codelet": {
       "local": "yes", 
