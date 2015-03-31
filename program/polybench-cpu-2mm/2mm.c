@@ -127,6 +127,9 @@ int main(int argc, char** argv)
   openme_init(NULL,NULL,NULL,0);
   openme_callback("PROGRAM_START", NULL);
 #endif
+#ifdef XOPENME
+  program_start();
+#endif
 
   /* Variable declaration/allocation. */
   DATA_TYPE alpha;
@@ -147,6 +150,9 @@ int main(int argc, char** argv)
 #ifdef OPENME
   openme_callback("KERNEL_START", NULL);
 #endif
+#ifdef XOPENME
+  clock_start();
+#endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
    /* Initialize array(s). */
@@ -166,6 +172,9 @@ int main(int argc, char** argv)
                   POLYBENCH_ARRAY(D));
 
   }
+#ifdef XOPENME
+  clock_end();
+#endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
 #endif
@@ -185,6 +194,9 @@ int main(int argc, char** argv)
   POLYBENCH_FREE_ARRAY(C);
   POLYBENCH_FREE_ARRAY(D);
 
+#ifdef XOPENME
+  program_end();
+#endif
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);
 #endif

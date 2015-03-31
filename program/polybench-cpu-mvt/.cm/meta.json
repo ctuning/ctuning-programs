@@ -1,5 +1,6 @@
 {
   "build_compiler_vars": {
+    "XOPENME":"",
     "DATA_TYPE": "double", 
     "N": "16", 
     "POLYBENCH_DUMP_ARRAYS": "YES", 
@@ -93,13 +94,16 @@
       ], 
       "ignore_return_code": "no", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "run_cmd_main": "$#BIN_FILE#$ ", 
         "run_cmd_out1": "tmp-output1.tmp", 
         "run_cmd_out2": "tmp-output2.tmp", 
         "run_correctness_output_files": [
           "tmp-output2.tmp"
         ], 
-        "run_output_files": []
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
       }
     }
   }, 
@@ -124,9 +128,7 @@
     }
   }, 
   "source_files": [
-    "mvt.c"
-  ], 
-  "source_files_templates": [
+    "ctuning.c",
     "mvt.c"
   ], 
   "tags": [

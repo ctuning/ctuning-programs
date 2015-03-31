@@ -1,6 +1,7 @@
 {
   "build_compiler_vars": {
-    "PORTABLE": ""
+    "PORTABLE": "",
+    "XOPENME": "" 
   }, 
   "compile_deps": {
     "compiler": {
@@ -47,6 +48,7 @@
       ], 
       "ignore_return_code": "no", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "run_cmd_main": "$#BIN_FILE#$ $#dataset_path#$$#dataset_filename#$ -o tmp-output.tmp", 
         "run_cmd_out1": "tmp-output1.tmp", 
         "run_cmd_out2": "tmp-output2.tmp", 
@@ -58,6 +60,7 @@
           "pubring.pgp"
         ], 
         "run_output_files": [
+          "tmp-ck-timer.json",
           "tmp-output.tmp"
         ]
       }
@@ -87,6 +90,7 @@
       ], 
       "ignore_return_code": "no", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "run_cmd_main": "$#BIN_FILE#$ -s $#dataset_path#$$#dataset_filename#$ test -o tmp-output.tmp", 
         "run_cmd_out1": "tmp-output1.tmp", 
         "run_cmd_out2": "tmp-output2.tmp", 
@@ -99,6 +103,7 @@
           "pubring.pgp"
         ], 
         "run_output_files": [
+          "tmp-ck-timer.json",
           "tmp-output.tmp"
         ]
       }
@@ -125,6 +130,7 @@
     }
   }, 
   "source_files": [
+    "ctuning.c",
     "armor.c", 
     "charset.c", 
     "config.c", 

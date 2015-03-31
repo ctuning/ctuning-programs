@@ -5,6 +5,9 @@
       "tags": "compiler,lang-c"
     }
   }, 
+  "build_compiler_vars": {
+    "XOPENME": "" 
+  },
   "compiler_env": "CK_CC", 
   "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
   "main_language": "c", 
@@ -39,6 +42,7 @@
       ], 
       "ignore_return_code": "no", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "run_cmd_main": "$#BIN_FILE#$ $#dataset_number#$", 
         "run_cmd_out1": "tmp-output1.tmp", 
         "run_cmd_out2": "tmp-output2.tmp", 
@@ -46,7 +50,9 @@
           "tmp-output1.tmp", 
           "tmp-output2.tmp"
         ], 
-        "run_output_files": []
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
       }
     }
   }, 
@@ -71,6 +77,7 @@
     }
   }, 
   "source_files": [
+    "ctuning.c",
     "bitarray.c", 
     "bitcnts.c", 
     "bitcnt_1.c", 
@@ -80,9 +87,6 @@
     "bitfiles.c", 
     "bitstrng.c", 
     "bstr_i.c"
-  ], 
-  "source_files_templates": [
-    "bitcnts.c"
   ], 
   "tags": [
     "small", 

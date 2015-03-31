@@ -1,5 +1,6 @@
 {
   "build_compiler_vars": {
+    "XOPENME":"",
     "DATA_TYPE": "float", 
     "DIM_THREAD_BLOCK_X": "32", 
     "DIM_THREAD_BLOCK_Y": "8", 
@@ -110,13 +111,16 @@
       ], 
       "ignore_return_code": "no", 
       "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
         "run_cmd_main": "$#BIN_FILE#$ \"$#src_path#$syr2k.cl\"", 
         "run_cmd_out1": "tmp-output1.tmp", 
         "run_cmd_out2": "tmp-output2.tmp", 
         "run_correctness_output_files": [
           "tmp-output2.tmp"
         ], 
-        "run_output_files": []
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
       }
     }
   }, 
@@ -141,9 +145,7 @@
     }
   }, 
   "source_files": [
-    "syr2k.c"
-  ], 
-  "source_files_templates": [
+    "ctuning.c",
     "syr2k.c"
   ], 
   "tags": [

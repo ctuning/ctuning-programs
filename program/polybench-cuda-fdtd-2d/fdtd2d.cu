@@ -341,10 +341,16 @@ int main()
 #ifdef OPENME
   openme_callback("ACC_KERNEL_START", NULL);
 #endif
+#ifdef XOPENME
+  clock_start();
+#endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
     fdtdCuda(_fict_, ex, ey, hz, hz_outputFromGpu);
   }
+#ifdef XOPENME
+  clock_stop();
+#endif
 #ifdef OPENME
   openme_callback("ACC_KERNEL_END", NULL);
 #endif
@@ -355,10 +361,16 @@ int main()
 #ifdef OPENME
   openme_callback("KERNEL_START", NULL);
 #endif
+#ifdef XOPENME
+  acc_clock_start();
+#endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
     runFdtd(_fict_, ex, ey, hz);
   }
+#ifdef XOPENME
+  acc_clock_stop();
+#endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
 #endif

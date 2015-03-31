@@ -94,6 +94,9 @@ int main(int argc, char** argv)
   openme_init(NULL,NULL,NULL,0);
   openme_callback("PROGRAM_START", NULL);
 #endif
+#ifdef XOPENME
+  program_start();
+#endif
 
   /* Variable declaration/allocation. */
   POLYBENCH_2D_ARRAY_DECL(path, DATA_TYPE, N, N, n, n);
@@ -111,8 +114,14 @@ int main(int argc, char** argv)
 #ifdef OPENME
   openme_callback("KERNEL_START", NULL);
 #endif
+#ifdef XOPENME
+  clock_start();
+#endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
       kernel_floyd_warshall (n, POLYBENCH_ARRAY(path));
+#ifdef XOPENME
+  clock_end();
+#endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
 #endif
@@ -128,6 +137,9 @@ int main(int argc, char** argv)
   /* Be clean. */
   POLYBENCH_FREE_ARRAY(path);
 
+#ifdef XOPENME
+  program_end();
+#endif
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);
 #endif

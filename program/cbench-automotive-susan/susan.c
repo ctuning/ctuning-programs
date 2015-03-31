@@ -1971,6 +1971,9 @@ CORNER_LIST corner_list;
   openme_init(NULL,NULL,NULL,0);
   openme_callback("PROGRAM_START", NULL);
 #endif
+#ifdef XOPENME
+  program_start();
+#endif
 
   if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
 
@@ -2044,6 +2047,9 @@ CORNER_LIST corner_list;
 
 #ifdef OPENME
   openme_callback("KERNEL_START", NULL);
+#endif
+#ifdef XOPENME
+  clock_start();
 #endif
 
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
@@ -2122,6 +2128,9 @@ CORNER_LIST corner_list;
 
 /* }}} */
 
+#ifdef XOPENME
+  clock_end();
+#endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
 #endif
@@ -2130,6 +2139,9 @@ CORNER_LIST corner_list;
 
   free(in);
 
+#ifdef XOPENME
+  program_end();
+#endif
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);
 #endif

@@ -100,6 +100,9 @@ int main(int argc, char** argv)
   openme_init(NULL,NULL,NULL,0);
   openme_callback("PROGRAM_START", NULL);
 #endif
+#ifdef XOPENME
+  program_start();
+#endif
 
   /* Variable declaration/allocation. */
   POLYBENCH_1D_ARRAY_DECL(A, DATA_TYPE, N, n);
@@ -118,8 +121,14 @@ int main(int argc, char** argv)
 #ifdef OPENME
   openme_callback("KERNEL_START", NULL);
 #endif
+#ifdef XOPENME
+  clock_start();
+#endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
       kernel_jacobi_1d_imper (tsteps, n, POLYBENCH_ARRAY(A), POLYBENCH_ARRAY(B));
+#ifdef XOPENME
+  clock_end();
+#endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
 #endif
@@ -136,6 +145,9 @@ int main(int argc, char** argv)
   POLYBENCH_FREE_ARRAY(A);
   POLYBENCH_FREE_ARRAY(B);
 
+#ifdef XOPENME
+  program_end();
+#endif
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);
 #endif

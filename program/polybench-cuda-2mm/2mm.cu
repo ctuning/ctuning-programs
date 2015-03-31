@@ -348,10 +348,16 @@ int main(int argc, char** argv)
 #ifdef OPENME
   openme_callback("ACC_KERNEL_START", NULL);
 #endif
+#ifdef XOPENME
+  clock_start();
+#endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
     mm2Cuda(A, B, C, D, E, E_outputFromGpu);
   }
+#ifdef XOPENME
+  clock_stop();
+#endif
 #ifdef OPENME
   openme_callback("ACC_KERNEL_END", NULL);
 #endif
@@ -362,10 +368,16 @@ int main(int argc, char** argv)
 #ifdef OPENME
   openme_callback("KERNEL_START", NULL);
 #endif
+#ifdef XOPENME
+  acc_clock_start();
+#endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
     mm2_cpu(A, B, C, D, E);
   }
+#ifdef XOPENME
+  acc_clock_stop();
+#endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
 #endif
