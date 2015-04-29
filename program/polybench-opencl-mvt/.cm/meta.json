@@ -22,6 +22,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "25", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "text"
     }, 
     "##DIM_LOCAL_WORK_GROUP_X": {
@@ -73,6 +76,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "2", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "integer"
     }
   }, 

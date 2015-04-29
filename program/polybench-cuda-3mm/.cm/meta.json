@@ -26,6 +26,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "25", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "text"
     }, 
     "##DIM_THREAD_BLOCK_X": {
@@ -77,6 +80,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "1", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "integer"
     }, 
     "##NJ": {
@@ -92,6 +98,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "2", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "integer"
     }, 
     "##NK": {
@@ -107,6 +116,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "3", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "integer"
     }, 
     "##NL": {
@@ -122,6 +134,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "4", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "integer"
     }, 
     "##NM": {
@@ -137,6 +152,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "5", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "integer"
     }
   }, 

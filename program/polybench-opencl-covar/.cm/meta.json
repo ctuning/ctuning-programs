@@ -27,6 +27,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "25", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "text"
     }, 
     "##DIM_LOCAL_WORK_GROUP_KERNEL_1_X": {
@@ -150,6 +153,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "1", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "integer"
     }, 
     "##N": {
@@ -165,6 +171,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "2", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "integer"
     }
   }, 

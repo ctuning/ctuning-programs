@@ -24,6 +24,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "3", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "text"
     }, 
     "##N": {
@@ -40,6 +43,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "1", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "integer"
     }, 
     "##POLYBENCH_DUMP_ARRAYS": {

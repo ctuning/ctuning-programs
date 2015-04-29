@@ -24,6 +24,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "25", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "text"
     }, 
     "##DIM_THREAD_BLOCK_X": {
@@ -75,6 +78,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "1", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "integer"
     }, 
     "##NY": {
@@ -90,6 +96,9 @@
       "property": "yes", 
       "skip_form_refresh": "yes", 
       "sort_index": "2", 
+      "tags": [
+        "dataset"
+      ], 
       "type": "integer"
     }
   }, 
