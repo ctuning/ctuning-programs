@@ -3,10 +3,12 @@
   "compile_deps": {
     "compiler": {
       "local": "yes",
+      "sort": 10,
       "tags": "compiler,lang-cpp"
     },
     "lib_opencl": {
       "local": "yes",
+      "sort": 20,
       "tags": "lib,opencl"
     }
   },

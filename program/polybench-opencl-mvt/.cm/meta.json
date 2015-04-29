@@ -71,14 +71,17 @@
   "compile_deps": {
     "compiler": {
       "local": "yes",
+      "sort": 10,
       "tags": "compiler,lang-c"
     },
     "lib_opencl": {
       "local": "yes",
+      "sort": 20,
       "tags": "lib,opencl"
     },
     "rtl_polybench": {
       "local": "yes",
+      "sort": 30,
       "tags": "lib,rtl,polybench"
     }
   },
