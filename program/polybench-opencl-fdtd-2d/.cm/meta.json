@@ -1,167 +1,175 @@
 {
-  "backup_data_uid": "f5292980629d07f9",
+  "backup_data_uid": "f5292980629d07f9", 
   "build_compiler_vars": {
-    "DATA_TYPE": "float",
-    "DIM_LOCAL_WORK_GROUP_X": "32",
-    "DIM_LOCAL_WORK_GROUP_Y": "8",
-    "NX": "512",
-    "NY": "512",
+    "DATA_TYPE": "float", 
+    "DIM_LOCAL_WORK_GROUP_X": "32", 
+    "DIM_LOCAL_WORK_GROUP_Y": "8", 
+    "NX": "512", 
+    "NY": "512", 
     "XOPENME": ""
-  },
+  }, 
   "build_compiler_vars_desc": {
     "##DATA_TYPE": {
       "choice": [
-        "double",
+        "double", 
         "float"
-      ],
-      "default_value": "float",
-      "desc_text": "Program property: Variable precision",
-      "explorable": "yes",
-      "explore_level": "1",
-      "field_size": "7",
-      "forbid_disable_at_random": "yes",
-      "has_choice": "yes",
-      "property": "yes",
-      "skip_form_refresh": "yes",
-      "sort_index": "25",
+      ], 
+      "default_value": "float", 
+      "desc_text": "Program property: Variable precision", 
+      "explorable": "yes", 
+      "explore_level": "1", 
+      "field_size": "7", 
+      "forbid_disable_at_random": "yes", 
+      "has_choice": "yes", 
+      "property": "yes", 
+      "skip_form_refresh": "yes", 
+      "sort_index": "25", 
       "type": "text"
-    },
+    }, 
     "##DIM_LOCAL_WORK_GROUP_X": {
-      "desc_text": "Local workgroup: block X",
-      "explorable": "yes",
-      "explore_level": "1",
-      "explore_start": "1",
-      "explore_step": "1",
-      "explore_stop": "64",
-      "field_size": "7",
-      "forbid_disable_at_random": "yes",
-      "property": "yes",
-      "skip_form_refresh": "yes",
-      "sort_index": "3",
+      "desc_text": "Local workgroup: block X", 
+      "explorable": "yes", 
+      "explore_level": "1", 
+      "explore_start": "1", 
+      "explore_step": "1", 
+      "explore_stop": "64", 
+      "field_size": "7", 
+      "forbid_disable_at_random": "yes", 
+      "property": "yes", 
+      "skip_form_refresh": "yes", 
+      "sort_index": "3", 
+      "tags": [
+        "basic", 
+        "optimization"
+      ], 
       "type": "integer"
-    },
+    }, 
     "##DIM_LOCAL_WORK_GROUP_Y": {
-      "desc_text": "Local workgroup: block Y",
-      "explorable": "yes",
-      "explore_level": "1",
-      "explore_start": "1",
-      "explore_step": "1",
-      "explore_stop": "64",
-      "field_size": "7",
-      "forbid_disable_at_random": "yes",
-      "property": "yes",
-      "skip_form_refresh": "yes",
-      "sort_index": "4",
+      "desc_text": "Local workgroup: block Y", 
+      "explorable": "yes", 
+      "explore_level": "1", 
+      "explore_start": "1", 
+      "explore_step": "1", 
+      "explore_stop": "64", 
+      "field_size": "7", 
+      "forbid_disable_at_random": "yes", 
+      "property": "yes", 
+      "skip_form_refresh": "yes", 
+      "sort_index": "4", 
+      "tags": [
+        "basic", 
+        "optimization"
+      ], 
       "type": "integer"
-    },
+    }, 
     "##NX": {
-      "dataset_size": "yes",
-      "desc_text": "Dataset: Matrix size NX",
-      "explorable": "yes",
-      "explore_level": "1",
-      "explore_start": "2",
-      "explore_step": "1",
-      "explore_stop": "8192",
-      "field_size": "7",
-      "forbid_disable_at_random": "yes",
-      "property": "yes",
-      "skip_form_refresh": "yes",
-      "sort_index": "1",
+      "dataset_size": "yes", 
+      "desc_text": "Dataset: Matrix size NX", 
+      "explorable": "yes", 
+      "explore_level": "1", 
+      "explore_start": "2", 
+      "explore_step": "1", 
+      "explore_stop": "8192", 
+      "field_size": "7", 
+      "forbid_disable_at_random": "yes", 
+      "property": "yes", 
+      "skip_form_refresh": "yes", 
+      "sort_index": "1", 
       "type": "integer"
-    },
+    }, 
     "##NY": {
-      "dataset_size": "yes",
-      "desc_text": "Dataset: Matrix size NY",
-      "explorable": "yes",
-      "explore_level": "1",
-      "explore_start": "2",
-      "explore_step": "1",
-      "explore_stop": "8192",
-      "field_size": "7",
-      "forbid_disable_at_random": "yes",
-      "property": "yes",
-      "skip_form_refresh": "yes",
-      "sort_index": "2",
+      "dataset_size": "yes", 
+      "desc_text": "Dataset: Matrix size NY", 
+      "explorable": "yes", 
+      "explore_level": "1", 
+      "explore_start": "2", 
+      "explore_step": "1", 
+      "explore_stop": "8192", 
+      "field_size": "7", 
+      "forbid_disable_at_random": "yes", 
+      "property": "yes", 
+      "skip_form_refresh": "yes", 
+      "sort_index": "2", 
       "type": "integer"
     }
-  },
+  }, 
   "compile_deps": {
     "compiler": {
-      "local": "yes",
-      "sort": 10,
+      "local": "yes", 
+      "sort": 10, 
       "tags": "compiler,lang-c"
-    },
+    }, 
     "lib_opencl": {
-      "local": "yes",
-      "sort": 20,
+      "local": "yes", 
+      "sort": 20, 
       "tags": "lib,opencl"
-    },
+    }, 
     "rtl_polybench": {
-      "local": "yes",
-      "sort": 30,
+      "local": "yes", 
+      "sort": 30, 
       "tags": "lib,rtl,polybench"
     }
-  },
-  "compiler_env": "CK_CC",
-  "data_name": "polybench-opencl-fdtd-2d",
-  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
-  "main_language": "c",
-  "process_in_tmp": "yes",
+  }, 
+  "compiler_env": "CK_CC", 
+  "data_name": "polybench-opencl-fdtd-2d", 
+  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
+  "main_language": "c", 
+  "process_in_tmp": "yes", 
   "run_cmds": {
     "default": {
       "hot_functions": [
         {
-          "name": "kernel_2mm",
+          "name": "kernel_2mm", 
           "percent": "99"
         }
-      ],
-      "ignore_return_code": "no",
+      ], 
+      "ignore_return_code": "no", 
       "run_time": {
-        "fine_grain_timer_file": "tmp-ck-timer.json",
-        "run_cmd_main": "$#BIN_FILE#$ \"$#src_path#$fdtd2d.cl\"",
-        "run_cmd_out1": "tmp-output1.tmp",
-        "run_cmd_out2": "tmp-output2.tmp",
+        "fine_grain_timer_file": "tmp-ck-timer.json", 
+        "run_cmd_main": "$#BIN_FILE#$ \"$#src_path#$fdtd2d.cl\"", 
+        "run_cmd_out1": "tmp-output1.tmp", 
+        "run_cmd_out2": "tmp-output2.tmp", 
         "run_correctness_output_files": [
           "tmp-output2.tmp"
-        ],
+        ], 
         "run_input_files": [
           "fdtd2d.cl"
-        ],
+        ], 
         "run_output_files": [
           "tmp-ck-timer.json"
         ]
       }
     }
-  },
+  }, 
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  },
+  }, 
   "run_vars_desc": {
     "##CT_REPEAT_MAIN": {
-      "default_value": "1",
-      "desc_text": "Main function/kernel repetition",
-      "explorable": "yes",
-      "explore_level": "1",
-      "explore_start": "0",
-      "explore_step": "10",
-      "explore_stop": "1000000",
-      "field_size": "7",
-      "forbid_disable_at_random": "yes",
-      "property": "yes",
-      "skip_form_refresh": "yes",
-      "sort_index": "1",
+      "default_value": "1", 
+      "desc_text": "Main function/kernel repetition", 
+      "explorable": "yes", 
+      "explore_level": "1", 
+      "explore_start": "0", 
+      "explore_step": "10", 
+      "explore_stop": "1000000", 
+      "field_size": "7", 
+      "forbid_disable_at_random": "yes", 
+      "property": "yes", 
+      "skip_form_refresh": "yes", 
+      "sort_index": "1", 
       "type": "integer"
     }
-  },
+  }, 
   "source_files": [
-    "ctuning.c",
+    "ctuning.c", 
     "fdtd2d.c"
-  ],
+  ], 
   "tags": [
-    "opencl",
-    "program",
-    "polybench",
+    "opencl", 
+    "program", 
+    "polybench", 
     "lang-c"
-  ],
+  ], 
   "target_file": "a"
 }
