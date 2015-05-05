@@ -7,7 +7,8 @@
  * Web address: http://www.cse.ohio-state.edu/~pouchet/software/polybench/GPU
  *
  * Updated by Grigori Fursin (http://cTuning.org/lab/people/gfursin)
- * to work with Collective Mind Framework and OpenME interfqce for automatic 
+ * to work with Collective Mind, OpenME plugin interface and 
+ * Collective Knowledge Frameworks for automatic, machine-learning based
  * and collective tuning and data mining: http://cTuning.org
  *
  */
@@ -364,6 +365,9 @@ int main(int argc, char *argv[])
 #ifdef OPENME
   openme_callback("ACC_KERNEL_START", NULL);
 #endif
+#ifdef XOPENME
+  clock_start(0);
+#endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
     cl_launch_kernel();
@@ -375,25 +379,30 @@ int main(int argc, char *argv[])
       exit(1);
     }
   }
+#ifdef XOPENME
+  clock_end(0);
+#endif
 #ifdef OPENME
   openme_callback("ACC_KERNEL_END", NULL);
 #endif
 
+/*
   srand(1);
   init(A, B, C);
+
 
 #ifdef OPENME
   openme_callback("KERNEL_START", NULL);
 #endif
 #ifdef XOPENME
-  clock_start();
+  clock_start(1);
 #endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
     gemm(A, B, C);
   }
 #ifdef XOPENME
-  clock_end();
+  clock_end(1);
 #endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
@@ -401,6 +410,7 @@ int main(int argc, char *argv[])
 
   compareResults(C, C_outputFromGpu);
   cl_clean_up();
+*/
 
   free(A);
   free(B);  

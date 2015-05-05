@@ -1,7 +1,7 @@
 /* MPGLIB replacement using mpega.library (AmigaOS)
- * Written by Thomas Wenzel and Sigbjørn (CISC) Skjæret.
+ * Written by Thomas Wenzel and SigbjÃ¸rn (CISC) SkjÃ¦ret.
  *
- * Big thanks to Stéphane Tavernard for mpega.library.
+ * Big thanks to StÃ©phane Tavernard for mpega.library.
  *
  */
 

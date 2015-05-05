@@ -38,25 +38,27 @@
 
 char* ck_time_file="tmp-ck-timer.json";
 
+#define NTIMERS 1
+
 #ifdef WINDOWS
-static clock_t start=0.0, stop=0.0, acc_start=0.0, acc_stop=0.0;
+static clock_t start[NTIMERS];
 #else 
-static double start=0.0, stop=0.0, acc_start=0.0, acc_stop=0.0;
-static struct timeval  before, after, acc_before, acc_after;
+static double start[NTIMERS];
+static struct timeval  before[NTIMERS], after;
 #endif
-static double secs, acc_secs;
+static double secs[NTIMERS];
 
 static char *env;
 
-void clock_start(void)
+void clock_start(int timer)
 {
 #ifdef WINDOWS
-  start = clock();
+  start[timer] = clock();
 #else
   #ifdef __INTEL_COMPILERX
-    start = (double)_rdtsc();
+    start[timer] = (double)_rdtsc();
   #else
-    gettimeofday(&before, NULL);
+    gettimeofday(&before[timer], NULL);
   #endif
 #endif
   if ( ((env = getenv(OPENME_DEBUG)) != NULL) && (atoi(env)==1) )
@@ -64,51 +66,16 @@ void clock_start(void)
 
 }
 
-void acc_clock_start(void)
+void clock_end(int timer)
 {
 #ifdef WINDOWS
-  acc_start = clock();
+  secs[timer] = ((double)(clock() - start[timer])) / CLOCKS_PER_SEC;
 #else
   #ifdef __INTEL_COMPILERX
-    acc_start = (double)_rdtsc();
-  #else
-    gettimeofday(&acc_before, NULL);
-  #endif
-#endif
-  if ( ((env = getenv(OPENME_DEBUG)) != NULL) && (atoi(env)==1) )
-    printf("OpenME event: start accelerator clock\n");
-}
-
-void clock_end(void)
-{
-#ifdef WINDOWS
-  stop = clock();
-  secs = ((double)(stop - start)) / CLOCKS_PER_SEC;
-#else
-  #ifdef __INTEL_COMPILERX
-  stop = (double)_rdtsc();
-  secs = ((double)(stop - start)) / (double) getCPUFreq();
+  secs[timer] = ((double)((double)_rdtsc() - start)) / (double) getCPUFreq();
   #else
   gettimeofday(&after, NULL);
-  secs = (after.tv_sec - before.tv_sec) + (after.tv_usec - before.tv_usec)/1000000.0;
-  #endif
-#endif
-  if ( ((env = getenv(OPENME_DEBUG)) != NULL) && (atoi(env)==1) )
-    printf("OpenME event: stop clock: %f\n", secs);
-}
-
-void acc_clock_end(void)
-{
-#ifdef WINDOWS
-  acc_stop = clock();
-  acc_secs = ((double)(acc_stop - acc_start)) / CLOCKS_PER_SEC;
-#else
-  #ifdef __INTEL_COMPILERX
-  acc_stop = (double)_rdtsc();
-  acc_secs = ((double)(acc_stop - acc_start)) / (double) getCPUFreq();
-  #else
-  gettimeofday(&acc_after, NULL);
-  acc_secs = (acc_after.tv_sec - acc_before.tv_sec) + (acc_after.tv_usec - acc_before.tv_usec)/1000000.0;
+  secs = (after.tv_sec - before[timer].tv_sec) + (after.tv_usec - before[timer].tv_usec)/1000000.0;
   #endif
 #endif
   if ( ((env = getenv(OPENME_DEBUG)) != NULL) && (atoi(env)==1) )
@@ -117,15 +84,24 @@ void acc_clock_end(void)
 
 void program_start(void)
 {
+  int timer;
+
   if ( ((env = getenv(OPENME_DEBUG)) != NULL) && (atoi(env)==1) )
     printf("OpenME event: start program\n");
 
   printf("Start program\n");
+
+  for (timer=0; timer<NTIMERS; timer++)
+  {
+    secs[timer] = 0.0;
+    start[timer] = 0.0;
+  }
 }
 
 void program_end(void)
 {
   FILE* f;
+  int timer;
 
   if ( ((env = getenv(OPENME_DEBUG)) != NULL) && (atoi(env)==1) )
     printf("OpenME event: ending program\n");
@@ -140,8 +116,15 @@ void program_end(void)
   }
 
   fprintf(f,"{\n");
-  fprintf(f,"  \"execution_time\":\"%.6lf\",\n", secs);
-  fprintf(f,"  \"execution_time_extra1\":\"%.6lf\"\n", acc_secs);
+  fprintf(f," \"execution_time\":%.6lf,\n", secs[0]);
+  fprintf(f," \"kernel_execution_time\":[\n");
+  for (timer=0; timer<NTIMERS; timer++) 
+  {
+    fprintf(f,"    %.6lf", secs[timer]);
+    if (timer!=(NTIMERS-1)) fprintf(f, ",");
+    fprintf(f, "\n");
+  }
+  fprintf(f," ]\n");
   fprintf(f,"}\n");
 
   fclose(f);

@@ -6,7 +6,8 @@
  * Web address: http://polybench.sourceforge.net
  *
  * Updated by Grigori Fursin (http://cTuning.org/lab/people/gfursin)
- * to work with Collective Mind Framework for automatic 
+ * to work with Collective Mind, OpenME plugin interface and
+ * Collective Knowledge Frameworks for automatic, machine-learning based
  * and collective tuning and data mining: http://cTuning.org
  */
 #ifndef WINDOWS
@@ -152,7 +153,7 @@ int main(int argc, char** argv)
   openme_callback("KERNEL_START", NULL);
 #endif
 #ifdef XOPENME
-  clock_start();
+  clock_start(0);
 #endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
       kernel_fdtd_2d (tmax, nx, ny,
@@ -161,7 +162,7 @@ int main(int argc, char** argv)
                       POLYBENCH_ARRAY(hz),
                       POLYBENCH_ARRAY(_fict_));
 #ifdef XOPENME
-  clock_end();
+  clock_end(0);
 #endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);

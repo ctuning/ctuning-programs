@@ -2049,7 +2049,7 @@ CORNER_LIST corner_list;
   openme_callback("KERNEL_START", NULL);
 #endif
 #ifdef XOPENME
-  clock_start();
+  clock_start(0);
 #endif
 
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
@@ -2129,7 +2129,7 @@ CORNER_LIST corner_list;
 /* }}} */
 
 #ifdef XOPENME
-  clock_end();
+  clock_end(0);
 #endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
