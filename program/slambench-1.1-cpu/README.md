@@ -6,7 +6,7 @@ and machine learning.
 Unfortunately, we had problems porting this code to Windows
 due to many Unix deps...
 
-# README #
+# ORIGINAL README #
 
 SLAMBench Release Candidate 1.1
 
