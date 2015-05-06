@@ -10,51 +10,64 @@
     }, 
     "lib_opencl": {
       "local": "yes", 
-      "sort": 20, 
+      "sort": 15, 
       "tags": "lib,opencl"
+    },
+    "lib.toon": {
+      "local": "yes", 
+      "sort": 20, 
+      "tags": "lib,toon"
     }
   }, 
-  "compiler_env": "CK_CC", 
+  "compiler_env": "CK_CXX", 
+  "compiler_add_include_as_env":["CK_ENV_LIB_STDCPP_INCLUDE", "CK_ENV_LIB_STDCPP_INCLUDE_EXTRA"],
+  "linker_add_lib_as_env":["CK_ENV_LIB_STDCPP_STATIC"],
   "data_name": "slambench-1.1-opencl", 
   "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
+  "local_include_dirs": [
+    "include", 
+    "thirdparty"
+  ], 
   "main_language": "cpp", 
   "process_in_tmp": "yes", 
   "program": "yes", 
   "run_cmds": {
     "default": {
+      "dataset_tags": [
+        "dataset", 
+        "raw", 
+        "video", 
+        "slambench"
+      ], 
       "ignore_return_code": "no", 
       "run_time": {
         "fine_grain_timer_file": "tmp-ck-timer.json", 
-        "run_cmd_main": "$#BIN_FILE#$", 
+        "run_cmd_main": "$#BIN_FILE#$ -s 4.8 -p 0.34,0.5,0.24 -z 4 -c 2 -r 1 -k 481.2,480,320,240 -i $#dataset_path#$$#dataset_filename#$ -o tmp-output.tmp", 
         "run_cmd_out1": "tmp-output1.tmp", 
         "run_cmd_out2": "tmp-output2.tmp", 
-        "run_correctness_output_files": [
-          "tmp-output2.tmp"
-        ], 
+        "run_correctness_output_files": [], 
         "run_input_files": [], 
         "run_output_files": [
+          "tmp-output.tmp", 
           "tmp-ck-timer.json"
         ]
       }
     }
   }, 
   "run_vars": {
-    "CT_REPEAT_MAIN": "1"
+    "KERNEL_TIMINGS": "1"
   }, 
   "run_vars_desc": {
-    "##CT_REPEAT_MAIN": {
-      "default": 1, 
-      "desc": "Main function/kernel repetition", 
-      "explore_start": 1, 
-      "explore_step": 10, 
-      "explore_stop": 1000000, 
-      "sort": 1, 
-      "type": "integer"
+    "##KERNEL_TIMINGS": {
+      "default": "1", 
+      "desc": "Print kernels timing", 
+      "type": "text"
     }
   }, 
   "source_files": [
-    "ctuning.c", 
-    "syrk.c"
+    "reader.cpp", 
+    "benchmark.cpp", 
+    "kernels.cpp"
   ], 
   "tags": [
     "opencl", 

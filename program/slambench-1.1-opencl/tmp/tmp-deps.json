@@ -1,0 +1,711 @@
+{
+  "lib_opencl": {
+    "sort": 15, 
+    "bat": ". /home/fursin/fggwork/ck-repos/local/env/6c9230d9ca8f02b1/env.sh\n", 
+    "cus": {
+      "add_include_path": "yes", 
+      "path_install": "/opt/intel/intel-opencl-1.2-4.6.0.92/opencl", 
+      "dynamic_lib": "libOpenCL.so", 
+      "static_lib": "libOpenCL.so", 
+      "path_include": "/opt/intel/intel-opencl-1.2-4.6.0.92/opencl/include", 
+      "include_name": "CL/opencl.h", 
+      "path_bin": "/opt/intel/intel-opencl-1.2-4.6.0.92/opencl/bin", 
+      "path_lib": "/opt/intel/intel-opencl-1.2-4.6.0.92/opencl/lib64", 
+      "version": "4.6.0", 
+      "skip_add_to_ld_path": "yes", 
+      "env_prefix": "CK_ENV_LIB_OPENCL", 
+      "version_int": 40600
+    }, 
+    "tags": "lib,opencl", 
+    "num_entries": 1, 
+    "uoa": "6c9230d9ca8f02b1", 
+    "dict": {
+      "deps": {}, 
+      "tags": [
+        "64bits", 
+        "host-os-linux-64", 
+        "intel", 
+        "lib", 
+        "opencl", 
+        "target-os-linux-64", 
+        "v4", 
+        "v4.6", 
+        "v4.6.0"
+      ], 
+      "customize": {
+        "add_include_path": "yes", 
+        "path_install": "/opt/intel/intel-opencl-1.2-4.6.0.92/opencl", 
+        "dynamic_lib": "libOpenCL.so", 
+        "static_lib": "libOpenCL.so", 
+        "path_include": "/opt/intel/intel-opencl-1.2-4.6.0.92/opencl/include", 
+        "include_name": "CL/opencl.h", 
+        "path_bin": "/opt/intel/intel-opencl-1.2-4.6.0.92/opencl/bin", 
+        "path_lib": "/opt/intel/intel-opencl-1.2-4.6.0.92/opencl/lib64", 
+        "version": "4.6.0", 
+        "skip_add_to_ld_path": "yes", 
+        "env_prefix": "CK_ENV_LIB_OPENCL", 
+        "version_int": 40600
+      }, 
+      "setup": {
+        "target_os_bits": "64", 
+        "version": "4.6.0", 
+        "host_os_uoa": "4258b5fe54828a50", 
+        "target_os_uoa": "4258b5fe54828a50"
+      }, 
+      "env_script": "env.sh", 
+      "soft_uoa": "b13b6a18695c3675", 
+      "env": {
+        "CK_ENV_LIB_OPENCL_DYNAMIC_NAME": "libOpenCL.so", 
+        "CK_ENV_LIB_OPENCL_INCLUDE_NAME": "CL/opencl.h", 
+        "CK_ENV_LIB_OPENCL_STATIC_NAME": "libOpenCL.so"
+      }
+    }, 
+    "ver": "4.6.0", 
+    "local": "yes"
+  }, 
+  "lib.toon": {
+    "sort": 20, 
+    "bat": ". /home/fursin/fggwork/ck-repos/local/env/bebb4e14bca3228b/env.sh\n", 
+    "cus": {
+      "add_include_path": "yes", 
+      "path_install": "/home/fursin/fggwork/ck-tools/lib-toon-2.2-linux-64", 
+      "skip_add_to_bin": "yes", 
+      "path_include": "/home/fursin/fggwork/ck-tools/lib-toon-2.2-linux-64/include", 
+      "skip_add_to_ld_path": "yes", 
+      "skip_add_to_path": "yes", 
+      "version": "2.2", 
+      "version_int": 20200, 
+      "extra_dir": "", 
+      "env_prefix": "CK_ENV_LIB_TOON"
+    }, 
+    "tags": "lib,toon", 
+    "num_entries": 1, 
+    "uoa": "bebb4e14bca3228b", 
+    "dict": {
+      "deps": {}, 
+      "tags": [
+        "64bits", 
+        "host-os-linux-64", 
+        "lib", 
+        "target-os-linux-64", 
+        "toon", 
+        "v2", 
+        "v2.2"
+      ], 
+      "customize": {
+        "add_include_path": "yes", 
+        "path_install": "/home/fursin/fggwork/ck-tools/lib-toon-2.2-linux-64", 
+        "skip_add_to_bin": "yes", 
+        "path_include": "/home/fursin/fggwork/ck-tools/lib-toon-2.2-linux-64/include", 
+        "skip_add_to_ld_path": "yes", 
+        "skip_add_to_path": "yes", 
+        "version": "2.2", 
+        "version_int": 20200, 
+        "extra_dir": "", 
+        "env_prefix": "CK_ENV_LIB_TOON"
+      }, 
+      "setup": {
+        "target_os_bits": "64", 
+        "version": "2.2", 
+        "host_os_uoa": "4258b5fe54828a50", 
+        "target_os_uoa": "4258b5fe54828a50"
+      }, 
+      "env_script": "env.sh", 
+      "soft_uoa": "f3fbb766bb4456ea", 
+      "env": {}
+    }, 
+    "ver": "2.2", 
+    "local": "yes"
+  }, 
+  "compiler": {
+    "sort": 10, 
+    "bat": ". /home/fursin/fggwork/ck-repos/local/env/cc766b62c6e4a548/env.sh\n", 
+    "cus": {
+      "path_install": "/home/fursin/fggwork/ck-tools/gcc-milepost-4.4.4-linux-64", 
+      "can_strip_dynamic_lib": "yes", 
+      "build_dir_name": "gcc", 
+      "skip_add_to_ld_path": "yes", 
+      "retarget": "no", 
+      "add_m32": "no", 
+      "languages": [
+        "C", 
+        "CPP", 
+        "F77", 
+        "F90", 
+        "F95"
+      ], 
+      "tool_prefix_configured": "yes", 
+      "path_bin": "/home/fursin/fggwork/ck-tools/gcc-milepost-4.4.4-linux-64/bin", 
+      "version_int": 40404, 
+      "version": "4.4.4", 
+      "extra_dir": "", 
+      "bugfix1": "yes", 
+      "env_prefix": "CK_ENV_COMPILER_GCC"
+    }, 
+    "tags": "compiler,lang-cpp", 
+    "build_dir_name": "gcc", 
+    "num_entries": 12, 
+    "uoa": "cc766b62c6e4a548", 
+    "dict": {
+      "deps": {
+        "lib_mpc": {
+          "sort": 30, 
+          "bat": ". /home/fursin/fggwork/ck-repos/local/env/2749c1cd008076bd/env.sh\n", 
+          "ver": "1.0.3", 
+          "tags": "lib,mpc", 
+          "uoa": "2749c1cd008076bd", 
+          "num_entries": 1, 
+          "dict": {
+            "deps": {
+              "lib_mpfr": {
+                "sort": 20, 
+                "bat": ". /home/fursin/fggwork/ck-repos/local/env/430782fb4339bfa8/env.sh\n", 
+                "ver": "3.1.0", 
+                "tags": "lib,mpfr", 
+                "uoa": "430782fb4339bfa8", 
+                "num_entries": 1, 
+                "dict": {
+                  "deps": {
+                    "lib_gmp": {
+                      "bat": ". /home/fursin/fggwork/ck-repos/local/env/1e842aaa17d46904/env.sh\n", 
+                      "ver": "5.0.5", 
+                      "tags": "lib,gmp", 
+                      "num_entries": 1, 
+                      "uoa": "1e842aaa17d46904", 
+                      "dict": {
+                        "deps": {}, 
+                        "tags": [
+                          "64bits", 
+                          "gmp", 
+                          "host-os-linux-64", 
+                          "lib", 
+                          "target-os-linux-64", 
+                          "v5", 
+                          "v5.0", 
+                          "v5.0.5"
+                        ], 
+                        "customize": {
+                          "add_include_path": "yes", 
+                          "path_install": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64", 
+                          "path_include": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/include", 
+                          "path_bin": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/bin", 
+                          "path_lib": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/lib", 
+                          "version": "5.0.5", 
+                          "extra_dir": "", 
+                          "env_prefix": "CK_ENV_LIB_GMP", 
+                          "version_int": 50005
+                        }, 
+                        "setup": {
+                          "target_os_bits": "64", 
+                          "version": "5.0.5", 
+                          "host_os_uoa": "4258b5fe54828a50", 
+                          "target_os_uoa": "4258b5fe54828a50"
+                        }, 
+                        "env_script": "env.sh", 
+                        "soft_uoa": "ed501fa9004a6cb6", 
+                        "env": {}
+                      }, 
+                      "local": "yes"
+                    }
+                  }, 
+                  "tags": [
+                    "64bits", 
+                    "host-os-linux-64", 
+                    "lib", 
+                    "mpfr", 
+                    "target-os-linux-64", 
+                    "v3", 
+                    "v3.1", 
+                    "v3.1.0"
+                  ], 
+                  "customize": {
+                    "add_include_path": "yes", 
+                    "path_install": "/home/fursin/fggwork/ck-tools/mpfr-3.1.0-linux-64", 
+                    "path_include": "/home/fursin/fggwork/ck-tools/mpfr-3.1.0-linux-64/include", 
+                    "path_bin": "/home/fursin/fggwork/ck-tools/mpfr-3.1.0-linux-64/bin", 
+                    "path_lib": "/home/fursin/fggwork/ck-tools/mpfr-3.1.0-linux-64/lib", 
+                    "version": "3.1.0", 
+                    "extra_dir": "", 
+                    "env_prefix": "CK_ENV_LIB_MPFR", 
+                    "version_int": 30100
+                  }, 
+                  "setup": {
+                    "target_os_bits": "64", 
+                    "deps_lib_gmp": "1e842aaa17d46904", 
+                    "host_os_uoa": "4258b5fe54828a50", 
+                    "target_os_uoa": "4258b5fe54828a50", 
+                    "version": "3.1.0"
+                  }, 
+                  "env_script": "env.sh", 
+                  "soft_uoa": "b212226b44799964", 
+                  "env": {}
+                }, 
+                "local": "yes"
+              }, 
+              "lib_gmp": {
+                "sort": 10, 
+                "bat": ". /home/fursin/fggwork/ck-repos/local/env/1e842aaa17d46904/env.sh\n", 
+                "ver": "5.0.5", 
+                "tags": "lib,gmp", 
+                "uoa": "1e842aaa17d46904", 
+                "num_entries": 1, 
+                "dict": {
+                  "deps": {}, 
+                  "tags": [
+                    "64bits", 
+                    "gmp", 
+                    "host-os-linux-64", 
+                    "lib", 
+                    "target-os-linux-64", 
+                    "v5", 
+                    "v5.0", 
+                    "v5.0.5"
+                  ], 
+                  "customize": {
+                    "add_include_path": "yes", 
+                    "path_install": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64", 
+                    "path_include": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/include", 
+                    "path_bin": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/bin", 
+                    "path_lib": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/lib", 
+                    "version": "5.0.5", 
+                    "extra_dir": "", 
+                    "env_prefix": "CK_ENV_LIB_GMP", 
+                    "version_int": 50005
+                  }, 
+                  "setup": {
+                    "target_os_bits": "64", 
+                    "version": "5.0.5", 
+                    "host_os_uoa": "4258b5fe54828a50", 
+                    "target_os_uoa": "4258b5fe54828a50"
+                  }, 
+                  "env_script": "env.sh", 
+                  "soft_uoa": "ed501fa9004a6cb6", 
+                  "env": {}
+                }, 
+                "local": "yes"
+              }
+            }, 
+            "tags": [
+              "64bits", 
+              "host-os-linux-64", 
+              "lib", 
+              "mpc", 
+              "target-os-linux-64", 
+              "v1", 
+              "v1.0", 
+              "v1.0.3"
+            ], 
+            "customize": {
+              "add_include_path": "yes", 
+              "path_install": "/home/fursin/fggwork/ck-tools/mpc-1.0.3-linux-64", 
+              "path_include": "/home/fursin/fggwork/ck-tools/mpc-1.0.3-linux-64/include", 
+              "path_bin": "/home/fursin/fggwork/ck-tools/mpc-1.0.3-linux-64/bin", 
+              "path_lib": "/home/fursin/fggwork/ck-tools/mpc-1.0.3-linux-64/lib", 
+              "version": "1.0.3", 
+              "extra_dir": "", 
+              "env_prefix": "CK_ENV_LIB_MPC", 
+              "version_int": 10003
+            }, 
+            "setup": {
+              "deps_lib_mpfr": "430782fb4339bfa8", 
+              "version": "1.0.3", 
+              "target_os_bits": "64", 
+              "deps_lib_gmp": "1e842aaa17d46904", 
+              "host_os_uoa": "4258b5fe54828a50", 
+              "target_os_uoa": "4258b5fe54828a50"
+            }, 
+            "env_script": "env.sh", 
+            "soft_uoa": "067e4f40badd4223", 
+            "env": {}
+          }, 
+          "local": "yes"
+        }, 
+        "lib_cloog": {
+          "sort": 50, 
+          "bat": ". /home/fursin/fggwork/ck-repos/local/env/8a673832bf494489/env.sh\n", 
+          "ver": "0.17.0", 
+          "tags": "lib,cloog", 
+          "uoa": "8a673832bf494489", 
+          "num_entries": 1, 
+          "dict": {
+            "deps": {
+              "lib_gmp": {
+                "bat": ". /home/fursin/fggwork/ck-repos/local/env/1e842aaa17d46904/env.sh\n", 
+                "ver": "5.0.5", 
+                "tags": "lib,gmp", 
+                "num_entries": 1, 
+                "uoa": "1e842aaa17d46904", 
+                "dict": {
+                  "deps": {}, 
+                  "tags": [
+                    "64bits", 
+                    "gmp", 
+                    "host-os-linux-64", 
+                    "lib", 
+                    "target-os-linux-64", 
+                    "v5", 
+                    "v5.0", 
+                    "v5.0.5"
+                  ], 
+                  "customize": {
+                    "add_include_path": "yes", 
+                    "path_install": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64", 
+                    "path_include": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/include", 
+                    "path_bin": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/bin", 
+                    "path_lib": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/lib", 
+                    "version": "5.0.5", 
+                    "extra_dir": "", 
+                    "env_prefix": "CK_ENV_LIB_GMP", 
+                    "version_int": 50005
+                  }, 
+                  "setup": {
+                    "target_os_bits": "64", 
+                    "version": "5.0.5", 
+                    "host_os_uoa": "4258b5fe54828a50", 
+                    "target_os_uoa": "4258b5fe54828a50"
+                  }, 
+                  "env_script": "env.sh", 
+                  "soft_uoa": "ed501fa9004a6cb6", 
+                  "env": {}
+                }, 
+                "local": "yes"
+              }
+            }, 
+            "tags": [
+              "64bits", 
+              "cloog", 
+              "host-os-linux-64", 
+              "lib", 
+              "target-os-linux-64", 
+              "v0", 
+              "v0.17", 
+              "v0.17.0"
+            ], 
+            "customize": {
+              "add_include_path": "yes", 
+              "path_install": "/home/fursin/fggwork/ck-tools/cloog-0.17.0-linux-64", 
+              "path_include": "/home/fursin/fggwork/ck-tools/cloog-0.17.0-linux-64/include", 
+              "path_bin": "/home/fursin/fggwork/ck-tools/cloog-0.17.0-linux-64/bin", 
+              "path_lib": "/home/fursin/fggwork/ck-tools/cloog-0.17.0-linux-64/lib", 
+              "version": "0.17.0", 
+              "extra_dir": "", 
+              "env_prefix": "CK_ENV_LIB_CLOOG", 
+              "version_int": 1700
+            }, 
+            "setup": {
+              "target_os_bits": "64", 
+              "deps_lib_gmp": "1e842aaa17d46904", 
+              "host_os_uoa": "4258b5fe54828a50", 
+              "target_os_uoa": "4258b5fe54828a50", 
+              "version": "0.17.0"
+            }, 
+            "env_script": "env.sh", 
+            "soft_uoa": "7dadf96440b48611", 
+            "env": {}
+          }, 
+          "local": "yes"
+        }, 
+        "lib_isl": {
+          "sort": 60, 
+          "bat": ". /home/fursin/fggwork/ck-repos/local/env/3149d244dc46488f/env.sh\n", 
+          "ver": "0.10", 
+          "tags": "lib,isl", 
+          "uoa": "3149d244dc46488f", 
+          "num_entries": 1, 
+          "dict": {
+            "deps": {
+              "lib_gmp": {
+                "bat": ". /home/fursin/fggwork/ck-repos/local/env/1e842aaa17d46904/env.sh\n", 
+                "ver": "5.0.5", 
+                "tags": "lib,gmp", 
+                "num_entries": 1, 
+                "uoa": "1e842aaa17d46904", 
+                "dict": {
+                  "deps": {}, 
+                  "tags": [
+                    "64bits", 
+                    "gmp", 
+                    "host-os-linux-64", 
+                    "lib", 
+                    "target-os-linux-64", 
+                    "v5", 
+                    "v5.0", 
+                    "v5.0.5"
+                  ], 
+                  "customize": {
+                    "add_include_path": "yes", 
+                    "path_install": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64", 
+                    "path_include": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/include", 
+                    "path_bin": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/bin", 
+                    "path_lib": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/lib", 
+                    "version": "5.0.5", 
+                    "extra_dir": "", 
+                    "env_prefix": "CK_ENV_LIB_GMP", 
+                    "version_int": 50005
+                  }, 
+                  "setup": {
+                    "target_os_bits": "64", 
+                    "version": "5.0.5", 
+                    "host_os_uoa": "4258b5fe54828a50", 
+                    "target_os_uoa": "4258b5fe54828a50"
+                  }, 
+                  "env_script": "env.sh", 
+                  "soft_uoa": "ed501fa9004a6cb6", 
+                  "env": {}
+                }, 
+                "local": "yes"
+              }
+            }, 
+            "tags": [
+              "64bits", 
+              "host-os-linux-64", 
+              "isl", 
+              "lib", 
+              "target-os-linux-64", 
+              "v0", 
+              "v0.10"
+            ], 
+            "customize": {
+              "add_include_path": "yes", 
+              "path_install": "/home/fursin/fggwork/ck-tools/isl-0.10-linux-64", 
+              "path_include": "/home/fursin/fggwork/ck-tools/isl-0.10-linux-64/include", 
+              "path_bin": "/home/fursin/fggwork/ck-tools/isl-0.10-linux-64/bin", 
+              "path_lib": "/home/fursin/fggwork/ck-tools/isl-0.10-linux-64/lib", 
+              "version": "0.10", 
+              "extra_dir": "", 
+              "env_prefix": "CK_ENV_LIB_ISL", 
+              "version_int": 1000
+            }, 
+            "setup": {
+              "target_os_bits": "64", 
+              "deps_lib_gmp": "1e842aaa17d46904", 
+              "host_os_uoa": "4258b5fe54828a50", 
+              "target_os_uoa": "4258b5fe54828a50", 
+              "version": "0.10"
+            }, 
+            "env_script": "env.sh", 
+            "soft_uoa": "82dd13ca47c64729", 
+            "env": {}
+          }, 
+          "local": "yes"
+        }, 
+        "lib_mpfr": {
+          "sort": 20, 
+          "bat": ". /home/fursin/fggwork/ck-repos/local/env/430782fb4339bfa8/env.sh\n", 
+          "ver": "3.1.0", 
+          "tags": "lib,mpfr", 
+          "uoa": "430782fb4339bfa8", 
+          "num_entries": 1, 
+          "dict": {
+            "deps": {
+              "lib_gmp": {
+                "bat": ". /home/fursin/fggwork/ck-repos/local/env/1e842aaa17d46904/env.sh\n", 
+                "ver": "5.0.5", 
+                "tags": "lib,gmp", 
+                "num_entries": 1, 
+                "uoa": "1e842aaa17d46904", 
+                "dict": {
+                  "deps": {}, 
+                  "tags": [
+                    "64bits", 
+                    "gmp", 
+                    "host-os-linux-64", 
+                    "lib", 
+                    "target-os-linux-64", 
+                    "v5", 
+                    "v5.0", 
+                    "v5.0.5"
+                  ], 
+                  "customize": {
+                    "add_include_path": "yes", 
+                    "path_install": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64", 
+                    "path_include": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/include", 
+                    "path_bin": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/bin", 
+                    "path_lib": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/lib", 
+                    "version": "5.0.5", 
+                    "extra_dir": "", 
+                    "env_prefix": "CK_ENV_LIB_GMP", 
+                    "version_int": 50005
+                  }, 
+                  "setup": {
+                    "target_os_bits": "64", 
+                    "version": "5.0.5", 
+                    "host_os_uoa": "4258b5fe54828a50", 
+                    "target_os_uoa": "4258b5fe54828a50"
+                  }, 
+                  "env_script": "env.sh", 
+                  "soft_uoa": "ed501fa9004a6cb6", 
+                  "env": {}
+                }, 
+                "local": "yes"
+              }
+            }, 
+            "tags": [
+              "64bits", 
+              "host-os-linux-64", 
+              "lib", 
+              "mpfr", 
+              "target-os-linux-64", 
+              "v3", 
+              "v3.1", 
+              "v3.1.0"
+            ], 
+            "customize": {
+              "add_include_path": "yes", 
+              "path_install": "/home/fursin/fggwork/ck-tools/mpfr-3.1.0-linux-64", 
+              "path_include": "/home/fursin/fggwork/ck-tools/mpfr-3.1.0-linux-64/include", 
+              "path_bin": "/home/fursin/fggwork/ck-tools/mpfr-3.1.0-linux-64/bin", 
+              "path_lib": "/home/fursin/fggwork/ck-tools/mpfr-3.1.0-linux-64/lib", 
+              "version": "3.1.0", 
+              "extra_dir": "", 
+              "env_prefix": "CK_ENV_LIB_MPFR", 
+              "version_int": 30100
+            }, 
+            "setup": {
+              "target_os_bits": "64", 
+              "deps_lib_gmp": "1e842aaa17d46904", 
+              "host_os_uoa": "4258b5fe54828a50", 
+              "target_os_uoa": "4258b5fe54828a50", 
+              "version": "3.1.0"
+            }, 
+            "env_script": "env.sh", 
+            "soft_uoa": "b212226b44799964", 
+            "env": {}
+          }, 
+          "local": "yes"
+        }, 
+        "lib_gmp": {
+          "sort": 10, 
+          "bat": ". /home/fursin/fggwork/ck-repos/local/env/1e842aaa17d46904/env.sh\n", 
+          "ver": "5.0.5", 
+          "tags": "lib,gmp", 
+          "uoa": "1e842aaa17d46904", 
+          "num_entries": 1, 
+          "dict": {
+            "deps": {}, 
+            "tags": [
+              "64bits", 
+              "gmp", 
+              "host-os-linux-64", 
+              "lib", 
+              "target-os-linux-64", 
+              "v5", 
+              "v5.0", 
+              "v5.0.5"
+            ], 
+            "customize": {
+              "add_include_path": "yes", 
+              "path_install": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64", 
+              "path_include": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/include", 
+              "path_bin": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/bin", 
+              "path_lib": "/home/fursin/fggwork/ck-tools/gmp-5.0.5-linux-64/lib", 
+              "version": "5.0.5", 
+              "extra_dir": "", 
+              "env_prefix": "CK_ENV_LIB_GMP", 
+              "version_int": 50005
+            }, 
+            "setup": {
+              "target_os_bits": "64", 
+              "version": "5.0.5", 
+              "host_os_uoa": "4258b5fe54828a50", 
+              "target_os_uoa": "4258b5fe54828a50"
+            }, 
+            "env_script": "env.sh", 
+            "soft_uoa": "ed501fa9004a6cb6", 
+            "env": {}
+          }, 
+          "local": "yes"
+        }
+      }, 
+      "tags": [
+        "64bits", 
+        "compiler", 
+        "gcc", 
+        "host-os-linux-64", 
+        "lang-c", 
+        "lang-cpp", 
+        "lang-f77", 
+        "lang-f90", 
+        "lang-f95", 
+        "target-os-linux-64", 
+        "v4", 
+        "v4.4", 
+        "v4.4.4"
+      ], 
+      "customize": {
+        "path_install": "/home/fursin/fggwork/ck-tools/gcc-milepost-4.4.4-linux-64", 
+        "can_strip_dynamic_lib": "yes", 
+        "build_dir_name": "gcc", 
+        "skip_add_to_ld_path": "yes", 
+        "retarget": "no", 
+        "add_m32": "no", 
+        "languages": [
+          "C", 
+          "CPP", 
+          "F77", 
+          "F90", 
+          "F95"
+        ], 
+        "tool_prefix_configured": "yes", 
+        "path_bin": "/home/fursin/fggwork/ck-tools/gcc-milepost-4.4.4-linux-64/bin", 
+        "version_int": 40404, 
+        "version": "4.4.4", 
+        "extra_dir": "", 
+        "bugfix1": "yes", 
+        "env_prefix": "CK_ENV_COMPILER_GCC"
+      }, 
+      "setup": {
+        "deps_lib_mpfr": "430782fb4339bfa8", 
+        "deps_lib_mpc": "2749c1cd008076bd", 
+        "deps_lib_isl": "3149d244dc46488f", 
+        "deps_lib_cloog": "8a673832bf494489", 
+        "version": "4.4.4", 
+        "target_os_bits": "64", 
+        "deps_lib_gmp": "1e842aaa17d46904", 
+        "host_os_uoa": "4258b5fe54828a50", 
+        "target_os_uoa": "4258b5fe54828a50"
+      }, 
+      "env_script": "env.sh", 
+      "soft_uoa": "3a8a82fa40bf992d", 
+      "env": {
+        "CK_COMPILER_FLAGS_OBLIGATORY": "", 
+        "CK_AR": "ar", 
+        "CK_FLAGS_DLL_EXTRA": "", 
+        "CK_LIB_EXT": ".a", 
+        "CK_OPT_SIZE": "-Os", 
+        "CK_OPT_SPEED": "-O3", 
+        "CK_CC": "gcc", 
+        "CK_MAKE": "make", 
+        "CK_LB_OUTPUT": "-o ", 
+        "CK_FLAGS_STATIC_LIB": "-fPIC", 
+        "CK_FLAG_PREFIX_VAR": "-D", 
+        "CK_EXTRA_LIB_M": "-lm", 
+        "CK_FLAG_PREFIX_LIB_DIR": "-L", 
+        "CK_FLAGS_CREATE_OBJ": "-c", 
+        "CK_FLAG_PREFIX_INCLUDE": "-I", 
+        "CK_OBJ_EXT": ".o", 
+        "CK_FLAGS_OUTPUT": "-o ", 
+        "CK_LB": "ar rcs", 
+        "CK_LD": "ld", 
+        "CK_PLUGIN_FLAG": "-fplugin=", 
+        "CK_OPT_SPEED_SAFE": "-O2", 
+        "CK_DLL_EXT": ".so", 
+        "CK_CXX": "g++", 
+        "CK_ASM_EXT": ".s", 
+        "CK_FC": "gfortran", 
+        "CK_LD_FLAGS_EXTRA": "", 
+        "CK_OBJDUMP": "objdump -d", 
+        "CK_EXE_EXT": ".out", 
+        "CK_F90": "gfortran", 
+        "CK_PROFILER": "gprof", 
+        "CK_FLAGS_DLL": "-shared -fPIC", 
+        "CK_FLAGS_STATIC_BIN": "-static -fPIC", 
+        "CK_EXTRA_LIB_DL": "-ldl", 
+        "CK_F95": "gfortran", 
+        "CK_FLAGS_CREATE_ASM": "-S"
+      }
+    }, 
+    "ver": "4.4.4", 
+    "local": "yes"
+  }
+}

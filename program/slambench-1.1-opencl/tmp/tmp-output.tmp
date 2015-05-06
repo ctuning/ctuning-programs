@@ -1,0 +1,3 @@
+frame	acquisition	preprocessing	tracking	integration	raycasting	rendering	computation	total    	X          	Y          	Z         	tracked   	integrated
+0	0.000449	0.224161	0.159620	1.220458	0.000000	2.393056	1.604240	3.997745	0.000000	0.000000	0.000000	0        	1
+1	0.000194	0.221221	0.157969	1.241961	0.000000	0.004607	1.621151	1.625952	0.000000	0.000000	0.000000	0        	1

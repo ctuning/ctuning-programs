@@ -1,6 +1,10 @@
-This benchmark is being gradually converted 
-to Collective Knowledge Format by Grigori Fursin
-and cTuning foundation
+This benchmark has been converted to universal Collective Knowledge
+Format by Grigori Fursin and cTuning foundation (2015) to take advantage 
+of universal performance/energy analysis, autotuning, run-time adaptation 
+and machine learning.
+
+Unfortunately, we had problems porting this code to Windows
+due to many Unix deps...
 
 # README #
 
