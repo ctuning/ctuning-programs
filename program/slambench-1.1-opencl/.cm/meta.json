@@ -66,6 +66,7 @@
   }, 
   "source_files": [
     "reader.cpp", 
+    "common_opencl.cpp",
     "benchmark.cpp", 
     "kernels.cpp"
   ], 
