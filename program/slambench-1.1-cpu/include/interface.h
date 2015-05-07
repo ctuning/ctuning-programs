@@ -19,16 +19,8 @@
 #include <iomanip>
 #include <stdio.h>
 #include <stdbool.h>
-
-#ifndef WINDOWS /* Grigori */
 #include <unistd.h>
-#endif
-
-#ifdef __MINGW32__ /* Grigori */
-#include <sys/time.h>
-#else
 #include <time.h>
-#endif
 
 enum ReaderType {
 	READER_RAW, READER_SCENE, READER_OPENNI
@@ -62,25 +54,19 @@ public:
 			return;
 		}
 
-#ifdef WINDOWS /* Grigori */
-                double current_frame = ((double) clock()) / CLOCKS_PER_SEC;
-                static double first_frame = current_frame;
-#else
- #ifdef __APPLE__
+#ifdef __APPLE__
 		clock_serv_t cclock;
 		mach_timespec_t clockData;
 		host_get_clock_service(mach_host_self(), SYSTEM_CLOCK, &cclock);
 		clock_get_time(cclock, &clockData);
 		mach_port_deallocate(mach_task_self(), cclock);
- #else
+#else
 		struct timespec clockData;
 		clock_gettime(CLOCK_MONOTONIC, &clockData);
- #endif
-
+#endif
 		double current_frame = clockData.tv_sec
 				+ clockData.tv_nsec / 1000000000.0;
 		static double first_frame = current_frame;
-#endif
 
 		int frame = std::ceil((current_frame - first_frame) * (double) _fps);
 		_frame = frame;
@@ -89,11 +75,7 @@ public:
 		double ttw = ((double) _frame * tpf - current_frame + first_frame);
 		if (_blocking_read) {
 			if (ttw > 0)
-#ifdef WINDOWS
-				_sleep(1000000.0 * ttw);
-#else
 				usleep(1000000.0 * ttw);
-#endif
 		}
 
 	}

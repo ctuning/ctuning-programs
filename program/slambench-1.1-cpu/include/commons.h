@@ -49,6 +49,13 @@
 #define INVALID -2
 // DATA TYPE
 
+inline
+bool is_file(std::string path) {
+	struct stat buf;
+	stat(path.c_str(), &buf);
+	return S_ISREG(buf.st_mode);
+}
+
 template<typename T>
 std::string NumberToString(T Number, int width = 6) {
 	std::ostringstream ss;
@@ -565,7 +572,7 @@ void writeVolume(std::string filename, Volume v) {
 	std::ofstream fDumpFile;
 	fDumpFile.open(filename.c_str(), std::ios::out | std::ios::binary);
 
-	if (fDumpFile) {
+	if (fDumpFile == NULL) {
 		std::cout << "Error opening file: " << filename << std::endl;
 		exit(1);
 	}
