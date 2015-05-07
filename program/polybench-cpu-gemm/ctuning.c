@@ -72,14 +72,14 @@ void clock_end(int timer)
   secs[timer] = ((double)(clock() - start[timer])) / CLOCKS_PER_SEC;
 #else
   #ifdef __INTEL_COMPILERX
-  secs[timer] = ((double)((double)_rdtsc() - start)) / (double) getCPUFreq();
+  secs[timer] = ((double)((double)_rdtsc() - start[timer])) / (double) getCPUFreq();
   #else
   gettimeofday(&after, NULL);
-  secs = (after.tv_sec - before[timer].tv_sec) + (after.tv_usec - before[timer].tv_usec)/1000000.0;
+  secs[timer] = (after.tv_sec - before[timer].tv_sec) + (after.tv_usec - before[timer].tv_usec)/1000000.0;
   #endif
 #endif
   if ( ((env = getenv(OPENME_DEBUG)) != NULL) && (atoi(env)==1) )
-    printf("OpenME event: stop clock: %f\n", secs);
+    printf("OpenME event: stop clock: %f\n", secs[timer]);
 }
 
 void program_start(void)
