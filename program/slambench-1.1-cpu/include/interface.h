@@ -21,7 +21,6 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <time.h>
-
 enum ReaderType {
 	READER_RAW, READER_SCENE, READER_OPENNI
 };
@@ -276,7 +275,7 @@ public:
 #endif
 
 		if (total != expected_size) {
-			std::cout << "End of file" << (total == 0 ? "" : "(garbage found)")
+			std::cout << "End of file " <<total <<","<< expected_size <<","<< (total == 0 ? "" : "(garbage found)")
 					<< "." << std::endl;
 			return false;
 		} else {

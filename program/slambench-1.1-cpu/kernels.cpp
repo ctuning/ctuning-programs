@@ -8,9 +8,34 @@
  */
 #include <kernels.h>
 
+#ifdef __APPLE__
+#include <mach/clock.h>
+#include <mach/mach.h>
+
+
 	
-#define TICK()    {}
-#define TOCK(str,size)  {}
+	#define TICK()    {if (print_kernel_timing) {\
+		host_get_clock_service(mach_host_self(), SYSTEM_CLOCK, &cclock);\
+		clock_get_time(cclock, &tick_clockData);\
+		mach_port_deallocate(mach_task_self(), cclock);\
+		}}
+
+	#define TOCK(str,size)  {if (print_kernel_timing) {\
+		host_get_clock_service(mach_host_self(), SYSTEM_CLOCK, &cclock);\
+		clock_get_time(cclock, &tock_clockData);\
+		mach_port_deallocate(mach_task_self(), cclock);\
+		std::cerr<< str << " ";\
+		if((tock_clockData.tv_sec > tick_clockData.tv_sec) && (tock_clockData.tv_nsec >= tick_clockData.tv_nsec))   std::cerr<< tock_clockData.tv_sec - tick_clockData.tv_sec << std::setfill('0') << std::setw(9);\
+		std::cerr  << (( tock_clockData.tv_nsec - tick_clockData.tv_nsec) + ((tock_clockData.tv_nsec<tick_clockData.tv_nsec)?1000000000:0)) << " " <<  size << std::endl;}}
+#else
+	
+	#define TICK()    {if (print_kernel_timing) {clock_gettime(CLOCK_MONOTONIC, &tick_clockData);}}
+
+	#define TOCK(str,size)  {if (print_kernel_timing) {clock_gettime(CLOCK_MONOTONIC, &tock_clockData); std::cerr<< str << " ";\
+		if((tock_clockData.tv_sec > tick_clockData.tv_sec) && (tock_clockData.tv_nsec >= tick_clockData.tv_nsec))   std::cerr<< tock_clockData.tv_sec - tick_clockData.tv_sec << std::setfill('0') << std::setw(9);\
+		std::cerr  << (( tock_clockData.tv_nsec - tick_clockData.tv_nsec) + ((tock_clockData.tv_nsec<tick_clockData.tv_nsec)?1000000000:0)) << " " <<  size << std::endl;}}
+
+#endif
 
 // input once
 float * gaussian;
@@ -31,6 +56,14 @@ float3 ** inputVertex;
 float3 ** inputNormal;
 
 bool print_kernel_timing = false;
+#ifdef __APPLE__
+	clock_serv_t cclock;
+	mach_timespec_t tick_clockData;
+	mach_timespec_t tock_clockData;
+#else
+	struct timespec tick_clockData;
+	struct timespec tock_clockData;
+#endif
 	
 void Kfusion::languageSpecificConstructor() {
 
@@ -979,7 +1012,7 @@ void Kfusion::dumpVolume(std::string filename) {
 	std::cout << "Dumping the volumetric representation on file: " << filename
 			<< std::endl;
 	fDumpFile.open(filename.c_str(), std::ios::out | std::ios::binary);
-	if (fDumpFile) {
+	if (fDumpFile == NULL) {
 		std::cout << "Error opening file: " << filename << std::endl;
 		exit(1);
 	}
