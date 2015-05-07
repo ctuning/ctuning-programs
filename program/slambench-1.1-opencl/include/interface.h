@@ -21,6 +21,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <time.h>
+
 enum ReaderType {
 	READER_RAW, READER_SCENE, READER_OPENNI
 };
