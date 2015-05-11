@@ -37,5 +37,5 @@
     "open-cl", 
     "lang-c"
   ], 
-  "target_file": "a"
+  "target_file": "ck-show-opencl-devices"
 }
