@@ -24,6 +24,9 @@ int main() {
  
     for (i = 0; i < platformCount; i++) {
  
+        printf("*******************************************\n");
+        printf("Platform: %u\n\n", i);
+
         // get all devices
         clGetDeviceIDs(platforms[i], CL_DEVICE_TYPE_ALL, 0, NULL, &deviceCount);
         devices = (cl_device_id*) malloc(sizeof(cl_device_id) * deviceCount);
@@ -36,21 +39,21 @@ int main() {
             clGetDeviceInfo(devices[j], CL_DEVICE_NAME, 0, NULL, &valueSize);
             value = (char*) malloc(valueSize);
             clGetDeviceInfo(devices[j], CL_DEVICE_NAME, valueSize, value, NULL);
-            printf("%d. Device: %s\n", j+1, value);
+            printf("%d. Device: %s\n", j, value);
             free(value);
  
             // print hardware device version
             clGetDeviceInfo(devices[j], CL_DEVICE_VERSION, 0, NULL, &valueSize);
             value = (char*) malloc(valueSize);
             clGetDeviceInfo(devices[j], CL_DEVICE_VERSION, valueSize, value, NULL);
-            printf(" %d.%d Hardware version: %s\n", j+1, 1, value);
+            printf(" %d.%d Hardware version: %s\n", j, 1, value);
             free(value);
  
             // print software driver version
             clGetDeviceInfo(devices[j], CL_DRIVER_VERSION, 0, NULL, &valueSize);
             value = (char*) malloc(valueSize);
             clGetDeviceInfo(devices[j], CL_DRIVER_VERSION, valueSize, value, NULL);
-            printf(" %d.%d Software version: %s\n", j+1, 2, value);
+            printf(" %d.%d Software version: %s\n", j, 2, value);
             free(value);
  
             // print c version supported by compiler for device
