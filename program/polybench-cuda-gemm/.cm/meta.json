@@ -146,8 +146,8 @@
     }
   }, 
   "source_files": [
-    "ctuning.c", 
-    "gemm.cu"
+    "gemm.cu",
+    "ctuning.c" 
   ], 
   "tags": [
     "program", 

@@ -30,6 +30,15 @@
 #include <openme.h>
 #endif
 
+#ifdef XOPENME
+extern "C" {
+ void clock_start(int timer);
+ void clock_end(int timer);
+ void program_end(void);
+ void program_start(void);
+}
+#endif
+
 #define GPU_DEVICE 0
 
 //define the error threshold for the results "not matching"
@@ -202,7 +211,7 @@ void gemmCuda(DATA_TYPE* A, DATA_TYPE* B, DATA_TYPE* C, DATA_TYPE* C_outputFromG
         if (error != cudaSuccess)
         {
             printf("cudaMalloc d_A returned error code %d, line(%d)\n", error, __LINE__);
-            exit(EXIT_FAILURE);
+        exit(EXIT_FAILURE);
         }
 
 	error=cudaMemcpy(A_gpu, A, sizeof(DATA_TYPE) * NI * NK, cudaMemcpyHostToDevice);
@@ -263,6 +272,10 @@ int main(int argc, char *argv[])
   DATA_TYPE* C;  
   DATA_TYPE* C_outputFromGpu; 
 
+#ifdef XOPENME
+  program_start();
+#endif
+
 #ifdef OPENME
   openme_init(NULL,NULL,NULL,0);
   openme_callback("PROGRAM_START", NULL);
@@ -291,7 +304,7 @@ int main(int argc, char *argv[])
     gemmCuda(A, B, C, C_outputFromGpu);
   }
 #ifdef XOPENME
-  clock_stop(0);
+  clock_end(0);
 #endif
 #ifdef OPENME
   openme_callback("ACC_KERNEL_END", NULL);
@@ -312,7 +325,7 @@ int main(int argc, char *argv[])
     gemm(A, B, C);
   }
 #ifdef XOPENME
-  clock_stop(1);
+  clock_end(1);
 #endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
@@ -325,6 +338,10 @@ int main(int argc, char *argv[])
   free(B);
   free(C);
   free(C_outputFromGpu);
+
+#ifdef XOPENME
+  program_end();
+#endif
 
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);
