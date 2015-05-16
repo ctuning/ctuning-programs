@@ -30,6 +30,15 @@
 #include <openme.h>
 #endif
 
+#ifdef XOPENME
+extern "C" {
+ void clock_start(int timer);
+ void clock_end(int timer);
+ void program_end(void);
+ void program_start(void);
+}
+#endif
+
 #define GPU_DEVICE 0
 
 //define the error threshold for the results "not matching"
@@ -401,6 +410,10 @@ int main(int argc, char** argv)
   DATA_TYPE* G;
   DATA_TYPE* G_outputFromGpu;
 
+#ifdef XOPENME
+  program_start();
+#endif
+
 #ifdef OPENME
   openme_init(NULL,NULL,NULL,0);
   openme_callback("PROGRAM_START", NULL);
@@ -471,6 +484,10 @@ int main(int argc, char** argv)
   free(F);
   free(G);
   free(G_outputFromGpu);
+
+#ifdef XOPENME
+  program_end();
+#endif
 
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);
