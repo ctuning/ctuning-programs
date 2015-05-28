@@ -312,6 +312,9 @@ typedef  struct {int x,y,info, dx, dy, I;} CORNER_LIST[MAX_CORNERS];
 #ifdef OPENME
 #include <openme.h>
 #endif
+#ifdef XOPENME
+#include <xopenme.h>
+#endif
 
 void usage(void)
 {
@@ -1972,7 +1975,7 @@ CORNER_LIST corner_list;
   openme_callback("PROGRAM_START", NULL);
 #endif
 #ifdef XOPENME
-  program_start();
+  xopenme_init(1,2);
 #endif
 
   if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
@@ -1981,6 +1984,11 @@ CORNER_LIST corner_list;
     usage();
 
   get_image(argv[1],&in,&x_size,&y_size);
+
+#ifdef XOPENME
+  xopenme_add_var_i(0, "  \"image_size_x\":%u", x_size);
+  xopenme_add_var_i(1, "  \"image_size_y\":%u", y_size);
+#endif
 
 //  printf("Size X=%u Size Y=%u\n", x_size, y_size);
   /* FGG - changing dataset size */
@@ -2049,7 +2057,7 @@ CORNER_LIST corner_list;
   openme_callback("KERNEL_START", NULL);
 #endif
 #ifdef XOPENME
-  clock_start(0);
+  xopenme_clock_start(0);
 #endif
 
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
@@ -2129,7 +2137,7 @@ CORNER_LIST corner_list;
 /* }}} */
 
 #ifdef XOPENME
-  clock_end(0);
+  xopenme_clock_end(0);
 #endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
@@ -2140,7 +2148,7 @@ CORNER_LIST corner_list;
   free(in);
 
 #ifdef XOPENME
-  program_end();
+  xopenme_dump_state();
 #endif
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);

@@ -7,5 +7,6 @@
     "sync": "yes"
   }, 
   "data_alias": "ctuning-programs", 
-  "data_uoa": "ctuning-programs"
+  "data_uoa": "ctuning-programs",
+  "repo_deps":["ck-autotuning","ctuning-datasets-min"]
 }
