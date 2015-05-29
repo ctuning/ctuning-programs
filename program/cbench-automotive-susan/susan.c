@@ -2149,6 +2149,7 @@ CORNER_LIST corner_list;
 
 #ifdef XOPENME
   xopenme_dump_state();
+  xopenme_finish();
 #endif
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);

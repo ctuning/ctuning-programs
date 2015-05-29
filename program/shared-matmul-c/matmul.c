@@ -8,6 +8,13 @@
 
 #define Q 16
 
+#ifdef OPENME
+#include <openme.h>
+#endif
+#ifdef XOPENME
+#include <xopenme.h>
+#endif
+
 void matmul(float* A, float* B, float* C, int N);
 
 int main(int argc, char* argv[])
@@ -34,7 +41,7 @@ int main(int argc, char* argv[])
   openme_callback("PROGRAM_START", NULL);
 #endif
 #ifdef XOPENME
-  program_start();
+  xopenme_init(2,0);
 #endif
 
   fn=argv[1];
@@ -94,12 +101,12 @@ int main(int argc, char* argv[])
   openme_callback("KERNEL_START", NULL);
 #endif
 #ifdef XOPENME
-  clock_start(0);
+  xopenme_clock_start(0);
 #endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
     matmul(A,B,C,N);
 #ifdef XOPENME
-  clock_end(0);
+  xopenme_clock_end(0);
 #endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
@@ -116,7 +123,8 @@ int main(int argc, char* argv[])
   free(A);
 
 #ifdef XOPENME
-  program_end();
+  xopenme_dump_state();
+  xopenme_finish();
 #endif
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);

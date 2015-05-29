@@ -28,14 +28,8 @@
 #ifdef OPENME
 #include <openme.h>
 #endif
-
 #ifdef XOPENME
-extern "C" {
- void clock_start(int timer);
- void clock_end(int timer);
- void program_end(void);
- void program_start(void);
-}
+#include <xopenme.h>
 #endif
 
 //define the error threshold for the results "not matching"
@@ -330,7 +324,7 @@ int main()
   DATA_TYPE* symmat_outputFromGpu;	
 
 #ifdef XOPENME
-  program_start();
+  xopenme_init(2,0);
 #endif
 
 #ifdef OPENME
@@ -354,14 +348,14 @@ int main()
   openme_callback("ACC_KERNEL_START", NULL);
 #endif
 #ifdef XOPENME
-  clock_start(0);
+  xopenme_clock_start(0);
 #endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
     covarianceCuda(data, symmat, mean, symmat_outputFromGpu);
   }
 #ifdef XOPENME
-  clock_stop(0);
+  xopenme_clock_end(0);
 #endif
 #ifdef OPENME
   openme_callback("ACC_KERNEL_END", NULL);
@@ -375,14 +369,14 @@ int main()
   openme_callback("KERNEL_START", NULL);
 #endif
 #ifdef XOPENME
-  clock_start(1);
+  xopenme_clock_start(1);
 #endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
     covariance(data, symmat, mean);
   }
 #ifdef XOPENME
-  clock_stop(1);
+  xopenme_clock_end(1);
 #endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
@@ -397,7 +391,8 @@ int main()
   free(symmat_outputFromGpu);	
 
 #ifdef XOPENME
-  program_end();
+  xopenme_dump_state();
+  xopenme_finish();
 #endif
 
 #ifdef OPENME

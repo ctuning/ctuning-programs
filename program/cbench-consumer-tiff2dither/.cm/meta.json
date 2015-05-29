@@ -8,6 +8,11 @@
     "compiler": {
       "local": "yes", 
       "tags": "compiler,lang-c"
+    },
+    "xopenme": {
+      "local": "yes", 
+      "tags": "lib,xopenme",
+      "sort":20
     }
   }, 
   "compiler_env": "CK_CC", 
@@ -66,7 +71,6 @@
     }
   }, 
   "source_files": [
-    "ctuning.c", 
     "ctuning-rtl.c", 
     "tiff2rgba.c", 
     "tif_aux.c", 

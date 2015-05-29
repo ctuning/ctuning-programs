@@ -29,6 +29,9 @@
 #ifdef OPENME
 #include <openme.h>
 #endif
+#ifdef XOPENME
+#include <xopenme.h>
+#endif
 
 //define the error threshold for the results "not matching"
 #define PERCENT_DIFF_ERROR_THRESHOLD 1.05
@@ -404,7 +407,7 @@ int main(int argc, char *argv[])
   openme_callback("PROGRAM_START", NULL);
 #endif
 #ifdef XOPENME
-  program_start();
+  xopenme_init(2,0);
 #endif
 
   /* Run kernel. */
@@ -428,7 +431,7 @@ int main(int argc, char *argv[])
   openme_callback("ACC_KERNEL_START", NULL);
 #endif
 #ifdef XOPENME
-  clock_start(0);
+  xopenme_clock_start(0);
 #endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
@@ -442,7 +445,7 @@ int main(int argc, char *argv[])
     }
   }
 #ifdef XOPENME
-  clock_end(0);
+  xopenme_clock_end(0);
 #endif
 #ifdef OPENME
   openme_callback("ACC_KERNEL_END", NULL);
@@ -456,14 +459,14 @@ int main(int argc, char *argv[])
   openme_callback("KERNEL_START", NULL);
 #endif
 #ifdef XOPENME
-  clock_start(1);
+  xopenme_clock_start(1);
 #endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
     mm2_cpu(A, B, C, D, E);
   }
 #ifdef XOPENME
-  clock_end(1);
+  xopenme_clock_end(1);
 #endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
@@ -481,7 +484,8 @@ int main(int argc, char *argv[])
   free(E_outputFromGpu);
 
 #ifdef XOPENME
-  program_end();
+  xopenme_dump_state();
+  xopenme_finish();
 #endif
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);

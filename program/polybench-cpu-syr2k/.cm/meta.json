@@ -82,6 +82,11 @@
       "local": "yes", 
       "sort": 20, 
       "tags": "lib,rtl,polybench"
+    },
+    "xopenme": {
+      "local": "yes", 
+      "tags": "lib,xopenme",
+      "sort":20
     }
   }, 
   "compiler_env": "CK_CC", 
@@ -131,7 +136,6 @@
     }
   }, 
   "source_files": [
-    "ctuning.c", 
     "syr2k.c"
   ], 
   "tags": [

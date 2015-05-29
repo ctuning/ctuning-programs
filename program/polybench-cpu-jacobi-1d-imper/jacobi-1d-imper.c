@@ -28,6 +28,9 @@
 #ifdef OPENME
 #include <openme.h>
 #endif
+#ifdef XOPENME
+#include <xopenme.h>
+#endif
 
 /* Array initialization. */
 static
@@ -102,7 +105,7 @@ int main(int argc, char** argv)
   openme_callback("PROGRAM_START", NULL);
 #endif
 #ifdef XOPENME
-  program_start();
+  xopenme_init(1,0);
 #endif
 
   /* Variable declaration/allocation. */
@@ -123,12 +126,12 @@ int main(int argc, char** argv)
   openme_callback("KERNEL_START", NULL);
 #endif
 #ifdef XOPENME
-  clock_start(0);
+  xopenme_clock_start(0);
 #endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
       kernel_jacobi_1d_imper (tsteps, n, POLYBENCH_ARRAY(A), POLYBENCH_ARRAY(B));
 #ifdef XOPENME
-  clock_end(0);
+  xopenme_clock_end(0);
 #endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
@@ -147,7 +150,8 @@ int main(int argc, char** argv)
   POLYBENCH_FREE_ARRAY(B);
 
 #ifdef XOPENME
-  program_end();
+  xopenme_dump_state();
+  xopenme_finish();
 #endif
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);

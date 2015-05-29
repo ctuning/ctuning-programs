@@ -16,6 +16,9 @@
 #ifdef OPENME
 #include <openme.h>
 #endif
+#ifdef XOPENME
+#include <xopenme.h>
+#endif
 
 int main1(int argc, char* argv[], int print);
 
@@ -31,7 +34,7 @@ int main(int argc, char* argv[])
   openme_callback("PROGRAM_START", NULL);
 #endif
 #ifdef XOPENME
-  program_start();
+  xopenme_init(1,0);
 #endif
 
   if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
@@ -40,7 +43,7 @@ int main(int argc, char* argv[])
   openme_callback("KERNEL_START", NULL);
 #endif
 #ifdef XOPENME
-  clock_start(0);
+  xopenme_clock_start(0);
 #endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
   {
@@ -48,14 +51,15 @@ int main(int argc, char* argv[])
     print=0;
   }
 #ifdef XOPENME
-  clock_end(0);
+  xopenme_clock_end(0);
 #endif
 #ifdef OPENME
   openme_callback("KERNEL_END", NULL);
 #endif
 
 #ifdef XOPENME
-  program_end();
+  xopenme_dump_state();
+  xopenme_finish();
 #endif
 #ifdef OPENME
   openme_callback("PROGRAM_END", NULL);
