@@ -1,7 +1,6 @@
 {
   "backup_data_uid": "3430ca52867453cf", 
   "build_compiler_vars": {}, 
-  "build_compiler_vars_desc": {}, 
   "compile_deps": {
     "compiler": {
       "local": "yes", 
@@ -48,17 +47,6 @@
   }, 
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  }, 
-  "run_vars_desc": {
-    "##CT_REPEAT_MAIN": {
-      "default": 1, 
-      "desc": "Main function/kernel repetition", 
-      "explore_start": 1, 
-      "explore_step": 10, 
-      "explore_stop": 1000000, 
-      "sort": 1, 
-      "type": "integer"
-    }
   }, 
   "source_files": [
     "tiffmedian.codelet__5.c", 

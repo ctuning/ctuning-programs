@@ -1,7 +1,6 @@
 {
   "backup_data_uid": "69ea34cf3ba98b5e", 
   "build_compiler_vars": {}, 
-  "build_compiler_vars_desc": {}, 
   "compile_deps": {
     "compiler": {
       "local": "yes", 
@@ -78,7 +77,6 @@
       }
     }
   }, 
-  "run_vars_desc": {}, 
   "source_files": [
     "blocksort.c", 
     "bzip2.c", 

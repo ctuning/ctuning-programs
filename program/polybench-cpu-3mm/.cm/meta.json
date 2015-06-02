@@ -11,106 +11,6 @@
     "POLYBENCH_PADDING_FACTOR": 0, 
     "XOPENME": ""
   }, 
-  "build_compiler_vars_desc": {
-    "##DATA_TYPE": {
-      "choice": [
-        "double", 
-        "float", 
-        "long", 
-        "int"
-      ], 
-      "default": "double", 
-      "desc": "Program property: Variable precision", 
-      "sort": 25, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "text"
-    }, 
-    "##NI": {
-      "default": 16, 
-      "desc": "Dataset: Matrix size NI", 
-      "explore_start": 2, 
-      "explore_step": 1, 
-      "explore_stop": 5000, 
-      "sort": 1, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "integer"
-    }, 
-    "##NJ": {
-      "default": 16, 
-      "desc": "Dataset: Matrix size NJ", 
-      "explore_start": 2, 
-      "explore_step": 1, 
-      "explore_stop": 5000, 
-      "sort": 2, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "integer"
-    }, 
-    "##NK": {
-      "default": 16, 
-      "desc": "Dataset: Matrix size NK", 
-      "explore_start": 2, 
-      "explore_step": 1, 
-      "explore_stop": 5000, 
-      "sort": 3, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "integer"
-    }, 
-    "##NL": {
-      "default": 16, 
-      "desc": "Dataset: Matrix size NL", 
-      "explore_start": 2, 
-      "explore_step": 1, 
-      "explore_stop": 5000, 
-      "sort": 4, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "integer"
-    }, 
-    "##NM": {
-      "default": 16, 
-      "desc": "Dataset: Matrix size NM", 
-      "explore_start": 2, 
-      "explore_step": 1, 
-      "explore_stop": 5000, 
-      "sort": 5, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "integer"
-    }, 
-    "##POLYBENCH_DUMP_ARRAYS": {
-      "choice": [
-        "YES", 
-        "NO"
-      ], 
-      "default": "YES", 
-      "desc": "Output: dump array to avoid dead code elimination", 
-      "sort": 30, 
-      "type": "text"
-    }, 
-    "##POLYBENCH_PADDING_FACTOR": {
-      "default": 0, 
-      "desc": "Transformation: Padding factor", 
-      "explore_start": 0, 
-      "explore_step": 1, 
-      "explore_stop": 128, 
-      "sort": 20, 
-      "tags": [
-        "basic", 
-        "optimization"
-      ], 
-      "type": "integer"
-    }
-  }, 
   "compile_deps": {
     "compiler": {
       "local": "yes", 
@@ -121,11 +21,11 @@
       "local": "yes", 
       "sort": 20, 
       "tags": "lib,rtl,polybench"
-    },
+    }, 
     "xopenme": {
       "local": "yes", 
-      "tags": "lib,xopenme",
-      "sort":20
+      "sort": 20, 
+      "tags": "lib,xopenme"
     }
   }, 
   "compiler_env": "CK_CC", 
@@ -159,17 +59,6 @@
   }, 
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  }, 
-  "run_vars_desc": {
-    "##CT_REPEAT_MAIN": {
-      "default": 1, 
-      "desc": "Main function/kernel repetition", 
-      "explore_start": 1, 
-      "explore_step": 10, 
-      "explore_stop": 1000000, 
-      "sort": 1, 
-      "type": "integer"
-    }
   }, 
   "source_files": [
     "3mm.c"

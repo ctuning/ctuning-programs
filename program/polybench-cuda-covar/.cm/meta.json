@@ -12,123 +12,6 @@
     "NJ": 512, 
     "XOPENME": ""
   }, 
-  "build_compiler_vars_desc": {
-    "##DATA_TYPE": {
-      "choice": [
-        "double", 
-        "float"
-      ], 
-      "default": "float", 
-      "desc": "Program property: Variable precision", 
-      "sort": 25, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "text"
-    }, 
-    "##DIM_THREAD_BLOCK_KERNEL_1_X": {
-      "default": 256, 
-      "desc": "Thread for kernel 1: block X", 
-      "explore_start": 1, 
-      "explore_step": 1, 
-      "explore_stop": 256, 
-      "sort": 3, 
-      "tags": [
-        "basic", 
-        "optimization"
-      ], 
-      "type": "integer"
-    }, 
-    "##DIM_THREAD_BLOCK_KERNEL_1_Y": {
-      "default": 1, 
-      "desc": "Thread for kernel 1: block Y", 
-      "explore_start": 1, 
-      "explore_step": 1, 
-      "explore_stop": 8, 
-      "sort": 4, 
-      "tags": [
-        "basic", 
-        "optimization"
-      ], 
-      "type": "integer"
-    }, 
-    "##DIM_THREAD_BLOCK_KERNEL_2_X": {
-      "default": 32, 
-      "desc": "Thread for kernel 2: block X", 
-      "explore_start": 1, 
-      "explore_step": 1, 
-      "explore_stop": 256, 
-      "sort": 3, 
-      "tags": [
-        "basic", 
-        "optimization"
-      ], 
-      "type": "integer"
-    }, 
-    "##DIM_THREAD_BLOCK_KERNEL_2_Y": {
-      "default": 8, 
-      "desc": "Thread for kernel 2: block Y", 
-      "explore_start": 1, 
-      "explore_step": 1, 
-      "explore_stop": 8, 
-      "sort": 4, 
-      "tags": [
-        "basic", 
-        "optimization"
-      ], 
-      "type": "integer"
-    }, 
-    "##DIM_THREAD_BLOCK_KERNEL_3_X": {
-      "default": 256, 
-      "desc": "Thread for kernel 3: block X", 
-      "explore_start": 1, 
-      "explore_step": 1, 
-      "explore_stop": 256, 
-      "sort": 3, 
-      "tags": [
-        "basic", 
-        "optimization"
-      ], 
-      "type": "integer"
-    }, 
-    "##DIM_THREAD_BLOCK_KERNEL_3_Y": {
-      "default": 1, 
-      "desc": "Thread for kernel 3: block Y", 
-      "explore_start": 1, 
-      "explore_step": 1, 
-      "explore_stop": 8, 
-      "sort": 4, 
-      "tags": [
-        "basic", 
-        "optimization"
-      ], 
-      "type": "integer"
-    }, 
-    "##NI": {
-      "default": 512, 
-      "desc": "Dataset: Matrix size NI", 
-      "explore_start": 2, 
-      "explore_step": 1, 
-      "explore_stop": 5000, 
-      "sort": 1, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "integer"
-    }, 
-    "##NJ": {
-      "default": 512, 
-      "desc": "Dataset: Matrix size NJ", 
-      "explore_start": 2, 
-      "explore_step": 1, 
-      "explore_stop": 5000, 
-      "sort": 2, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "integer"
-    }
-  }, 
   "compile_deps": {
     "compiler": {
       "local": "yes", 
@@ -144,11 +27,11 @@
       "local": "yes", 
       "sort": 30, 
       "tags": "lib,rtl,polybench"
-    },
+    }, 
     "xopenme": {
       "local": "yes", 
-      "tags": "lib,xopenme",
-      "sort":20
+      "sort": 20, 
+      "tags": "lib,xopenme"
     }
   }, 
   "compiler_env": "CK_CC", 
@@ -181,17 +64,6 @@
   }, 
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  }, 
-  "run_vars_desc": {
-    "##CT_REPEAT_MAIN": {
-      "default": 1, 
-      "desc": "Main function/kernel repetition", 
-      "explore_start": 1, 
-      "explore_step": 10, 
-      "explore_stop": 1000000, 
-      "sort": 1, 
-      "type": "integer"
-    }
   }, 
   "source_files": [
     "covariance.cu"

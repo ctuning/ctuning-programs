@@ -8,70 +8,6 @@
     "TSTEPS": 10, 
     "XOPENME": ""
   }, 
-  "build_compiler_vars_desc": {
-    "##DATA_TYPE": {
-      "choice": [
-        "double", 
-        "float", 
-        "long", 
-        "int"
-      ], 
-      "default": "double", 
-      "desc": "Program property: Variable precision", 
-      "sort": 25, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "text"
-    }, 
-    "##N": {
-      "default": 16, 
-      "desc": "Dataset: Matrix size N", 
-      "explore_start": 2, 
-      "explore_step": 1, 
-      "explore_stop": 5000, 
-      "sort": 2, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "integer"
-    }, 
-    "##POLYBENCH_DUMP_ARRAYS": {
-      "choice": [
-        "YES", 
-        "NO"
-      ], 
-      "default": "YES", 
-      "desc": "Output: dump array to avoid dead code elimination", 
-      "sort": 30, 
-      "type": "text"
-    }, 
-    "##POLYBENCH_PADDING_FACTOR": {
-      "default": 0, 
-      "desc": "Transformation: Padding factor", 
-      "explore_start": 0, 
-      "explore_step": 1, 
-      "explore_stop": 128, 
-      "sort": 20, 
-      "tags": [
-        "basic", 
-        "optimization"
-      ], 
-      "type": "integer"
-    }, 
-    "##TSTEPS": {
-      "default": 10, 
-      "desc": "Dataset: Iterations TSTEPS", 
-      "explore_start": 2, 
-      "explore_step": 1, 
-      "explore_stop": 5000, 
-      "sort": 1, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "integer"
-    }
-  }, 
   "compile_deps": {
     "compiler": {
       "local": "yes", 
@@ -82,11 +18,11 @@
       "local": "yes", 
       "sort": 20, 
       "tags": "lib,rtl,polybench"
-    },
+    }, 
     "xopenme": {
       "local": "yes", 
-      "tags": "lib,xopenme",
-      "sort":20
+      "sort": 20, 
+      "tags": "lib,xopenme"
     }
   }, 
   "compiler_env": "CK_CC", 
@@ -120,17 +56,6 @@
   }, 
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  }, 
-  "run_vars_desc": {
-    "##CT_REPEAT_MAIN": {
-      "default": 1, 
-      "desc": "Main function/kernel repetition", 
-      "explore_start": 1, 
-      "explore_step": 10, 
-      "explore_stop": 1000000, 
-      "sort": 1, 
-      "type": "integer"
-    }
   }, 
   "source_files": [
     "adi.c"

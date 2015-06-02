@@ -3,16 +3,15 @@
   "build_compiler_vars": {
     "XOPENME": ""
   }, 
-  "build_compiler_vars_desc": {}, 
   "compile_deps": {
     "compiler": {
       "local": "yes", 
       "tags": "compiler,lang-c"
-    },
+    }, 
     "xopenme": {
       "local": "yes", 
-      "tags": "lib,xopenme",
-      "sort":20
+      "sort": 20, 
+      "tags": "lib,xopenme"
     }
   }, 
   "compiler_env": "CK_CC", 
@@ -53,17 +52,6 @@
   }, 
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  }, 
-  "run_vars_desc": {
-    "##CT_REPEAT_MAIN": {
-      "default": 1, 
-      "desc": "Main function/kernel repetition", 
-      "explore_start": 1, 
-      "explore_step": 10, 
-      "explore_stop": 1000000, 
-      "sort": 1, 
-      "type": "integer"
-    }
   }, 
   "source_files": [
     "adpcm.c", 

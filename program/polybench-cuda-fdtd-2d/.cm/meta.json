@@ -8,71 +8,6 @@
     "NY": 512, 
     "XOPENME": ""
   }, 
-  "build_compiler_vars_desc": {
-    "##DATA_TYPE": {
-      "choice": [
-        "double", 
-        "float"
-      ], 
-      "default": "float", 
-      "desc": "Program property: Variable precision", 
-      "sort": 25, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "text"
-    }, 
-    "##DIM_THREAD_BLOCK_X": {
-      "default": 32, 
-      "desc": "Thread: block X", 
-      "explore_start": 1, 
-      "explore_step": 1, 
-      "explore_stop": 64, 
-      "sort": 3, 
-      "tags": [
-        "basic", 
-        "optimization"
-      ], 
-      "type": "integer"
-    }, 
-    "##DIM_THREAD_BLOCK_Y": {
-      "default": 8, 
-      "desc": "Thread: block Y", 
-      "explore_start": 1, 
-      "explore_step": 1, 
-      "explore_stop": 64, 
-      "sort": 4, 
-      "tags": [
-        "basic", 
-        "optimization"
-      ], 
-      "type": "integer"
-    }, 
-    "##NX": {
-      "default": 512, 
-      "desc": "Dataset: Matrix size NX", 
-      "explore_start": 2, 
-      "explore_step": 1, 
-      "explore_stop": 8192, 
-      "sort": 1, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "integer"
-    }, 
-    "##NY": {
-      "default": 512, 
-      "desc": "Dataset: Matrix size NY", 
-      "explore_start": 2, 
-      "explore_step": 1, 
-      "explore_stop": 8192, 
-      "sort": 2, 
-      "tags": [
-        "dataset"
-      ], 
-      "type": "integer"
-    }
-  }, 
   "compile_deps": {
     "compiler": {
       "local": "yes", 
@@ -88,11 +23,11 @@
       "local": "yes", 
       "sort": 30, 
       "tags": "lib,rtl,polybench"
-    },
+    }, 
     "xopenme": {
       "local": "yes", 
-      "tags": "lib,xopenme",
-      "sort":20
+      "sort": 20, 
+      "tags": "lib,xopenme"
     }
   }, 
   "compiler_env": "CK_CC", 
@@ -125,17 +60,6 @@
   }, 
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  }, 
-  "run_vars_desc": {
-    "##CT_REPEAT_MAIN": {
-      "default": 1, 
-      "desc": "Main function/kernel repetition", 
-      "explore_start": 1, 
-      "explore_step": 10, 
-      "explore_stop": 1000000, 
-      "sort": 1, 
-      "type": "integer"
-    }
   }, 
   "source_files": [
     "fdtd2d.cu"

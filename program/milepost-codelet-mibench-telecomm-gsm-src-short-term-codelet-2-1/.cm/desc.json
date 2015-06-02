@@ -1,0 +1,13 @@
+{
+  "run_vars_desc": {
+    "##CT_REPEAT_MAIN": {
+      "default": 1, 
+      "desc": "Main function/kernel repetition", 
+      "explore_start": 1, 
+      "explore_step": 10, 
+      "explore_stop": 1000000, 
+      "sort": 1, 
+      "type": "integer"
+    }
+  }
+}

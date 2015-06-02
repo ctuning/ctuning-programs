@@ -1,0 +1,78 @@
+{
+  "build_compiler_vars_desc": {
+    "##DATA_TYPE": {
+      "choice": [
+        "double", 
+        "float"
+      ], 
+      "default": "float", 
+      "desc": "Program property: Variable precision", 
+      "sort": 25, 
+      "tags": [
+        "dataset"
+      ], 
+      "type": "text"
+    }, 
+    "##DIM_THREAD_BLOCK_X": {
+      "default": 128, 
+      "desc": "Thread: block X", 
+      "explore_start": 1, 
+      "explore_step": 1, 
+      "explore_stop": 64, 
+      "sort": 3, 
+      "tags": [
+        "basic", 
+        "optimization"
+      ], 
+      "type": "integer"
+    }, 
+    "##DIM_THREAD_BLOCK_Y": {
+      "default": 1, 
+      "desc": "Thread: block Y", 
+      "explore_start": 1, 
+      "explore_step": 1, 
+      "explore_stop": 64, 
+      "sort": 4, 
+      "tags": [
+        "basic", 
+        "optimization"
+      ], 
+      "type": "integer"
+    }, 
+    "##NI": {
+      "default": 128, 
+      "desc": "Dataset: Matrix size NI", 
+      "explore_start": 2, 
+      "explore_step": 1, 
+      "explore_stop": 5000, 
+      "sort": 1, 
+      "tags": [
+        "dataset"
+      ], 
+      "type": "integer"
+    }, 
+    "##NJ": {
+      "default": 128, 
+      "desc": "Dataset: Matrix size NJ", 
+      "explore_start": 2, 
+      "explore_step": 1, 
+      "explore_stop": 5000, 
+      "sort": 2, 
+      "tags": [
+        "dataset"
+      ], 
+      "type": "integer"
+    }
+  }, 
+  "run_vars_desc": {
+    "##CT_REPEAT_MAIN": {
+      "default": 1, 
+      "desc": "Main function/kernel repetition", 
+      "explore_start": 1, 
+      "explore_step": 10, 
+      "explore_stop": 1000000, 
+      "sort": 1, 
+      "type": "integer"
+    }
+  }
+}

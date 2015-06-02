@@ -1,0 +1,65 @@
+{
+  "build_compiler_vars_desc": {
+    "##DATA_TYPE": {
+      "choice": [
+        "double", 
+        "float", 
+        "long", 
+        "int"
+      ], 
+      "default": "double", 
+      "desc": "Program property: Variable precision", 
+      "sort": 3, 
+      "tags": [
+        "dataset"
+      ], 
+      "type": "text"
+    }, 
+    "##N": {
+      "default": 16, 
+      "desc": "Dataset: Matrix size N", 
+      "explore_start": 2, 
+      "explore_step": 4, 
+      "explore_stop": 4100, 
+      "sort": 1, 
+      "tags": [
+        "dataset"
+      ], 
+      "type": "integer"
+    }, 
+    "##POLYBENCH_DUMP_ARRAYS": {
+      "choice": [
+        "YES", 
+        "NO"
+      ], 
+      "default": "YES", 
+      "desc": "Output: dump array to avoid dead code elimination", 
+      "sort": 4, 
+      "type": "text"
+    }, 
+    "##POLYBENCH_PADDING_FACTOR": {
+      "default": 0, 
+      "desc": "Transformation: Padding factor", 
+      "explore_start": 0, 
+      "explore_step": 1, 
+      "explore_stop": 128, 
+      "sort": 2, 
+      "tags": [
+        "basic", 
+        "optimization"
+      ], 
+      "type": "integer"
+    }
+  }, 
+  "run_vars_desc": {
+    "##CT_REPEAT_MAIN": {
+      "default": 1, 
+      "desc": "Main function/kernel repetition", 
+      "explore_start": 1, 
+      "explore_step": 10, 
+      "explore_stop": 1000000, 
+      "sort": 1, 
+      "type": "integer"
+    }
+  }
+}
