@@ -133,12 +133,18 @@ int main(int argc, char** argv)
   /* Retrieve problem size. */
   int n = N;
 
+  if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
+
 #ifdef OPENME
   openme_init(NULL,NULL,NULL,0);
   openme_callback("PROGRAM_START", NULL);
 #endif
 #ifdef XOPENME
-  xopenme_init(1,0);
+  xopenme_init(1,3);
+
+  xopenme_add_var_i(0, (char*) "  \"kernel_repetitions\":%u", ct_repeat_max);
+  xopenme_add_var_i(1, (char*) "  \"dim_n\":%u", N);
+  xopenme_add_var_i(2, (char*) "  \"dim_nxn\":%u", N*N);
 #endif
 
   /* Variable declaration/allocation. */
@@ -159,7 +165,6 @@ int main(int argc, char** argv)
   polybench_start_instruments;
 
   /* Run kernel. */
-  if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
 
 #ifdef OPENME
   openme_callback("KERNEL_START", NULL);
