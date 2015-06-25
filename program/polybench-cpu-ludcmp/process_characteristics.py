@@ -49,6 +49,7 @@ if exists:
          if dim_n!=0 and dim_nxn!=0:
             d['execution_time_kernel_0n_div_by_dim_n']=et0n/dim_n
             d['execution_time_kernel_0n_div_by_dim_nxn']=et0n/dim_nxn
+            d['execution_time_kernel_0n_div_by_dim_nxn1']=et0n/(1.5*dim_nxn)
 
       # Write CK json
       f=open('tmp-ck-timer.json','wt')
