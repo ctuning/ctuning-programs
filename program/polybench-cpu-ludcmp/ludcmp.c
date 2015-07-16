@@ -91,14 +91,18 @@ void kernel_ludcmp(int n,
         {
 	  w = A[j][i];
 	  for (k = 0; k < i; k++)
+          {
 	    w = w- A[j][k] * A[k][i];
+	  }
 	  A[j][i] = w / A[i][i];
         }
       for (j = i+1; j <= _PB_N; j++)
         {
 	  w = A[i+1][j];
 	  for (k = 0; k <= i; k++)
+	  {
 	    w = w  - A[i+1][k] * A[k][j];
+	  }
 	  A[i+1][j] = w;
         }
     }
@@ -107,7 +111,9 @@ void kernel_ludcmp(int n,
     {
       w = b[i];
       for (j = 0; j < i; j++)
+      {
 	w = w - A[i][j] * y[j];
+      }	
       y[i] = w;
     }
   x[_PB_N] = y[_PB_N] / A[_PB_N][_PB_N];
@@ -115,7 +121,9 @@ void kernel_ludcmp(int n,
     {
       w = y[_PB_N - 1 - (i)];
       for (j = _PB_N - i; j <= _PB_N; j++)
+      {
 	w = w - A[_PB_N - 1 - i][j] * x[j];
+      }
       x[_PB_N - 1 - i] = w / A[_PB_N - 1 - (i)][_PB_N - 1-(i)];
     }
 #pragma endscop
