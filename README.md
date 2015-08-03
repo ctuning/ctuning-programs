@@ -1,3 +1,6 @@
+Shared programs, benchmarks and kernels for crowd-tuning and crowd-benchmarking via CK
+======================================================================================
+
 Various public bechmarks and kernels in CK format used in our research on 
 universal and multi-objective autotuning/and crowd-tuning. It is possible
 to reproduce and extend some techniques from our recent papers:
@@ -7,8 +10,9 @@ to reproduce and extend some techniques from our recent papers:
 * https://hal.inria.fr/inria-00436029
 * http://arxiv.org/abs/1407.4075
 
-Our eventual goal is to gradually release all our artifacts (code and data)
-to help community reproduce and continue this research.
+We hope that community will also start sharing their programs and data sets
+in a universal format to enable systematic, collaborative and reproducible
+computer engineering.
 
 Status
 ======
@@ -19,3 +23,13 @@ Dependencies on other repositories
 * ck-autotuning
 * ck-env
 
+Authors
+=======
+
+* Grigori Fursin, cTuning foundation (France) / dividiti (UK)
+* Various authors of shared programs (see individual entries)
+
+Installation
+============
+
+> ck pull repo:ctuning-programs
