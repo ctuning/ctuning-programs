@@ -1,12 +1,18 @@
 {
-  "data_uid": "1db88c44a4086634", 
   "data_name": "cTuning programs", 
-  "dict": {
-    "url": "https://github.com/ctuning/ctuning-programs.git", 
-    "shared": "git", 
-    "sync": "yes"
-  }, 
   "data_alias": "ctuning-programs", 
-  "data_uoa": "ctuning-programs",
-  "repo_deps":[{"repo_uoa":"ck-autotuning"},{"repo_uoa":"ctuning-datasets-min"}]
+  "data_uid": "1db88c44a4086634", 
+  "data_uoa": "ctuning-programs", 
+  "dict": {
+    "repo_deps": [
+      {
+        "repo_uoa": "ck-autotuning"
+      }, 
+      {
+        "repo_uoa": "ctuning-datasets-min"
+      }
+    ], 
+    "url": "https://github.com/ctuning/ctuning-programs", 
+    "shared": "git"
+  }
 }
