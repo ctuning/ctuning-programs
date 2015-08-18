@@ -1,8 +1,8 @@
-Shared programs, benchmarks and kernels for crowd-tuning and crowd-benchmarking via CK
-======================================================================================
+Shared programs, benchmarks and kernels for autotuning/crowd-tuning
+===================================================================
 
-Various public bechmarks and kernels in CK format used in our research on 
-universal and multi-objective autotuning/and crowd-tuning. It is possible
+Various public benchmarks and kernels that we used in our research on
+universal and multi-objective autotuning/crowd-tuning. It is possible
 to reproduce and extend some techniques from our recent papers:
 
 * http://arxiv.org/abs/1506.06256
@@ -10,9 +10,8 @@ to reproduce and extend some techniques from our recent papers:
 * https://hal.inria.fr/inria-00436029
 * http://arxiv.org/abs/1407.4075
 
-We hope that community will also start sharing their programs and data sets
-in a universal format to enable systematic, collaborative and reproducible
-computer engineering.
+We envision that community will join us in sharing their programs and data sets
+to enable systematic, collaborative and reproducible computer engineering.
 
 Status
 ======
