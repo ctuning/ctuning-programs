@@ -28,6 +28,10 @@ Authors
 * Grigori Fursin, cTuning foundation (France) / dividiti (UK)
 * Various authors of shared programs (see individual entries)
 
+Prerequisites
+=============
+* Collective Knowledge Framework: http://github.com/ctuning/ck
+
 Installation
 ============
 
