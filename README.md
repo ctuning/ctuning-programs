@@ -70,7 +70,7 @@ Download ckr-ctuning-datasets.zip from https://drive.google.com/folderview?id=0B
 
 Register it with CK simply via:
 
-> ck add repo:ctuning-datasets --zip=ckr-ctuning-datasets.zip
+> ck add repo:ctuning-datasets --zip=ckr-ctuning-datasets.zip --quiet
 
 Now, when you run a given program as above, you will have an extended choice of data sets.
 
