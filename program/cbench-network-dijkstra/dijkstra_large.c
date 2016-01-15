@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef XOPENME
+#include <xopenme.h>
+#endif
+
 int NUM_NODES=0;
-#define NONE                               9999
+#define NONE 9999
 
 struct _NODE
 {
@@ -139,7 +143,11 @@ int main(int argc, char *argv[]) {
   long ct_repeat=0;
   long ct_repeat_max=1;
   
-  if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
+#ifdef XOPENME
+  xopenme_init(1,0);
+#endif
+
+    if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
 
   if (argc<2) {
     fprintf(stderr, "Usage: dijkstra <filename>\n");
@@ -168,6 +176,10 @@ int main(int argc, char *argv[]) {
     }
   }
 
+#ifdef XOPENME
+  xopenme_clock_start(0);
+#endif
+
   /* finds 10 shortest paths between nodes */
   for (i=0,j=NUM_NODES/2;i<NUM_NODES;i++,j++) 
   {
@@ -182,6 +194,13 @@ int main(int argc, char *argv[]) {
     printf("\n");
 
   }
+
+#ifdef XOPENME
+  xopenme_clock_end(0);
+
+  xopenme_dump_state();
+  xopenme_finish();
+#endif
 
   free(AdjMatrix);
   free(rgnNodes);

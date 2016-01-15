@@ -267,6 +267,10 @@ static char *compressExt[] =
 
 /* "\032\0??", "ARC", ".arc" */
 
+#ifdef XOPENME
+#include <xopenme.h>
+#endif
+
 /* Returns file signature type from a number of popular compression formats
    or -1 if no match */
 int compressSignature(byte * header)
@@ -631,7 +635,16 @@ int main(int argc, char *argv[])
     /* Initial messages to stderr */
     pgpout = stderr;
 
+#ifdef XOPENME
+  xopenme_init(1,0);
+#endif
+
     if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
+
+#ifdef XOPENME
+  xopenme_clock_start(0);
+#endif
+
 
 #ifdef MACTC5
 	ReInitGlobals();
@@ -1116,6 +1129,7 @@ phone +1 303 541-0140\n"));
           {
             do_decrypt(workfile);
           }
+
           
 /*	  if (do_decrypt(workfile) < 0)
 	    user_error(); */
@@ -1464,6 +1478,13 @@ LANG("\nA user ID is required to select the recipient's public key. "));
 #ifdef MACTC5
 	if(!addresfork && !use_clipboard)
 		if (!emit_radix_64) PGPSetFinfo(outputfile,'Cryp','MPGP');
+#endif
+
+#ifdef XOPENME
+  xopenme_clock_end(0);
+
+  xopenme_dump_state();
+  xopenme_finish();
 #endif
 
     exitPGP(EXIT_OK);

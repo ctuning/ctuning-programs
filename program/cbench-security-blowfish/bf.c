@@ -4,6 +4,10 @@
 #include <ctype.h>
 #include "blowfish.h"
 
+#ifdef XOPENME
+#include <xopenme.h>
+#endif
+
 int
 main(int argc, char *argv[])
 {
@@ -20,8 +24,12 @@ main(int argc, char *argv[])
         long ct_repeat_max=1;
         int ct_return=0;
 
+#ifdef XOPENME
+  xopenme_init(1,0);
+#endif
+
         if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
-        			  
+       			  
 if (argc<3)
 {
 	fprintf(stderr, "Usage: blowfish {e|d} <intput> <output> key\n");
@@ -93,6 +101,10 @@ while(!feof(fp))
     current_num = num;
     memcpy(current_ivec, ivec, 32);
 
+#ifdef XOPENME
+  xopenme_clock_start(0);
+#endif
+
 for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
 {
   /* The call to BF_cfb64_encrypt modifies ivec and num. We need to make a
@@ -102,6 +114,13 @@ for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
         memcpy(ivec, current_ivec, 32);
 	BF_cfb64_encrypt(indata,outdata,i,&key,ivec,&num,encordec);
 }
+
+#ifdef XOPENME
+  xopenme_clock_end(0);
+
+  xopenme_dump_state();
+  xopenme_finish();
+#endif
 
 	for(j=0;j<i;j++)
 	{

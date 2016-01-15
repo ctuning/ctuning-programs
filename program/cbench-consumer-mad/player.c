@@ -83,6 +83,10 @@
 # include "filter.h"
 # include "equalizer.h"
 
+#ifdef XOPENME
+#include <xopenme.h>
+#endif
+
 # define MPEG_BUFSZ	40000	/* 2.5 s at 128 kbps; 1 s at 320 kbps */
 # define FREQ_TOLERANCE	6	/* percent sampling frequency tolerance */
 
@@ -1296,7 +1300,11 @@ int play_all(struct player *player)
   struct playlist *playlist = &player->playlist;
   char const *tmp;
 
-  if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
+#ifdef XOPENME
+  xopenme_init(1,0);
+#endif
+
+    if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
 
   /* set up playlist */
 
@@ -1328,6 +1336,10 @@ int play_all(struct player *player)
 
       player->control = PLAYER_CONTROL_DEFAULT;
 
+#ifdef XOPENME
+  xopenme_clock_start(0);
+#endif
+
       for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
       {
         if (play_one(player) == -1) {
@@ -1337,6 +1349,13 @@ int play_all(struct player *player)
   	  result = -1;
         }
       }
+
+#ifdef XOPENME
+  xopenme_clock_end(0);
+
+  xopenme_dump_state();
+  xopenme_finish();
+#endif
 
       if ((player->options & PLAYER_OPTION_TIMED) &&
 	  mad_timer_compare(player->stats.global_timer,

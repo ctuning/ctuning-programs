@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef XOPENME
+#include <xopenme.h>
+#endif
+
 static char str_misc[1024];
 
 /*
@@ -98,6 +102,10 @@ int main(int argc, char* argv[])
 	exit(1);
       }
 
+#ifdef XOPENME
+  xopenme_init(1,0);
+#endif
+
       if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
 
       if ((fmisc1=fopen(argv[1],"rt"))==NULL)
@@ -183,6 +191,10 @@ int main(int argc, char* argv[])
         exit(1);
       }
 
+#ifdef XOPENME
+  xopenme_clock_start(0);
+#endif
+
       for (i = 0; i<i1; i++)
       {
          for (j = 0; j<i2; j++)
@@ -194,6 +206,13 @@ int main(int argc, char* argv[])
                fprintf(fmisc3, "\"%s\" is in \"%s\"\n", find_strings[j], search_strings[i]); 
          }
       }
+
+#ifdef XOPENME
+  xopenme_clock_end(0);
+
+  xopenme_dump_state();
+  xopenme_finish();
+#endif
 
       fclose(fmisc3);
 

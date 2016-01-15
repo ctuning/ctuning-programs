@@ -4,6 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef XOPENME
+#include <xopenme.h>
+#endif
+
 struct adpcm_state state;
 
 #define NSAMPLES 1000
@@ -17,7 +21,15 @@ int main() {
     int ct_return=0;
     int n;
 
+#ifdef XOPENME
+  xopenme_init(1,0);
+#endif
+
     if (getenv("CT_REPEAT_MAIN")!=NULL) ct_repeat_max=atol(getenv("CT_REPEAT_MAIN"));
+
+#ifdef XOPENME
+  xopenme_clock_start(0);
+#endif
 
     while(1) {
         struct adpcm_state current_state = state;
@@ -42,5 +54,13 @@ int main() {
 
 	write(1, abuf, n/4);
     }
+
+#ifdef XOPENME
+  xopenme_clock_end(0);
+
+  xopenme_dump_state();
+  xopenme_finish();
+#endif
+
     return 0;
 }

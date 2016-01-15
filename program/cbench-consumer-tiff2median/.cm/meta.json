@@ -96,8 +96,7 @@
     "small", 
     "cbench", 
     "program", 
-    "lang-c", 
-    "crowd-tuning"
+    "lang-c"
   ], 
   "target_file": "a"
 }
