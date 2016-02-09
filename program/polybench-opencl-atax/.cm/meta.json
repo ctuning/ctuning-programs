@@ -2,8 +2,8 @@
   "backup_data_uid": "281d682750abb84c", 
   "build_compiler_vars": {
     "DATA_TYPE": "float", 
-    "DIM_LOCAL_WORK_GROUP_X": 256, 
-    "DIM_LOCAL_WORK_GROUP_Y": 1, 
+    "LWS_X": 256, 
+    "LWS_Y": 1, 
     "NX": 4096, 
     "NY": 4096, 
     "XOPENME": ""

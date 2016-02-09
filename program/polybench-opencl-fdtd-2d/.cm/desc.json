@@ -13,7 +13,7 @@
       ], 
       "type": "text"
     }, 
-    "##DIM_LOCAL_WORK_GROUP_X": {
+    "##LWS_X": {
       "default": 32, 
       "desc": "Local workgroup: block X", 
       "explore_start": 1, 
@@ -26,7 +26,7 @@
       ], 
       "type": "integer"
     }, 
-    "##DIM_LOCAL_WORK_GROUP_Y": {
+    "##LWS_Y": {
       "default": 8, 
       "desc": "Local workgroup: block Y", 
       "explore_start": 1, 

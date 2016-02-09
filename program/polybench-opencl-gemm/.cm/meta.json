@@ -2,8 +2,8 @@
   "backup_data_uid": "050feb15cb44e1ac", 
   "build_compiler_vars": {
     "DATA_TYPE": "float", 
-    "DIM_LOCAL_WORK_GROUP_X": 32, 
-    "DIM_LOCAL_WORK_GROUP_Y": 8, 
+    "LWS_X": 32, 
+    "LWS_Y": 8, 
     "NI": 512, 
     "NJ": 512, 
     "NK": 512, 

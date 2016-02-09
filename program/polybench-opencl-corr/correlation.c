@@ -46,35 +46,35 @@
 #endif
 
 /* Thread block dimensions for kernel 1*/
-#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_1_X
-#define DIM_LOCAL_WORK_GROUP_KERNEL_1_X 256
+#ifndef LWS_KERNEL_1_X
+#define LWS_KERNEL_1_X 256
 #endif
-#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_1_Y
-#define DIM_LOCAL_WORK_GROUP_KERNEL_1_Y 1
+#ifndef LWS_KERNEL_1_Y
+#define LWS_KERNEL_1_Y 1
 #endif
 
 /* Thread block dimensions for kernel 2*/
-#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_2_X
-#define DIM_LOCAL_WORK_GROUP_KERNEL_2_X 256
+#ifndef LWS_KERNEL_2_X
+#define LWS_KERNEL_2_X 256
 #endif
-#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_2_Y
-#define DIM_LOCAL_WORK_GROUP_KERNEL_2_Y 1
+#ifndef LWS_KERNEL_2_Y
+#define LWS_KERNEL_2_Y 1
 #endif
 
 /* Thread block dimensions for kernel 3*/
-#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_3_X
-#define DIM_LOCAL_WORK_GROUP_KERNEL_3_X 32
+#ifndef LWS_KERNEL_3_X
+#define LWS_KERNEL_3_X 32
 #endif
-#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_3_Y
-#define DIM_LOCAL_WORK_GROUP_KERNEL_3_Y 8
+#ifndef LWS_KERNEL_3_Y
+#define LWS_KERNEL_3_Y 8
 #endif
 
 /* Thread block dimensions for kernel 4*/
-#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_4_X
-#define DIM_LOCAL_WORK_GROUP_KERNEL_4_X 256
+#ifndef LWS_KERNEL_4_X
+#define LWS_KERNEL_4_X 256
 #endif
-#ifndef DIM_LOCAL_WORK_GROUP_KERNEL_4_Y
-#define DIM_LOCAL_WORK_GROUP_KERNEL_4_Y 1
+#ifndef LWS_KERNEL_4_Y
+#define LWS_KERNEL_4_Y 1
 #endif
 
 
@@ -297,24 +297,24 @@ void cl_launch_kernel()
 	size_t localWorkSize_Kernel3[2], globalWorkSize_Kernel3[2];
 	size_t localWorkSize_Kernel4[2], globalWorkSize_Kernel4[2];
 
-	localWorkSize_Kernel1[0] = DIM_LOCAL_WORK_GROUP_KERNEL_1_X;
-	localWorkSize_Kernel1[1] = DIM_LOCAL_WORK_GROUP_KERNEL_1_Y;
-	globalWorkSize_Kernel1[0] = (size_t)ceil(((float)M) / ((float)DIM_LOCAL_WORK_GROUP_KERNEL_1_X)) * DIM_LOCAL_WORK_GROUP_KERNEL_1_X;
+	localWorkSize_Kernel1[0] = LWS_KERNEL_1_X;
+	localWorkSize_Kernel1[1] = LWS_KERNEL_1_Y;
+	globalWorkSize_Kernel1[0] = (size_t)ceil(((float)M) / ((float)LWS_KERNEL_1_X)) * LWS_KERNEL_1_X;
 	globalWorkSize_Kernel1[1] = 1;
 
-	localWorkSize_Kernel2[0] = DIM_LOCAL_WORK_GROUP_KERNEL_2_X;
-	localWorkSize_Kernel2[1] = DIM_LOCAL_WORK_GROUP_KERNEL_2_Y;
-	globalWorkSize_Kernel2[0] = (size_t)ceil(((float)M) / ((float)DIM_LOCAL_WORK_GROUP_KERNEL_2_X)) * DIM_LOCAL_WORK_GROUP_KERNEL_2_X;
+	localWorkSize_Kernel2[0] = LWS_KERNEL_2_X;
+	localWorkSize_Kernel2[1] = LWS_KERNEL_2_Y;
+	globalWorkSize_Kernel2[0] = (size_t)ceil(((float)M) / ((float)LWS_KERNEL_2_X)) * LWS_KERNEL_2_X;
 	globalWorkSize_Kernel2[1] = 1;
 
-	localWorkSize_Kernel3[0] = DIM_LOCAL_WORK_GROUP_KERNEL_3_X;
-	localWorkSize_Kernel3[1] = DIM_LOCAL_WORK_GROUP_KERNEL_3_Y;
-	globalWorkSize_Kernel3[0] = (size_t)ceil(((float)M) / ((float)DIM_LOCAL_WORK_GROUP_KERNEL_3_X)) * DIM_LOCAL_WORK_GROUP_KERNEL_3_X;
-	globalWorkSize_Kernel3[1] = (size_t)ceil(((float)N) / ((float)DIM_LOCAL_WORK_GROUP_KERNEL_3_Y)) * DIM_LOCAL_WORK_GROUP_KERNEL_3_Y;
+	localWorkSize_Kernel3[0] = LWS_KERNEL_3_X;
+	localWorkSize_Kernel3[1] = LWS_KERNEL_3_Y;
+	globalWorkSize_Kernel3[0] = (size_t)ceil(((float)M) / ((float)LWS_KERNEL_3_X)) * LWS_KERNEL_3_X;
+	globalWorkSize_Kernel3[1] = (size_t)ceil(((float)N) / ((float)LWS_KERNEL_3_Y)) * LWS_KERNEL_3_Y;
 
-	localWorkSize_Kernel4[0] = DIM_LOCAL_WORK_GROUP_KERNEL_4_X;
-	localWorkSize_Kernel4[1] = DIM_LOCAL_WORK_GROUP_KERNEL_4_Y;
-	globalWorkSize_Kernel4[0] = (size_t)ceil(((float)M) / ((float)DIM_LOCAL_WORK_GROUP_KERNEL_4_X)) * DIM_LOCAL_WORK_GROUP_KERNEL_4_X;
+	localWorkSize_Kernel4[0] = LWS_KERNEL_4_X;
+	localWorkSize_Kernel4[1] = LWS_KERNEL_4_Y;
+	globalWorkSize_Kernel4[0] = (size_t)ceil(((float)M) / ((float)LWS_KERNEL_4_X)) * LWS_KERNEL_4_X;
 	globalWorkSize_Kernel4[1] = 1;
 
 

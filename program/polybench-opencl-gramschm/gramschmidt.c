@@ -46,11 +46,11 @@
 #endif
 
 /* Thread block dimensions */
-#ifndef DIM_LOCAL_WORK_GROUP_X
-#define DIM_LOCAL_WORK_GROUP_X 256
+#ifndef LWS_X
+#define LWS_X 256
 #endif
-#ifndef DIM_LOCAL_WORK_GROUP_Y
-#define DIM_LOCAL_WORK_GROUP_Y 1
+#ifndef LWS_Y
+#define LWS_Y 1
 #endif
 
 #if defined(cl_khr_fp64)  // Khronos extension available?

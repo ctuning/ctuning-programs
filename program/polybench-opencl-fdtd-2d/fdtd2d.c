@@ -47,11 +47,11 @@
 #endif
 
 /* Thread block dimensions */
-#ifndef DIM_LOCAL_WORK_GROUP_X
-#define DIM_LOCAL_WORK_GROUP_X 32
+#ifndef LWS_X
+#define LWS_X 32
 #endif
-#ifndef DIM_LOCAL_WORK_GROUP_Y
-#define DIM_LOCAL_WORK_GROUP_Y 8
+#ifndef LWS_Y
+#define LWS_Y 8
 #endif
 
 #define MAX_SOURCE_SIZE (0x100000)
@@ -267,10 +267,10 @@ void cl_launch_kernel()
 	int t;
 
 	size_t localWorkSize[2], globalWorkSize[2];
-	localWorkSize[0] = DIM_LOCAL_WORK_GROUP_X;
-	localWorkSize[1] = DIM_LOCAL_WORK_GROUP_Y;
-	globalWorkSize[0] = (size_t)ceil(((float)NY) / ((float)DIM_LOCAL_WORK_GROUP_X)) * DIM_LOCAL_WORK_GROUP_X;
-	globalWorkSize[1] = (size_t)ceil(((float)NX) / ((float)DIM_LOCAL_WORK_GROUP_Y)) * DIM_LOCAL_WORK_GROUP_Y;
+	localWorkSize[0] = LWS_X;
+	localWorkSize[1] = LWS_Y;
+	globalWorkSize[0] = (size_t)ceil(((float)NY) / ((float)LWS_X)) * LWS_X;
+	globalWorkSize[1] = (size_t)ceil(((float)NX) / ((float)LWS_Y)) * LWS_Y;
 
 //	t_start = rtclock();
 	for(t=0;t<TMAX;t++)
