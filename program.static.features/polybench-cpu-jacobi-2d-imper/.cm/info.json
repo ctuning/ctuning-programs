@@ -1,0 +1,20 @@
+{
+  "backup_data_uid": "159119e650b12206", 
+  "backup_module_uid": "92a02f0445148203", 
+  "backup_module_uoa": "program.static.features", 
+  "control": {
+    "author": "cTuning foundation", 
+    "author_email": "admin@cTuning.org", 
+    "author_webpage": "http://cTuning.org", 
+    "copyright": "See CK COPYRIGHT.txt for copyright details", 
+    "engine": "CK", 
+    "iso_datetime": "2016-03-25T23:47:14.604243", 
+    "license": "See CK LICENSE.txt for licensing details", 
+    "version": [
+      "1", 
+      "6", 
+      "14x"
+    ]
+  }, 
+  "data_name": "polybench-cpu-jacobi-2d-imper"
+}
