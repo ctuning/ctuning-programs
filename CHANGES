@@ -1,1 +1,8 @@
-* 2016.03.26 FGG: * adding program static MILEPOST features
+* 2016.03.26 adding program static MILEPOST features
+
+* 2016.02.08 Unifying polybench OpenCL LWS_X autotuning/crowdtuning
+
+* 2016.01.15 Fixing a few cTuning benchmarks for crowd-tuning with XOpenME 
+             and new CK-based crowd-tuning engine (crowdsourcing performance/energy
+             optimization across mobile devices)
+
