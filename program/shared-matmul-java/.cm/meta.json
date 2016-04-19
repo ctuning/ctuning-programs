@@ -9,7 +9,20 @@
   "compile_deps": {
     "compiler": {
       "local": "yes", 
-      "tags": "compiler,lang-java"
+      "tags": "compiler,lang-java",
+      "name": "java compiler",
+      "only_for_host_os_tags":[],
+      "only_for_target_os_tags":[]
+    },
+    "test1_compiler": {
+      "local": "yes", 
+      "tags": "compiler,lang-java",
+      "name": "java compiler"
+    },
+    "test2_compiler": {
+      "local": "yes", 
+      "tags": "compiler,lang-java",
+      "name": "java compiler"
     }
   }, 
   "compiler_env": "CK_JAVAC", 
@@ -46,6 +59,8 @@
     "CT_REPEAT_MAIN": "1"
   }, 
   "skip_add_prefix_for_target_file": "yes", 
+  "skip_objdump":"yes",
+  "skip_md5sum":"yes",
   "skip_bin_ext": "yes", 
   "source_files": [
     "matmul.java"
