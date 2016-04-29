@@ -4,11 +4,19 @@
   "compile_deps": {
     "compiler": {
       "local": "yes", 
+      "name": "C compiler", 
       "tags": "compiler,lang-c"
     }
   }, 
   "compiler_env": "CK_CC", 
   "data_name": "shared-bzip2-1.0.5", 
+  "deps": {
+    "compiler": {
+      "local": "yes", 
+      "name": "C compiler", 
+      "tags": "compiler,lang-c"
+    }
+  }, 
   "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
   "main_language": "c", 
   "process_in_tmp": "yes", 

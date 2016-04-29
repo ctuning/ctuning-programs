@@ -11,27 +11,57 @@
   "compile_deps": {
     "compiler": {
       "local": "yes", 
+      "name": "C compiler", 
       "sort": 10, 
       "tags": "compiler,lang-c"
     }, 
     "lib_opencl": {
       "local": "yes", 
+      "name": "OpenCL library", 
       "sort": 20, 
       "tags": "lib,opencl"
     }, 
     "rtl_polybench": {
       "local": "yes", 
+      "name": "Polybench Run Time library", 
       "sort": 30, 
       "tags": "lib,rtl,polybench"
     }, 
     "xopenme": {
       "local": "yes", 
+      "name": "xOpenME library", 
       "sort": 20, 
       "tags": "lib,xopenme"
     }
   }, 
   "compiler_env": "CK_CC", 
   "data_name": "polybench-opencl-syr2k", 
+  "deps": {
+    "compiler": {
+      "local": "yes", 
+      "name": "C compiler", 
+      "sort": 10, 
+      "tags": "compiler,lang-c"
+    }, 
+    "lib-opencl": {
+      "local": "yes", 
+      "name": "OpenCL library", 
+      "sort": 20, 
+      "tags": "lib,opencl"
+    }, 
+    "rtl-polybench": {
+      "local": "yes", 
+      "name": "Polybench Run Time library", 
+      "sort": 30, 
+      "tags": "lib,rtl,polybench"
+    }, 
+    "xopenme": {
+      "local": "yes", 
+      "name": "xOpenME library", 
+      "sort": 20, 
+      "tags": "lib,xopenme"
+    }
+  }, 
   "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
   "main_language": "c", 
   "process_in_tmp": "yes", 

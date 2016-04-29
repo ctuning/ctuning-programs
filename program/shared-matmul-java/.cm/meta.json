@@ -9,24 +9,23 @@
   "compile_deps": {
     "compiler": {
       "local": "yes", 
-      "tags": "compiler,lang-java",
-      "name": "java compiler",
-      "only_for_host_os_tags":[],
-      "only_for_target_os_tags":[]
-    },
-    "test1_compiler": {
-      "local": "yes", 
-      "tags": "compiler,lang-java",
-      "name": "java compiler"
-    },
-    "test2_compiler": {
-      "local": "yes", 
-      "tags": "compiler,lang-java",
-      "name": "java compiler"
+      "name": "java compiler", 
+      "only_for_host_os_tags": [], 
+      "only_for_target_os_tags": [], 
+      "tags": "compiler,lang-java"
     }
   }, 
   "compiler_env": "CK_JAVAC", 
   "data_name": "shared-matmul-java", 
+  "deps": {
+    "compiler": {
+      "local": "yes", 
+      "name": "java compiler", 
+      "only_for_host_os_tags": [], 
+      "only_for_target_os_tags": [], 
+      "tags": "compiler,lang-java"
+    }
+  }, 
   "link_cmds": {
     "default": {
       "cmd": ""
@@ -59,9 +58,9 @@
     "CT_REPEAT_MAIN": "1"
   }, 
   "skip_add_prefix_for_target_file": "yes", 
-  "skip_objdump":"yes",
-  "skip_md5sum":"yes",
   "skip_bin_ext": "yes", 
+  "skip_md5sum": "yes", 
+  "skip_objdump": "yes", 
   "source_files": [
     "matmul.java"
   ], 

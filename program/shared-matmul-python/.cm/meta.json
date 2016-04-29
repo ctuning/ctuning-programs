@@ -13,10 +13,19 @@
       "only_for_host_os_tags": [], 
       "only_for_target_os_tags": [], 
       "tags": "compiler,lang-python"
-    } 
+    }
   }, 
   "compiler_env": "CK_PYC", 
   "data_name": "shared-matmul-python", 
+  "deps": {
+    "compiler": {
+      "local": "yes", 
+      "name": "python", 
+      "only_for_host_os_tags": [], 
+      "only_for_target_os_tags": [], 
+      "tags": "compiler,lang-python"
+    }
+  }, 
   "link_cmds": {
     "default": {
       "cmd": ""
@@ -27,8 +36,7 @@
   "program": "yes", 
   "run_cmds": {
     "default": {
-      "hot_functions": [
-      ], 
+      "hot_functions": [], 
       "ignore_return_code": "no", 
       "run_time": {
         "run_cmd_main": "$#env1#$CK_PYC$#env2#$ ../matmul.py ", 
@@ -44,9 +52,9 @@
     "CT_MATRIX_DIMENSION": "128", 
     "CT_REPEAT_MAIN": "1"
   }, 
-  "skip_local_include":"yes",
   "skip_add_prefix_for_target_file": "yes", 
   "skip_bin_ext": "yes", 
+  "skip_local_include": "yes", 
   "skip_md5sum": "yes", 
   "skip_objdump": "yes", 
   "source_files": [

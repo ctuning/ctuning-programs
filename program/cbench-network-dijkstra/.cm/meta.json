@@ -6,16 +6,31 @@
   "compile_deps": {
     "compiler": {
       "local": "yes", 
+      "name": "C compiler", 
       "tags": "compiler,lang-c"
     }, 
     "xopenme": {
       "local": "yes", 
+      "name": "xOpenME library", 
       "sort": 20, 
       "tags": "lib,xopenme"
     }
   }, 
   "compiler_env": "CK_CC", 
   "data_name": "cbench-network-dijkstra", 
+  "deps": {
+    "compiler": {
+      "local": "yes", 
+      "name": "C compiler", 
+      "tags": "compiler,lang-c"
+    }, 
+    "xopenme": {
+      "local": "yes", 
+      "name": "xOpenME library", 
+      "sort": 20, 
+      "tags": "lib,xopenme"
+    }
+  }, 
   "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
   "main_language": "c", 
   "process_in_tmp": "yes", 
