@@ -10,13 +10,6 @@
   }, 
   "compiler_env": "CK_FC", 
   "data_name": "shared-matmul-fortran", 
-  "deps": {
-    "compiler": {
-      "local": "yes", 
-      "name": "Fortran 77 compiler", 
-      "tags": "compiler,lang-f77"
-    }
-  }, 
   "main_language": "c", 
   "process_in_tmp": "yes", 
   "program": "yes", 

@@ -10,13 +10,6 @@
   }, 
   "compiler_env": "CK_CC", 
   "data_name": "shared-matmul-c", 
-  "deps": {
-    "compiler": {
-      "local": "yes", 
-      "name": "C compiler", 
-      "tags": "compiler,lang-c"
-    }
-  }, 
   "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
   "main_language": "c", 
   "process_in_tmp": "yes", 

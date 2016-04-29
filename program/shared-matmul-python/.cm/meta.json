@@ -17,15 +17,6 @@
   }, 
   "compiler_env": "CK_PYC", 
   "data_name": "shared-matmul-python", 
-  "deps": {
-    "compiler": {
-      "local": "yes", 
-      "name": "python", 
-      "only_for_host_os_tags": [], 
-      "only_for_target_os_tags": [], 
-      "tags": "compiler,lang-python"
-    }
-  }, 
   "link_cmds": {
     "default": {
       "cmd": ""

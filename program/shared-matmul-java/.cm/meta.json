@@ -17,15 +17,6 @@
   }, 
   "compiler_env": "CK_JAVAC", 
   "data_name": "shared-matmul-java", 
-  "deps": {
-    "compiler": {
-      "local": "yes", 
-      "name": "java compiler", 
-      "only_for_host_os_tags": [], 
-      "only_for_target_os_tags": [], 
-      "tags": "compiler,lang-java"
-    }
-  }, 
   "link_cmds": {
     "default": {
       "cmd": ""

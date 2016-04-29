@@ -8,7 +8,7 @@
       "sort": 10, 
       "tags": "compiler,lang-c"
     }, 
-    "rtl_milepost_codelet": {
+    "rtl-milepost-codelet": {
       "local": "yes", 
       "name": "Milepost Codelet Run Time Library", 
       "sort": 20, 
@@ -17,20 +17,6 @@
   }, 
   "compiler_env": "CK_CC", 
   "data_name": "milepost-codelet-mibench-consumer-lame-src-quantize-pvt-codelet-6-1", 
-  "deps": {
-    "compiler": {
-      "local": "yes", 
-      "name": "C compiler", 
-      "sort": 10, 
-      "tags": "compiler,lang-c"
-    }, 
-    "rtl-milepost-codelet": {
-      "local": "yes", 
-      "name": "Milepost Codelet Run Time Library", 
-      "sort": 20, 
-      "tags": "lib,rtl,milepost,codelet"
-    }
-  }, 
   "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
   "main_language": "c", 
   "process_in_tmp": "yes", 
