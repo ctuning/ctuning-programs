@@ -1,3 +1,6 @@
+# download and install the BenchmarkTools Julia package
+# Pkg.clone("https://github.com/JuliaCI/BenchmarkTools.jl")
+
 # load the BenchmarkTools module into the current Julia session
 using BenchmarkTools
 
