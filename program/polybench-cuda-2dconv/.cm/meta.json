@@ -34,7 +34,7 @@
       "tags": "lib,xopenme"
     }
   }, 
-  "compiler_env": "CK_CC", 
+  "compiler_env": "CK_NVCC", 
   "data_name": "polybench-cuda-2dconv", 
   "extra_ld_vars": "", 
   "main_language": "c", 
