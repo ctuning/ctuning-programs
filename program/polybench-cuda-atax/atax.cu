@@ -98,13 +98,18 @@ void compareResults(DATA_TYPE *z, DATA_TYPE *z_outputFromGpu)
 
 void GPU_argv_init()
 {
+  /* Grigori Fursin added support for CK widgets */
+  int gpgpu_device_id=GPU_DEVICE;
+
   int devID = 0;
   cudaError_t error;
   cudaDeviceProp deviceProp;
   error = cudaGetDevice(&devID);
 
-  cudaGetDeviceProperties(&deviceProp, GPU_DEVICE);
-  
+  if (getenv("CK_GPGPU_DEVICE_ID")!=NULL) gpgpu_device_id=atol(getenv("CK_GPGPU_DEVICE_ID"));
+
+  cudaGetDeviceProperties(&deviceProp, gpgpu_device_id);
+
   if (deviceProp.computeMode == cudaComputeModeProhibited)
   {
     printf("Error: device is running in <Compute Mode Prohibited>, no threads can use ::cudaSetDevice().\n");
@@ -116,7 +121,7 @@ void GPU_argv_init()
   else
     printf("GPU Device %d: \"%s\" with compute capability %d.%d\n\n", devID, deviceProp.name, deviceProp.major, deviceProp.minor);
 
-  cudaSetDevice( GPU_DEVICE );
+  cudaSetDevice( gpgpu_device_id );
 }
 
 
