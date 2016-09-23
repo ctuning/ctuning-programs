@@ -172,13 +172,30 @@ void init_array(DATA_TYPE* A, DATA_TYPE* B, DATA_TYPE* C, DATA_TYPE* D)
 
 
 void cl_initialization()
-{	
+{
+  /* Grigori Fursin added support for CK widgets */
+  int gpgpu_platform_id=0;
+  int gpgpu_device_id=0;
+
+  cl_platform_id* platforms;
+  cl_device_id* devices;
+
+  cl_device_id device;   
+
+  if (getenv("CK_GPGPU_PLATFORM_ID")!=NULL) gpgpu_platform_id=atol(getenv("CK_GPGPU_PLATFORM_ID"));
+  if (getenv("CK_GPGPU_DEVICE_ID")!=NULL) gpgpu_device_id=atol(getenv("CK_GPGPU_DEVICE_ID"));
+
+  platforms = (cl_platform_id*) malloc(sizeof(cl_platform_id) * gpgpu_platform_id+1);
+  devices = (cl_device_id*) malloc(sizeof(cl_device_id) * gpgpu_device_id+1);
+
 	// Get platform and device information
-	err_code = clGetPlatformIDs(1, &platform_id, &num_platforms);
+	err_code = clGetPlatformIDs(15, platforms, &num_platforms);
 	if(err_code == CL_SUCCESS) printf("number of platforms is %d\n",num_platforms);
 	else printf("Error getting platform IDs\n");
 
-	err_code = clGetPlatformInfo(platform_id,CL_PLATFORM_NAME, sizeof(str_temp), str_temp,NULL);
+	platform_id=platforms[gpgpu_platform_id];
+
+	err_code = clGetPlatformInfo(platform_id, CL_PLATFORM_NAME, sizeof(str_temp), str_temp,NULL);
 	if(err_code == CL_SUCCESS) printf("platform name is %s\n",str_temp);
 	else printf("Error getting platform name\n");
 
@@ -186,11 +203,13 @@ void cl_initialization()
 	if(err_code == CL_SUCCESS) printf("platform version is %s\n",str_temp);
 	else printf("Error getting platform version\n");
 
-	err_code = clGetDeviceIDs( platform_id, CL_DEVICE_TYPE_GPU, 1, &device_id, &num_devices);
+	err_code = clGetDeviceIDs(platform_id, CL_DEVICE_TYPE_ALL, 15, devices, &num_devices);
 	if(err_code == CL_SUCCESS) printf("number of devices is %d\n", num_devices);
 	else printf("Error getting device IDs\n");
 
-	err_code = clGetDeviceInfo(device_id,CL_DEVICE_NAME, sizeof(str_temp), str_temp,NULL);
+	device_id=devices[gpgpu_device_id];
+
+	err_code = clGetDeviceInfo(device_id, CL_DEVICE_NAME, sizeof(str_temp), str_temp,NULL);
 	if(err_code == CL_SUCCESS) printf("device name is %s\n",str_temp);
 	else printf("Error getting device name\n");
 	

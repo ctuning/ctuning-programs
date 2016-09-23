@@ -53,6 +53,7 @@
       ], 
       "ignore_return_code": "no", 
       "run_time": {
+        "need_gpgpu_device":"opencl",
         "fine_grain_timer_file": "tmp-ck-timer.json", 
         "run_cmd_main": "$#BIN_FILE#$ \"$#src_path#$3mm.cl\"", 
         "run_cmd_out1": "tmp-output1.tmp", 
