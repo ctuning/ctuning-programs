@@ -53,7 +53,7 @@
       ], 
       "ignore_return_code": "no", 
       "run_time": {
-        "need_gpgpu_device":"cuda",
+        "need_compute_device":"cuda",
         "fine_grain_timer_file": "tmp-ck-timer.json", 
         "run_cmd_main": "$#BIN_FILE#$ ", 
         "run_cmd_out1": "tmp-output1.tmp", 

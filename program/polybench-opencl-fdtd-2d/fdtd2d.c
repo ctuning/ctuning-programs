@@ -164,8 +164,8 @@ void cl_initialization()
 
   cl_device_id device;   
 
-  if (getenv("CK_GPGPU_PLATFORM_ID")!=NULL) gpgpu_platform_id=atol(getenv("CK_GPGPU_PLATFORM_ID"));
-  if (getenv("CK_GPGPU_DEVICE_ID")!=NULL) gpgpu_device_id=atol(getenv("CK_GPGPU_DEVICE_ID"));
+  if (getenv("CK_COMPUTE_PLATFORM_ID")!=NULL) gpgpu_platform_id=atol(getenv("CK_COMPUTE_PLATFORM_ID"));
+  if (getenv("CK_COMPUTE_DEVICE_ID")!=NULL) gpgpu_device_id=atol(getenv("CK_COMPUTE_DEVICE_ID"));
 
   platforms = (cl_platform_id*) malloc(sizeof(cl_platform_id) * gpgpu_platform_id+1);
   devices = (cl_device_id*) malloc(sizeof(cl_device_id) * gpgpu_device_id+1);

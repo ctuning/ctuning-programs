@@ -147,7 +147,7 @@ void GPU_argv_init()
   cudaDeviceProp deviceProp;
   error = cudaGetDevice(&devID);
 
-  if (getenv("CK_GPGPU_DEVICE_ID")!=NULL) gpgpu_device_id=atol(getenv("CK_GPGPU_DEVICE_ID"));
+  if (getenv("CK_COMPUTE_DEVICE_ID")!=NULL) gpgpu_device_id=atol(getenv("CK_COMPUTE_DEVICE_ID"));
 
   cudaGetDeviceProperties(&deviceProp, gpgpu_device_id);
 
