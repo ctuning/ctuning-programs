@@ -1,6 +1,9 @@
 Shared programs, benchmarks and kernels for autotuning/crowd-tuning
 ===================================================================
 
+[![logo](https://github.com/ctuning/ck-guide-images/blob/master/logo-powered-by-ck.png)](http://cKnowledge.org)
+[![logo](https://github.com/ctuning/ck-guide-images/blob/master/logo-validated-by-the-community-simple.png)](http://cTuning.org)
+
 These are various public programs, benchmarks and kernels used
 in our research on universal and multi-objective autotuning/crowd-tuning
 in the [open Collective Knowledge format](http://cKnowledge.org):
