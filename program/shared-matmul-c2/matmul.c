@@ -139,14 +139,14 @@ int main(int argc, char* argv[])
 
 #if USE_BLOCKED_MATMUL != YES
 
-void matmul(float* A, float* B, float* C, int N, 1)
+void matmul(float* A, float* B, float* C, int N, int BS)
 {
   naive_matmul(A,B,C,N,N,N,N);
 }
 
 #else
 
-void matmul(float* A, float* B, float* C, int N, BS)
+void matmul(float* A, float* B, float* C, int N, int BS)
 {
   int i,j,k;
 
