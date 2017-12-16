@@ -15,6 +15,8 @@
 #include <xopenme.h>
 #endif
 
+#define min(a,b) (a<b?a:b)
+
 void matmul(float* A, float* B, float* C, int N, int BS);
 void naive_matmul(float* A, float* B, float* C, int N, int II, int JJ, int KK);
 
@@ -22,7 +24,7 @@ int main(int argc, char* argv[])
 {
   FILE* fgg=NULL;
   int N=0;
-  int BS=0;
+  int BS=1;
   float QQ[Q];
   int i=0;
   int j=0;
@@ -70,8 +72,6 @@ int main(int argc, char* argv[])
   if (getenv("CT_BLOCK_SIZE")!=NULL)
     BS=atol(getenv("CT_BLOCK_SIZE"));
 
-  printf("matrix dimension: %u\n", N);
-
   if ((fgg=fopen(fn,"rt"))==NULL)
   {
     fprintf(stderr,"\nError: Can't find data!\n");
@@ -106,7 +106,9 @@ int main(int argc, char* argv[])
   xopenme_clock_start(0);
 #endif
   for (ct_repeat=0; ct_repeat<ct_repeat_max; ct_repeat++)
+  {
     matmul(A,B,C,N,BS);
+  }
 #ifdef XOPENME
   xopenme_clock_end(0);
 #endif
@@ -180,7 +182,9 @@ void naive_matmul(float* A, float* B, float* C, int N, int II, int JJ, int KK)
     {
       tmp=C[i+j*N];
       for (k=0; k<KK; k++)
+      {
         tmp+=A[i+k*N]*B[k+j*N];
+      }
       C[i+j*N]=tmp;
     }
   }
