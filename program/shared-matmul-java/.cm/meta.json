@@ -49,6 +49,7 @@
     "CT_REPEAT_MAIN": "1"
   }, 
   "skip_add_prefix_for_target_file": "yes", 
+  "skip_compiler_vars":"yes",
   "skip_bin_ext": "yes", 
   "skip_md5sum": "yes", 
   "skip_objdump": "yes", 

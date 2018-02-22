@@ -1,3 +1,5 @@
+* 2018.02.22 fixed Java programs (skip_compiler_vars)
+
 * 2017.12.16 added program:shared-matmul-c2 from my PhD thesis
 
 * 2016.09.23 added support for 'device' module for GPGPU OpenCL and CUDA benchmarks
