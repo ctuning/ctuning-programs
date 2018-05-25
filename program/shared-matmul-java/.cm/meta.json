@@ -22,7 +22,7 @@
       "cmd": ""
     }
   }, 
-  "main_language": "c", 
+  "main_language": "java", 
   "process_in_tmp": "yes", 
   "program": "yes", 
   "run_cmds": {
