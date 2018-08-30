@@ -23,7 +23,7 @@ and even on Android based mobile phones and tables together with
 See some results from crowdsourcing iterative compilation (autotuning) 
 on Android-based mobile phones and other computer systems:
 
-* Android App to crowdsource iterative compilation: https://play.google.com/store/apps/details?id=com.collective_mind.node
+* Android App to crowdsource iterative compilation: http://cKnowledge.org/android-apps.html
 * Participating mobile phones and tablets: http://cTuning.org/crowdtuning-mobiles
 * Processors from above mobile phones: http://cTuning.org/crowdtuning-processors
 * Some results from crowdtuning: http://cTuning.org/crowdtuning-results
