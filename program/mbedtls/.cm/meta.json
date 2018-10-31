@@ -1,0 +1,64 @@
+{
+  "backup_data_uid": "2feb4c2bb3d7c915",
+  "build_compiler_vars": {
+    "XOPENME": ""
+  },
+  "compile_cmds": {
+     "linux": {
+      "cmd": "../ck-compile$#script_ext#$"
+    },
+    "default": {
+      "cmd": "../ck-compile$#script_ext#$"
+    }
+  },
+  "compile_deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C compiler",
+      "sort": 10,
+      "tags": "compiler,lang-c"
+    },
+    "xopenme": {
+      "local": "yes",
+      "name": "xOpenME library",
+      "sort": 20,
+      "tags": "lib,xopenme"
+    }
+  },
+  "compiler_env": "CK_CC",
+  "data_name": "mbedtls",
+  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
+  "main_language": "c",
+  "print_files_after_run": [
+    "stderr.log",
+    "stdout.log"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$#BIN_FILE#$ aes_gcm",
+        "run_cmd_out1": "stdout.log",
+        "run_cmd_out2": "stderr.log",
+        "run_output_files": [
+          "stdout.log",
+          "stderr.log",
+          "tmp-ck-timer.json"
+        ]
+      }
+    }
+  },
+  "run_vars": {
+    "CK_VAR1": 123,
+    "CK_VAR2": 666
+  },
+  "tags": [
+    "program",
+    "lang-c"
+  ],
+  "target_file": "a",
+  "use_compile_script": "yes"
+}
