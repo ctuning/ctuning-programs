@@ -1,52 +1,53 @@
 {
-  "backup_data_uid": "24b6f89b5f0521d9", 
-  "build_compiler_vars": {}, 
+  "backup_data_uid": "24b6f89b5f0521d9",
+  "build_compiler_vars": {},
   "compile_deps": {
     "compiler": {
-      "local": "yes", 
-      "name": "julia compiler", 
-      "only_for_host_os_tags": [], 
-      "only_for_target_os_tags": [], 
+      "local": "yes",
+      "name": "julia compiler",
+      "only_for_host_os_tags": [],
+      "only_for_target_os_tags": [],
       "tags": "compiler,lang-julia"
     }
-  }, 
-  "compiler_env": "CK_JULIA", 
-  "data_name": "bench-julia-sin", 
+  },
+  "compiler_env": "CK_JULIA",
+  "data_name": "bench-julia-sin",
   "link_cmds": {
     "default": {
       "cmd": ""
     }
-  }, 
-  "main_language": "JULIA", 
-  "process_in_tmp": "yes", 
-  "program": "yes", 
+  },
+  "main_language": "JULIA",
+  "process_in_tmp": "yes",
+  "program": "yes",
   "run_cmds": {
     "default": {
-      "ignore_return_code": "no", 
+      "ignore_return_code": "no",
       "run_time": {
-        "run_cmd_main": "$#env1#$CK_JULIA_RT$#env2#$ ../bench.jl ", 
-        "post_process_cmd": "python $#src_path_local#$convert_timers_to_ck_format.py", 
-        "run_cmd_out1": "tmp-output1.tmp", 
-        "run_cmd_out2": "tmp-output2.tmp", 
+        "post_process_cmd": "python $#src_path_local#$convert_timers_to_ck_format.py",
+        "run_cmd_main": "$#env1#$CK_JULIA_RT$#env2#$ ../bench.jl ",
+        "run_cmd_out1": "tmp-output1.tmp",
+        "run_cmd_out2": "tmp-output2.tmp",
         "run_correctness_output_files": [
           "tmp-output2.tmp"
         ]
       }
     }
-  }, 
-  "run_vars": {
-  }, 
-  "skip_add_prefix_for_target_file": "yes", 
-  "skip_bin_ext": "yes", 
-  "skip_md5sum": "yes", 
-  "skip_objdump": "yes", 
+  },
+  "run_vars": {},
+  "skip_add_prefix_for_target_file": "yes",
+  "skip_bin_ext": "yes",
+  "skip_md5sum": "yes",
+  "skip_objdump": "yes",
   "source_files": [
     "bench.jl"
-  ], 
+  ],
   "tags": [
-    "bench", 
-    "julia", 
+    "bench",
+    "julia",
     "lang-julia"
-  ], 
-  "target_file": ""
+  ],
+  "target_file": "",
+  "template": "yes",
+  "template_type": "julia workflow"
 }

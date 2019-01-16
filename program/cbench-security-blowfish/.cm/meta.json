@@ -1,110 +1,110 @@
 {
-  "backup_data_uid": "b2fbb2cfee7a30c7", 
+  "backup_data_uid": "b2fbb2cfee7a30c7",
   "build_compiler_vars": {
     "XOPENME": ""
-  }, 
+  },
   "compile_deps": {
     "compiler": {
-      "local": "yes", 
-      "name": "C compiler", 
+      "local": "yes",
+      "name": "C compiler",
       "tags": "compiler,lang-c"
-    }, 
+    },
     "xopenme": {
-      "local": "yes", 
-      "name": "xOpenME library", 
-      "sort": 20, 
+      "local": "yes",
+      "name": "xOpenME library",
+      "sort": 20,
       "tags": "lib,xopenme"
     }
-  }, 
-  "compiler_env": "CK_CC", 
-  "data_name": "cbench-security-blowfish", 
-  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
-  "main_language": "c", 
-  "process_in_tmp": "yes", 
-  "program": "yes", 
+  },
+  "compiler_env": "CK_CC",
+  "data_name": "cbench-security-blowfish",
+  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
+  "main_language": "c",
+  "process_in_tmp": "yes",
+  "program": "yes",
   "run_cmds": {
     "decode": {
       "dataset_tags": [
-        "benc", 
-        "crypto", 
+        "benc",
+        "crypto",
         "dataset"
-      ], 
+      ],
       "hot_functions": [
         {
-          "name": "BF_encrypt", 
+          "name": "BF_encrypt",
           "percent": "69"
-        }, 
+        },
         {
-          "name": "BF_cfb64_encrypt", 
+          "name": "BF_cfb64_encrypt",
           "percent": "30"
         }
-      ], 
-      "ignore_return_code": "no", 
+      ],
+      "ignore_return_code": "no",
       "run_time": {
-        "fine_grain_timer_file": "tmp-ck-timer.json", 
-        "run_cmd_main": "$#BIN_FILE#$ d $#dataset_path#$$#dataset_filename#$ tmp-output.tmp 1234567890abcdeffedcba0987654321", 
-        "run_cmd_out1": "tmp-output1.tmp", 
-        "run_cmd_out2": "tmp-output2.tmp", 
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$#BIN_FILE#$ d $#dataset_path#$$#dataset_filename#$ tmp-output.tmp 1234567890abcdeffedcba0987654321",
+        "run_cmd_out1": "tmp-output1.tmp",
+        "run_cmd_out2": "tmp-output2.tmp",
         "run_correctness_output_files": [
-          "tmp-output.tmp", 
+          "tmp-output.tmp",
           "tmp-output2.tmp"
-        ], 
+        ],
         "run_output_files": [
           "tmp-output.tmp"
         ]
       }
-    }, 
+    },
     "encode": {
       "dataset_tags": [
-        "enc", 
-        "crypto", 
+        "enc",
+        "crypto",
         "dataset"
-      ], 
+      ],
       "hot_functions": [
         {
-          "name": "BF_encrypt", 
+          "name": "BF_encrypt",
           "percent": "69"
-        }, 
+        },
         {
-          "name": "BF_cfb64_encrypt", 
+          "name": "BF_cfb64_encrypt",
           "percent": "30"
         }
-      ], 
-      "ignore_return_code": "no", 
+      ],
+      "ignore_return_code": "no",
       "run_time": {
-        "fine_grain_timer_file": "tmp-ck-timer.json", 
-        "run_cmd_main": "$#BIN_FILE#$ e $#dataset_path#$$#dataset_filename#$ tmp-output.tmp 1234567890abcdeffedcba0987654321", 
-        "run_cmd_out1": "tmp-output1.tmp", 
-        "run_cmd_out2": "tmp-output2.tmp", 
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$#BIN_FILE#$ e $#dataset_path#$$#dataset_filename#$ tmp-output.tmp 1234567890abcdeffedcba0987654321",
+        "run_cmd_out1": "tmp-output1.tmp",
+        "run_cmd_out2": "tmp-output2.tmp",
         "run_correctness_output_files": [
-          "tmp-output.tmp", 
+          "tmp-output.tmp",
           "tmp-output2.tmp"
-        ], 
+        ],
         "run_output_files": [
-          "tmp-ck-timer.json", 
+          "tmp-ck-timer.json",
           "tmp-output.tmp"
         ]
       }
     }
-  }, 
+  },
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  }, 
+  },
   "source_files": [
-    "bf.c", 
-    "bf_cbc.c", 
-    "bf_cfb64.c", 
-    "bf_ecb.c", 
-    "bf_enc.c", 
-    "bf_ofb64.c", 
+    "bf.c",
+    "bf_cbc.c",
+    "bf_cfb64.c",
+    "bf_ecb.c",
+    "bf_enc.c",
+    "bf_ofb64.c",
     "bf_skey.c"
-  ], 
+  ],
   "tags": [
-    "small", 
-    "cbench", 
-    "program", 
-    "lang-c", 
+    "small",
+    "cbench",
+    "program",
+    "lang-c",
     "crowd-tuning"
-  ], 
+  ],
   "target_file": "a"
 }

@@ -1,60 +1,60 @@
 {
-  "backup_data_uid": "c05fd0ce84b48718", 
-  "build_compiler_vars": {}, 
+  "backup_data_uid": "c05fd0ce84b48718",
+  "build_compiler_vars": {},
   "compile_cmds": {
     "default": {
       "cmd": "echo \"NOT SUPPORTED\""
     }
-  }, 
+  },
   "compile_deps": {
     "compiler": {
-      "local": "yes", 
-      "name": "python", 
-      "only_for_host_os_tags": [], 
-      "only_for_target_os_tags": [], 
+      "local": "yes",
+      "name": "python",
+      "only_for_host_os_tags": [],
+      "only_for_target_os_tags": [],
       "tags": "compiler,lang-python"
     }
-  }, 
-  "compiler_env": "CK_PYC", 
-  "data_name": "shared-matmul-python", 
+  },
+  "compiler_env": "CK_PYC",
+  "data_name": "shared-matmul-python",
   "link_cmds": {
     "default": {
       "cmd": ""
     }
-  }, 
-  "main_language": "python", 
-  "process_in_tmp": "yes", 
-  "program": "yes", 
+  },
+  "main_language": "python",
+  "process_in_tmp": "yes",
+  "program": "yes",
   "run_cmds": {
     "default": {
-      "hot_functions": [], 
-      "ignore_return_code": "no", 
+      "hot_functions": [],
+      "ignore_return_code": "no",
       "run_time": {
-        "run_cmd_main": "$#env1#$CK_PYC$#env2#$ ../matmul.py ", 
-        "run_cmd_out1": "tmp-output1.tmp", 
-        "run_cmd_out2": "tmp-output2.tmp", 
+        "run_cmd_main": "$#env1#$CK_PYC$#env2#$ ../matmul.py ",
+        "run_cmd_out1": "tmp-output1.tmp",
+        "run_cmd_out2": "tmp-output2.tmp",
         "run_correctness_output_files": [
           "tmp-output2.tmp"
         ]
       }
     }
-  }, 
+  },
   "run_vars": {
-    "CT_MATRIX_DIMENSION": "128", 
+    "CT_MATRIX_DIMENSION": "128",
     "CT_REPEAT_MAIN": "1"
-  }, 
-  "skip_add_prefix_for_target_file": "yes", 
-  "skip_bin_ext": "yes", 
-  "skip_local_include": "yes", 
-  "skip_md5sum": "yes", 
-  "skip_objdump": "yes", 
+  },
+  "skip_add_prefix_for_target_file": "yes",
+  "skip_bin_ext": "yes",
+  "skip_local_include": "yes",
+  "skip_md5sum": "yes",
+  "skip_objdump": "yes",
   "source_files": [
     "matmul.py"
-  ], 
+  ],
   "tags": [
-    "demo", 
-    "program", 
+    "demo",
+    "program",
     "lang-python"
-  ], 
+  ],
   "target_file": "matmul"
 }

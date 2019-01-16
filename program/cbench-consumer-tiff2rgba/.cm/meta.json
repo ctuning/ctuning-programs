@@ -1,108 +1,108 @@
 {
-  "backup_data_uid": "05a8cd0d0108d495", 
+  "backup_data_uid": "05a8cd0d0108d495",
   "build_compiler_vars": {
     "XOPENME": ""
-  }, 
+  },
   "compile_deps": {
     "compiler": {
-      "local": "yes", 
-      "name": "C compiler", 
+      "local": "yes",
+      "name": "C compiler",
       "tags": "compiler,lang-c"
-    }, 
+    },
     "xopenme": {
-      "local": "yes", 
-      "name": "xOpenME library", 
-      "sort": 20, 
+      "local": "yes",
+      "name": "xOpenME library",
+      "sort": 20,
       "tags": "lib,xopenme"
     }
-  }, 
-  "compiler_env": "CK_CC", 
-  "data_name": "cbench-consumer-tiff2rgba", 
-  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
-  "main_language": "c", 
-  "process_in_tmp": "yes", 
-  "program": "yes", 
+  },
+  "compiler_env": "CK_CC",
+  "data_name": "cbench-consumer-tiff2rgba",
+  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
+  "main_language": "c",
+  "process_in_tmp": "yes",
+  "program": "yes",
   "run_cmds": {
     "convert": {
       "dataset_tags": [
-        "tiff", 
-        "image", 
-        "dataset", 
+        "tiff",
+        "image",
+        "dataset",
         "orig"
-      ], 
+      ],
       "hot_functions": [
         {
-          "name": "LZWDecode", 
+          "name": "LZWDecode",
           "percent": "37"
-        }, 
+        },
         {
-          "name": "create_colorcell", 
+          "name": "create_colorcell",
           "percent": "23"
         }
-      ], 
-      "ignore_return_code": "no", 
+      ],
+      "ignore_return_code": "no",
       "run_time": {
-        "fine_grain_timer_file": "tmp-ck-timer.json", 
-        "run_cmd_main": "$#BIN_FILE#$ -c none $#dataset_path#$$#dataset_filename#$ tmp-output.tmp", 
-        "run_cmd_out1": "tmp-output1.tmp", 
-        "run_cmd_out2": "tmp-output2.tmp", 
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$#BIN_FILE#$ -c none $#dataset_path#$$#dataset_filename#$ tmp-output.tmp",
+        "run_cmd_out1": "tmp-output1.tmp",
+        "run_cmd_out2": "tmp-output2.tmp",
         "run_correctness_output_files": [
-          "tmp-output.tmp", 
+          "tmp-output.tmp",
           "tmp-output2.tmp"
-        ], 
+        ],
         "run_output_files": [
-          "tmp-ck-timer.json", 
+          "tmp-ck-timer.json",
           "tmp-output.tmp"
         ]
       }
     }
-  }, 
+  },
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  }, 
+  },
   "source_files": [
-    "ctuning-rtl.c", 
-    "tiffmedian.c", 
-    "tif_aux.c", 
-    "tif_close.c", 
-    "tif_codec.c", 
-    "tif_compress.c", 
-    "tif_dir.c", 
-    "tif_dirinfo.c", 
-    "tif_dirread.c", 
-    "tif_dirwrite.c", 
-    "tif_dumpmode.c", 
-    "tif_error.c", 
-    "tif_fax3.c", 
-    "tif_fax3sm.c", 
-    "tif_flush.c", 
-    "tif_getimage.c", 
-    "tif_jpeg.c", 
-    "tif_luv.c", 
-    "tif_lzw.c", 
-    "tif_next.c", 
-    "tif_open.c", 
-    "tif_packbits.c", 
-    "tif_pixarlog.c", 
-    "tif_predict.c", 
-    "tif_print.c", 
-    "tif_read.c", 
-    "tif_strip.c", 
-    "tif_swab.c", 
-    "tif_thunder.c", 
-    "tif_tile.c", 
-    "tif_unix.c", 
-    "tif_version.c", 
-    "tif_warning.c", 
-    "tif_write.c", 
-    "tif_zip.c", 
+    "ctuning-rtl.c",
+    "tiffmedian.c",
+    "tif_aux.c",
+    "tif_close.c",
+    "tif_codec.c",
+    "tif_compress.c",
+    "tif_dir.c",
+    "tif_dirinfo.c",
+    "tif_dirread.c",
+    "tif_dirwrite.c",
+    "tif_dumpmode.c",
+    "tif_error.c",
+    "tif_fax3.c",
+    "tif_fax3sm.c",
+    "tif_flush.c",
+    "tif_getimage.c",
+    "tif_jpeg.c",
+    "tif_luv.c",
+    "tif_lzw.c",
+    "tif_next.c",
+    "tif_open.c",
+    "tif_packbits.c",
+    "tif_pixarlog.c",
+    "tif_predict.c",
+    "tif_print.c",
+    "tif_read.c",
+    "tif_strip.c",
+    "tif_swab.c",
+    "tif_thunder.c",
+    "tif_tile.c",
+    "tif_unix.c",
+    "tif_version.c",
+    "tif_warning.c",
+    "tif_write.c",
+    "tif_zip.c",
     "getopt.c"
-  ], 
+  ],
   "tags": [
-    "small", 
-    "cbench", 
-    "program", 
+    "small",
+    "cbench",
+    "program",
     "lang-c"
-  ], 
+  ],
   "target_file": "a"
 }

@@ -4,10 +4,10 @@
     "XOPENME": ""
   },
   "compile_cmds": {
-     "linux": {
+    "default": {
       "cmd": "../ck-compile$#script_ext#$"
     },
-    "default": {
+    "linux": {
       "cmd": "../ck-compile$#script_ext#$"
     }
   },

@@ -1,83 +1,83 @@
 {
-  "backup_data_uid": "281d682750abb84c", 
+  "backup_data_uid": "281d682750abb84c",
   "build_compiler_vars": {
-    "DATA_TYPE": "float", 
-    "LWS_X": 256, 
-    "LWS_Y": 1, 
-    "NX": 4096, 
-    "NY": 4096, 
+    "DATA_TYPE": "float",
+    "LWS_X": 256,
+    "LWS_Y": 1,
+    "NX": 4096,
+    "NY": 4096,
     "XOPENME": ""
-  }, 
+  },
   "compile_deps": {
     "compiler": {
-      "local": "yes", 
-      "name": "C compiler", 
-      "sort": 10, 
+      "local": "yes",
+      "name": "C compiler",
+      "sort": 10,
       "tags": "compiler,lang-c"
-    }, 
+    },
     "lib-opencl": {
-      "local": "yes", 
-      "name": "OpenCL library", 
-      "sort": 20, 
+      "local": "yes",
+      "name": "OpenCL library",
+      "sort": 20,
       "tags": "lib,opencl"
-    }, 
+    },
     "rtl-polybench": {
-      "local": "yes", 
-      "name": "Polybench Run Time library", 
-      "sort": 30, 
+      "local": "yes",
+      "name": "Polybench Run Time library",
+      "sort": 30,
       "tags": "lib,rtl,polybench"
-    }, 
+    },
     "xopenme": {
-      "local": "yes", 
-      "name": "xOpenME library", 
-      "sort": 20, 
+      "local": "yes",
+      "name": "xOpenME library",
+      "sort": 20,
       "tags": "lib,xopenme"
     }
-  }, 
-  "compiler_env": "CK_CC", 
-  "data_name": "polybench-opencl-atax", 
-  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
-  "main_language": "c", 
-  "process_in_tmp": "yes", 
-  "program": "yes", 
+  },
+  "compiler_env": "CK_CC",
+  "data_name": "polybench-opencl-atax",
+  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
+  "main_language": "c",
+  "process_in_tmp": "yes",
+  "program": "yes",
   "run_cmds": {
     "default": {
       "hot_functions": [
         {
-          "name": "kernel_atax", 
+          "name": "kernel_atax",
           "percent": "99"
         }
-      ], 
-      "ignore_return_code": "no", 
+      ],
+      "ignore_return_code": "no",
       "run_time": {
-        "need_compute_device":"opencl",
-        "fine_grain_timer_file": "tmp-ck-timer.json", 
-        "run_cmd_main": "$#BIN_FILE#$ \"$#src_path#$atax.cl\"", 
-        "run_cmd_out1": "tmp-output1.tmp", 
-        "run_cmd_out2": "tmp-output2.tmp", 
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "need_compute_device": "opencl",
+        "run_cmd_main": "$#BIN_FILE#$ \"$#src_path#$atax.cl\"",
+        "run_cmd_out1": "tmp-output1.tmp",
+        "run_cmd_out2": "tmp-output2.tmp",
         "run_correctness_output_files": [
           "tmp-output2.tmp"
-        ], 
+        ],
         "run_input_files": [
           "atax.cl"
-        ], 
+        ],
         "run_output_files": [
           "tmp-ck-timer.json"
         ]
       }
     }
-  }, 
+  },
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  }, 
+  },
   "source_files": [
     "atax.c"
-  ], 
+  ],
   "tags": [
-    "opencl", 
-    "program", 
-    "polybench", 
+    "opencl",
+    "program",
+    "polybench",
     "lang-c"
-  ], 
+  ],
   "target_file": "a"
 }

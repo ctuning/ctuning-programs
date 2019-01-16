@@ -1,115 +1,115 @@
 {
-  "backup_data_uid": "fc254acbaffb03ac", 
+  "backup_data_uid": "fc254acbaffb03ac",
   "build_compiler_vars": {
     "XOPENME": ""
-  }, 
+  },
   "compile_deps": {
     "compiler": {
-      "local": "yes", 
-      "name": "C compiler", 
+      "local": "yes",
+      "name": "C compiler",
       "tags": "compiler,lang-c"
-    }, 
+    },
     "xopenme": {
-      "local": "yes", 
-      "name": "xOpenME library", 
-      "sort": 20, 
+      "local": "yes",
+      "name": "xOpenME library",
+      "sort": 20,
       "tags": "lib,xopenme"
     }
-  }, 
-  "compiler_env": "CK_CC", 
-  "data_name": "cbench-bzip2", 
-  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$", 
-  "main_language": "c", 
-  "process_in_tmp": "yes", 
-  "program": "yes", 
+  },
+  "compiler_env": "CK_CC",
+  "data_name": "cbench-bzip2",
+  "extra_ld_vars": "$<<CK_EXTRA_LIB_M>>$",
+  "main_language": "c",
+  "process_in_tmp": "yes",
+  "program": "yes",
   "run_cmds": {
     "decode": {
       "dataset_tags": [
-        "bzip2", 
-        "archiver", 
+        "bzip2",
+        "archiver",
         "dataset"
-      ], 
+      ],
       "hot_functions": [
         {
-          "name": "BZ2_decompress", 
+          "name": "BZ2_decompress",
           "percent": "55"
-        }, 
+        },
         {
-          "name": "BZ2_bzDecompress", 
+          "name": "BZ2_bzDecompress",
           "percent": "44"
         }
-      ], 
-      "ignore_return_code": "no", 
+      ],
+      "ignore_return_code": "no",
       "run_time": {
-        "fine_grain_timer_file": "tmp-ck-timer.json", 
-        "run_cmd_main": "$#BIN_FILE#$ -d -k -f $#dataset_path#$$#dataset_filename#$", 
-        "run_cmd_out1": "tmp-output1.tmp", 
-        "run_cmd_out2": "tmp-output2.tmp", 
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$#BIN_FILE#$ -d -k -f $#dataset_path#$$#dataset_filename#$",
+        "run_cmd_out1": "tmp-output1.tmp",
+        "run_cmd_out2": "tmp-output2.tmp",
         "run_correctness_output_files": [
-          "bzip2.tmp", 
+          "bzip2.tmp",
           "tmp-output2.tmp"
-        ], 
+        ],
         "run_output_files": [
-          "bzip2.tmp", 
+          "bzip2.tmp",
           "tmp-ck-timer.json"
         ]
       }
-    }, 
+    },
     "encode": {
       "dataset_tags": [
         "dataset"
-      ], 
+      ],
       "hot_functions": [
         {
-          "name": "mainSort", 
+          "name": "mainSort",
           "percent": "58"
-        }, 
+        },
         {
-          "name": "BZ2_compressBlock", 
+          "name": "BZ2_compressBlock",
           "percent": "28"
-        }, 
+        },
         {
-          "name": "BZ2_hbMakeCodeLengths", 
+          "name": "BZ2_hbMakeCodeLengths",
           "percent": "6"
         }
-      ], 
-      "ignore_return_code": "no", 
+      ],
+      "ignore_return_code": "no",
       "run_time": {
-        "fine_grain_timer_file": "tmp-ck-timer.json", 
-        "run_cmd_main": "$#BIN_FILE#$ -z -k -f $#dataset_path#$$#dataset_filename#$", 
-        "run_cmd_out1": "tmp-output1.tmp", 
-        "run_cmd_out2": "tmp-output2.tmp", 
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$#BIN_FILE#$ -z -k -f $#dataset_path#$$#dataset_filename#$",
+        "run_cmd_out1": "tmp-output1.tmp",
+        "run_cmd_out2": "tmp-output2.tmp",
         "run_correctness_output_files": [
-          "bzip2.tmp", 
+          "bzip2.tmp",
           "tmp-output2.tmp"
-        ], 
+        ],
         "run_output_files": [
-          "bzip2.tmp", 
+          "bzip2.tmp",
           "tmp-ck-timer.json"
         ]
       }
     }
-  }, 
+  },
   "run_vars": {
     "CT_REPEAT_MAIN": "1"
-  }, 
+  },
   "source_files": [
-    "blocksort.c", 
-    "bzip2.c", 
-    "bzlib.c", 
-    "compress.c", 
-    "crctable.c", 
-    "decompress.c", 
-    "huffman.c", 
-    "randtable.c", 
+    "blocksort.c",
+    "bzip2.c",
+    "bzlib.c",
+    "compress.c",
+    "crctable.c",
+    "decompress.c",
+    "huffman.c",
+    "randtable.c",
     "ctuning-rtl.c"
-  ], 
+  ],
   "tags": [
-    "small", 
-    "cbench", 
-    "program", 
-    "lang-c", 
+    "small",
+    "cbench",
+    "program",
+    "lang-c",
     "crowd-tuning"
-  ], 
+  ],
   "target_file": "a"
 }
