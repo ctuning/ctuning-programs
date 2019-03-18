@@ -35,7 +35,7 @@
       ],
       "ignore_return_code": "no",
       "run_time": {
-        "run_cmd_main": "$#env1#$CK_JAVA_RT$#env2#$ $#BIN_FILE#$ ",
+        "run_cmd_main": "$#env1#$CK_JAVA_RT$#env2#$ matmul",
         "run_cmd_out1": "tmp-output1.tmp",
         "run_cmd_out2": "tmp-output2.tmp",
         "run_correctness_output_files": [
