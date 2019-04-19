@@ -1148,8 +1148,12 @@ phone +1 303 541-0140\n"));
 #endif
 	if (batchmode && !signature_checked)
 	    exitPGP(1);		/* alternate success, file did not have sig. */
-	else
-	    exitPGP(EXIT_OK);
+	else {
+		xopenme_clock_end(0);
+		xopenme_dump_state();
+		xopenme_finish();
+		exitPGP(EXIT_OK);
+	}
     }
     /*
      * See if plaintext input file was actually created by PGP earlier--
