@@ -1,6 +1,8 @@
 Shared programs, benchmarks and kernels for autotuning/crowd-tuning
 ===================================================================
 
+**All CK components for AI and ML are now collected in [one repository](https://github.com/ctuning/ai)!**
+
 [![compatibility](https://github.com/ctuning/ck-guide-images/blob/master/ck-compatible.svg)](https://github.com/ctuning/ck)
 
 These are various public programs, benchmarks and kernels used
