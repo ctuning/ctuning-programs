@@ -5,14 +5,6 @@
   "data_uoa": "ctuning-programs",
   "dict": {
     "desc": "Evolving set of diverse and portable programs shared by the community in the unified CK format to participate in collaborative benchmarking, optimization and co-design while gradually substituting rigid, non-portable and outdated and non representative benchmarks (see the <a href=\"http://cKnowledge.org/rpi-crowd-tuning\">real use case</a>).",
-    "repo_deps": [
-      {
-        "repo_uoa": "ck-autotuning"
-      },
-      {
-        "repo_uoa": "ctuning-datasets-min"
-      }
-    ],
     "shared": "git",
     "url": "https://github.com/ctuning/ctuning-programs"
   }
